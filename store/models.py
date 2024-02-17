@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 # Create your models here.
 class Category(models.Model):
-    name = models.Charfield(nax_length=50, db_index=True)
+    name = models.CharField(nax_length=50, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
     description = models.TextField(max_length=255, blank=True)
 
