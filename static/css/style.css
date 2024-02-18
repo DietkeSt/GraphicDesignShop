@@ -104,6 +104,7 @@ header {
 .logo {
     flex-grow: 1;
     text-align: center;
+    justify-content: center;
 }
 
 .logo a {
@@ -111,7 +112,8 @@ header {
 }
 
 .logo img {
-    max-height: 50px;
+    max-height: 4em;
+    padding: 5px;
 }
 
 .search-box {
@@ -119,31 +121,29 @@ header {
 }
 
 .search-box input[type="search"] {
-    padding: 5px 10px;
     border: 1px solid #ccc;
-    border-radius: 20px;
 }
 
 .cart-icon {
     position: relative;
-    font-size: 24px; /* Adjust the size of the cart icon */
-    color: black; /* Adjust the color of the cart icon */
+    font-size: 1.5em; 
+    color: black;
+    margin-left: 0.5em;
 }
 
 .cart-icon img {
-    height: 24px; /* Adjust cart icon size */
+    height: 1.5em; 
 }
 
 .item-counter {
     position: absolute;
-    top: -10px; /* Adjust positioning as needed */
+    top: -5px; 
     right: -10px;
     background-color: #E83D95;
     color: white;
     border-radius: 50%;
     padding: 0 5px;
     font-size: 12px;
-    min-width: 20px;
     text-align: center;
 }
 
