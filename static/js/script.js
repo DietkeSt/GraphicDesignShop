@@ -1,21 +1,14 @@
-document.addEventListener('DOMContentLoaded', function() {
-    var mobileNavToggle = document.querySelector('.mobile-nav');
-    var navMenu = document.querySelector('.navigation ul');
-
-    mobileNavToggle.addEventListener('click', function() {
-        navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
+document.addEventListener("DOMContentLoaded", function() {
+    // Toggle navbar
+    document.querySelector('.navbar-toggler').addEventListener('click', function() {
+        this.classList.toggle('active');
+        document.querySelector('.navbar-collapse').classList.toggle('show');
     });
-});
-  
-  // You'd also need JavaScript to dynamically update the login text and item counter based on user state.
-document.addEventListener('DOMContentLoaded', function() {
-    var dropdown = document.querySelector('.arrow-down');
-    dropdown.onclick = function() {
-        var dropdownContent = this.nextElementSibling;
-        if (dropdownContent.style.display === "block") {
-            dropdownContent.style.display = "none";
-        } else {
-            dropdownContent.style.display = "block";
-        }
-    }
+
+    // Dropdown toggle for mobile
+    document.querySelectorAll('.nav-item.dropdown').forEach(function(dropdown) {
+        dropdown.addEventListener('click', function() {
+            this.querySelector('.dropdown-menu').classList.toggle('show');
+        });
+    });
 });
