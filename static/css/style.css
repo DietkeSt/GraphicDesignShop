@@ -18,10 +18,31 @@ body {
   min-height: 100vh;
 }
 
+textarea:focus,
+input[type="text"]:focus,
+input[type="password"]:focus,
+input[type="datetime"]:focus,
+input[type="datetime-local"]:focus,
+input[type="date"]:focus,
+input[type="month"]:focus,
+input[type="time"]:focus,
+input[type="week"]:focus,
+input[type="number"]:focus,
+input[type="email"]:focus,
+input[type="url"]:focus,
+input[type="search"]:focus,
+input[type="tel"]:focus,
+input[type="color"]:focus,
+.uneditable-input:focus,
+.dropdown-menu {   
+  border-color: #E83D95;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(232, 61, 149, 0.6);
+  outline: 0 none;
+}
+
 /* Top Banner Styles */
 .top-banner {
     background-color: black;
-    color: white;
     padding: 10px;
     display: flex;
     justify-content: flex-end;
@@ -29,44 +50,22 @@ body {
 }
 
 .top-banner a {
+    padding-right: 10px;
+    text-align: center;
+    align-items: center;
+}
+
+.greeting-text {
     color: white;
-    text-decoration: none;
-    margin-left: 15px;
+    margin-right: 10px;
 }
 
-.arrow-down {
+.dropdown-toggle {
+    color: white;
+}
+
+.dropdown-toggle:hover {
     color: #E83D95;
-    margin-left: 5px;
-}
-
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
-    position: absolute;
-    right: 0; 
-    background-color: #f9f9f9;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-}
-
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
-    display: block;
-}
-
-.dropdown:hover .dropdown-content {
-    display: block;
-}
-
-.dropdown-content a:hover {
-    background-color: #f1f1f1;
 }
 
 /* Main Header Styles */
@@ -78,4 +77,8 @@ body {
 
 .navbar-brand img {
     max-height: 4em;
+}
+
+.dropdown-menu a {
+    text-align: center;
 }
