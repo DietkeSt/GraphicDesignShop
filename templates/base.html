@@ -47,15 +47,19 @@
     {% comment %} Banner {% endcomment %}
     <div class="top-banner">
         {% if request.user.is_authenticated %}
-            <span class="greeting-text">Hi {{ request.user.username }}</span>
-            <div class="dropdown">
-                <span class="arrow-down">&#9660;</span>
-                <div class="dropdown-content">
-                    <a href="#">Profile</a>
-                    <a href="#">Wishlist</a>
-                    <a href="{% url 'logout' %}">Sign out</a>
-                </div>
-            </div>
+            <span class="greeting-text">Hi {{ request.user.username }}!</span>
+            <div class="dropdown text-end">
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                </a>
+                <ul class="dropdown-menu text-small" style="">
+                  <li><a class="dropdown-item" href="#">Settings</a></li>
+                  <li><a class="dropdown-item" href="#">Profile</a></li>
+                  <li><a class="dropdown-item" href="#">Wishlist</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+                </ul>
+              </div>
         {% else %}
             <a href="{% url 'login' %}">Sign in</a> or <a href="{% url 'register' %}">Register</a>
         {% endif %}
@@ -94,7 +98,7 @@
                     </ul>
                     <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn btn-outline-success" type="submit">Search</button>
+                        <button class="btn" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
             </div>
