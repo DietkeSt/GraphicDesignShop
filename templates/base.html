@@ -26,14 +26,9 @@
   {% endblock%}
 
   {% block corecss %}
-    {% comment %} Link to css {% endcomment %}
     <!-- jquery ui css -->
     <link rel="stylesheet" href="https://code.jquery.com/ui/1.13.1/themes/base/jquery-ui.css">
-
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-      integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
-
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
   {% endblock%}
 
   {% block extra_css %}
@@ -52,35 +47,49 @@
 </head>
 
 <body>
-  <header class="header">
-    {% comment %} Navbar {% endcomment %}
-    <nav class="navbar navbar__customer">
-      {% comment %} Navbar content {% endcomment %}
-      {% comment %} Logo container {% endcomment %}
-      <p class="logo__container">
-        <span>Artistic</span>Edge
-      </p>
-      <ul class="navbar__items">
-      </ul>
-    </nav>
-    {% if request.user.is_authenticated and not request.user.profile.role.id == 1 %}
-      {% comment %} Show navbar for store personnel {% endcomment %}
-      <div class="navbar__admin">
-        <nav class="navbar navbar-expand-lg navbar__items--admin">
-          <div class="container-fluid">
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown"
-              aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-              <i class="fas fa-bars"></i>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-              <ul class="navbar-nav">
-              </ul>
+    {% comment %} Banner {% endcomment %}
+    <div class="top-banner">
+        {% if request.user.is_authenticated %}
+            <span class="greeting-text">Hi {{ request.user.username }}</span>
+            <div class="dropdown">
+                <span class="arrow-down">&#9660;</span>
+                <div class="dropdown-content">
+                    <a href="#">Profile</a>
+                    <a href="#">Wishlist</a>
+                    <a href="{% url 'logout' %}">Sign out</a>
+                </div>
             </div>
-          </div>
-        </nav>
-      </div>
-    {% endif %}
-  </header>
+        {% else %}
+            <a href="{% url 'login' %}">Sign in</a> or <a href="{% url 'register' %}">Register</a>
+        {% endif %}
+    </div>
+    {% comment %} Navigation & Header {% endcomment %}
+    <header>
+        <div class="header-left">
+            <!-- Mobile navigation toggle -->
+            <div class="mobile-nav">&#9776;</div>
+            <!-- Navigation Links -->
+            <nav class="navigation">
+                <ul>
+                    <li><a href="#">Home</a></li>
+                    <li><a href="#">Newsletter</a></li>
+                    <li><a href="#">Portfolio</a></li>
+                    <li><a href="#">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="logo">
+            <!-- Link back to home -->
+            <a href="{% url 'store:home' %}"><img src="{% static 'images/logo-black.png' %}" alt="Logo"></a>
+        </div>
+        <div class="header-right">
+            <input type="search" placeholder="Search products...">
+            <div class="cart-icon">
+                <i class="fas fa-shopping-cart"></i>
+                <span class="item-counter">0</span>
+            </div>
+        </div>
+    </header>
   {% comment %} Main content container {% endcomment %}
   <main class="main">
     <div class="content__container">
@@ -176,8 +185,7 @@
     </ul>
   </footer>
   {% block postloadjs %}
-  <script src="{% static 'js/base.js' %}" type="module"></script>
-
+  <script src="{% static 'js/script.js' %}"></script>
   {% endblock %}
   {% block postloadjs_extra %}
   {% endblock %}
