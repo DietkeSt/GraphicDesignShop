@@ -70,105 +70,12 @@ body {
 }
 
 /* Main Header Styles */
-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: white;
-    padding: 0 20px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-}
-
-.header-left, .header-right, .logo {
-    flex: 1;
-    display: flex;
-    justify-content: center;
-}
-
-.header-right {
-    justify-content: flex-end;
-}
-
-.navigation ul {
-    list-style: none;
-    display: flex;
-    padding: 0;
-    margin: 0;
-    justify-content: flex-start; 
-}
-
-.navigation ul li {
-    margin-right: 20px;
-}
-
-.logo {
-    flex-grow: 1;
+.navbar-brand {
     text-align: center;
     justify-content: center;
+    max-height: 5em;
 }
 
-.logo a {
-    display: block; 
-}
-
-.logo img {
+.navbar-brand img {
     max-height: 4em;
-    padding: 5px;
-}
-
-.search-box {
-    position: relative;
-}
-
-.search-box input[type="search"] {
-    border: 1px solid #ccc;
-}
-
-.cart-icon {
-    position: relative;
-    font-size: 1.5em; 
-    color: black;
-    margin-left: 0.5em;
-}
-
-.cart-icon img {
-    height: 1.5em; 
-}
-
-.item-counter {
-    position: absolute;
-    top: -5px; 
-    right: -10px;
-    background-color: #E83D95;
-    color: white;
-    border-radius: 50%;
-    padding: 0 5px;
-    font-size: 12px;
-    text-align: center;
-}
-
-/* Mobile Navigation Styles */
-.mobile-nav {
-    cursor: pointer;
-}
-
-/* Adjust below for responsive design */
-@media (max-width: 768px) {
-    .mobile-nav {
-        display: block;
-    }
-
-    .logo {
-        order: -1; /* Moves logo to the top on mobile */
-        flex-grow: 0;
-    }
-
-    .header-right {
-        flex-wrap: wrap;
-        justify-content: center;
-    }
-
-    .search-box, .cart-icon {
-        margin-top: 10px;
-    }
 }
