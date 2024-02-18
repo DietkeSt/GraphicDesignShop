@@ -46,7 +46,7 @@
 <body>
     {% comment %} Banner {% endcomment %}
     <div class="top-banner">
-        {% if request.user.is_authenticated %}
+        {% if request.user.is_authenticated %}  
             <span class="greeting-text">Hi {{ request.user.username }}!</span>
             <div class="dropdown text-end">
                 <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
@@ -90,7 +90,7 @@
                                 <li><a class="dropdown-item" href="{% url "store:all_products" %}">All</a></li>
                                 {% for c in categories %}
                                 <li {% if category.slug == c.slug %}class="selected" {% endif %}>
-                                    <a class="dropdown-item" href="">{{ c.name|title }}</a>
+                                    <a class="dropdown-item" href="{{ c.get_absolute_url }}>{{ c.name|title }}</a>
                                 </li>
                                 {% endfor %}
                             </ul>
