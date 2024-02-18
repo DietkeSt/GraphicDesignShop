@@ -45,29 +45,31 @@
 
 <body>
     {% comment %} Banner {% endcomment %}
-    <div class="top-banner">
-        {% if request.user.is_authenticated %}  
-            <span class="greeting-text">Hi {{ request.user.username }}!</span>
-            <div class="dropdown text-end">
-                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                  <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
-                </a>
-                <ul class="dropdown-menu text-small" style="">
-                  <li><a class="dropdown-item" href="#">Settings</a></li>
-                  <li><a class="dropdown-item" href="#">Profile</a></li>
-                  <li><a class="dropdown-item" href="#">Wishlist</a></li>
-                  <li><hr class="dropdown-divider"></li>
-                  <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
-                </ul>
-              </div>
-        {% else %}
-            <a href="{% url 'login' %}">Sign in</a> or <a href="{% url 'register' %}">Register</a>
-        {% endif %}
+    <div class="top-banner-container">
+        <div class="top-banner container">
+            {% if request.user.is_authenticated %}  
+                <span class="greeting-text">Hi {{ request.user.username }}!</span>
+                <div class="dropdown text-end">
+                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                    <img src="https://github.com/mdo.png" alt="mdo" width="32" height="32" class="rounded-circle">
+                    </a>
+                    <ul class="dropdown-menu text-small" style="">
+                    <li><a class="dropdown-item" href="#">Settings</a></li>
+                    <li><a class="dropdown-item" href="#">Profile</a></li>
+                    <li><a class="dropdown-item" href="#">Wishlist</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="{% url 'logout' %}">Sign out</a></li>
+                    </ul>
+                </div>
+            {% else %}
+                <a href="{% url 'login' %}">Sign in</a> or <a href="{% url 'register' %}">Register</a>
+            {% endif %}
+        </div>
     </div>
     {% comment %} Navigation & Header {% endcomment %}
     <header>
         <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
-            <div class="container-fluid">
+            <div class="container">
                 <a class="navbar-brand" href="/"><img src="{% static 'images/logo-black.png' %}"alt="Logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
@@ -90,7 +92,7 @@
                                 <li><a class="dropdown-item" href="{% url "store:all_products" %}">All</a></li>
                                 {% for c in categories %}
                                 <li {% if category.slug == c.slug %}class="selected" {% endif %}>
-                                    <a class="dropdown-item" href="{{ c.get_absolute_url }}>{{ c.name|title }}</a>
+                                    <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
                                 </li>
                                 {% endfor %}
                             </ul>
