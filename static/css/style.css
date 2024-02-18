@@ -65,6 +65,10 @@ input[type="color"]:focus,
     align-items: center;
 }
 
+.top-banner-container {
+    background-color: black;
+}
+
 .greeting-text {
     color: white;
     margin-right: 10px;
