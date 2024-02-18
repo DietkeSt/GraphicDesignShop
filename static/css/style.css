@@ -18,6 +18,10 @@ body {
   min-height: 100vh;
 }
 
+main {
+    flex: 1 0 auto;
+}
+
 textarea:focus,
 input[type="text"]:focus,
 input[type="password"]:focus,
@@ -40,18 +44,24 @@ input[type="color"]:focus,
   outline: 0 none;
 }
 
+.btn-primary {
+    color: #fff;
+    background-color: #E83D95;;
+    border-color: #E83D95;;
+}
+
+.btn-primary:hover {
+    color: #fff;
+    background-color: #E56D90;;
+    border-color: #E56D90;;
+}
+
 /* Top Banner Styles */
 .top-banner {
     background-color: black;
-    padding: 10px;
+    padding: 0.5em 2em;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
-}
-
-.top-banner a {
-    padding-right: 10px;
-    text-align: center;
     align-items: center;
 }
 
@@ -81,4 +91,22 @@ input[type="color"]:focus,
 
 .dropdown-menu a {
     text-align: center;
+}
+
+/* Footer Styles */
+footer {
+    height: 30vh;
+    flex-shrink: 0;
+    background-color: black;
+    color: white;
+}
+
+footer a {
+    color: white;
+    text-decoration: underline;
+}
+
+footer a:hover {
+    color: #E83D95;
+    text-decoration: underline;
 }
