@@ -1,0 +1,154 @@
+/* Top Banner Styles */
+.top-banner {
+    background-color: black;
+    color: white;
+    padding: 10px;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.top-banner a {
+    color: white;
+    text-decoration: none;
+    margin-left: 15px;
+}
+
+.arrow-down {
+    color: #E83D95;
+    margin-left: 5px;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0; 
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+
+/* Main Header Styles */
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: white;
+    padding: 0 20px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+}
+
+.header-left, .header-right, .logo {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.header-right {
+    justify-content: flex-end;
+}
+
+.navigation ul {
+    list-style: none;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    justify-content: flex-start; 
+}
+
+.navigation ul li {
+    margin-right: 20px;
+}
+
+.logo {
+    flex-grow: 1;
+    text-align: center;
+}
+
+.logo a {
+    display: block; 
+}
+
+.logo img {
+    max-height: 50px;
+}
+
+.search-box {
+    position: relative;
+}
+
+.search-box input[type="search"] {
+    padding: 5px 10px;
+    border: 1px solid #ccc;
+    border-radius: 20px;
+}
+
+.cart-icon {
+    position: relative;
+    font-size: 24px; /* Adjust the size of the cart icon */
+    color: black; /* Adjust the color of the cart icon */
+}
+
+.cart-icon img {
+    height: 24px; /* Adjust cart icon size */
+}
+
+.item-counter {
+    position: absolute;
+    top: -10px; /* Adjust positioning as needed */
+    right: -10px;
+    background-color: #E83D95;
+    color: white;
+    border-radius: 50%;
+    padding: 0 5px;
+    font-size: 12px;
+    min-width: 20px;
+    text-align: center;
+}
+
+/* Mobile Navigation Styles */
+.mobile-nav {
+    cursor: pointer;
+}
+
+/* Adjust below for responsive design */
+@media (max-width: 768px) {
+    .mobile-nav {
+        display: block;
+    }
+
+    .logo {
+        order: -1; /* Moves logo to the top on mobile */
+        flex-grow: 0;
+    }
+
+    .header-right {
+        flex-wrap: wrap;
+        justify-content: center;
+    }
+
+    .search-box, .cart-icon {
+        margin-top: 10px;
+    }
+}
