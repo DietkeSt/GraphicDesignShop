@@ -68,9 +68,11 @@
     </div>
     {% comment %} Navigation & Header {% endcomment %}
     <header>
+        <div class="container justify-content-center d-flex mt-2">
+            <a class="navbar-brand justify-content-center" href="/"><img src="{% static 'images/logo-black.png' %}"alt="Logo"></a>
+        </div>
         <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
             <div class="container">
-                <a class="navbar-brand" href="/"><img src="{% static 'images/logo-black.png' %}"alt="Logo"></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
                     aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
@@ -99,10 +101,23 @@
                         </li>
                     </ul>
                     <form class="d-flex">
-                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                        <button class="btn" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
+                        <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn search-button" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
                     </form>
                 </div>
+                <a type="button" role="button" href="{% url 'store_basket:basket_summary' %}"="" class="btn store-basket">
+
+                    {% with total_qty=basket|length %}
+                        <div id="basket-qty" class="d-inline-flex">
+                            {% if total_qty > 0 %}
+                                {{ total_qty }}
+                            {% else %}
+                                0
+                            {% endif %}
+                        </div>
+                    {% endwith %}
+                    <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                </a>
             </div>
         </nav>
     </header>
