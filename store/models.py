@@ -28,7 +28,7 @@ class Product(models.Model):
     created_by = models.ForeignKey(User, on_delete=models.CASCADE, related_name='product_creator')
     title = models.CharField(max_length=255)
     description = models.TextField(blank=True)
-    image = models.ImageField(upload_to='images/product/')
+    image = models.ImageField(upload_to='images/product/', default='images/default.png')
     image_alt_text = models.CharField(max_length=255, blank=True, help_text='Product Image Alternate Text')
     slug = models.SlugField(max_length=255)
     price = models.DecimalField(max_digits=10, decimal_places=2)
