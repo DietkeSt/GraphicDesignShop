@@ -22,11 +22,18 @@ class Basket():
         """
         product_id = str(product.id)
 
-        if product_id not in self.basket:
-            self.basket[product_id] = {'price': str(product.price), 'qty':(qty)}
+        if product_id in self.basket:
+        # Update the existing quantity by adding the new quantity
+            self.basket[product_id]['qty'] += qty
+        else:
+        # Add the new product with the given quantity
+            self.basket[product_id] = {'price': str(product.price), 'qty': qty}
 
         self.session.modified = True     
     
+    def __len__(self):
+        """Return total quantity of items in the basket"""
+        return sum(item['qty'] for item in self.basket.values())
 
     def __iter__(self):
         """
