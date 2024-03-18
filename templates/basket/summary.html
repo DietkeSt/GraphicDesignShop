@@ -27,16 +27,19 @@
                       <option selected>
                         {{item.qty}}
                       </option>
-                      <option value="">1</option>
-                      <option value="">2</option>
-                      <option value="">3</option>
-                      <option value="">4</option>
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3">3</option>
+                      <option value="4">4</option>
                     </select>
+                    {% csrf_token %}
                     <button type="button" id="update-button" data-index="{{product.id}}"
+                      data-update-url="{% url 'store_basket:basket_update' %}"
                       class="btn btn-outline-secondary btn-sm update-button">
                       Update
                     </button>
                     <button type="button" id="delete-button" data-index="{{product.id}}"
+                      data-delete-url="{% url 'store_basket:basket_delete' %}"
                       class="btn btn-outline-secondary btn-sm delete-button">
                       Delete
                     </button>
