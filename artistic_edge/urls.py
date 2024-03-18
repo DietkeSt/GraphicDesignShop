@@ -13,6 +13,7 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('basket/', include('store_basket.urls', namespace='store_basket')),
+    path('login/', auth_views.LoginView.as_view(), name='login'),
     path('logout/', auth_views.LogoutView.as_view(), name='logout'),
     path('', include('store.urls', namespace='store')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
