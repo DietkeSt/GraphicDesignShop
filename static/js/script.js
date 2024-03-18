@@ -1,15 +1,18 @@
 $(document).on('click', '#add-button', function (e) {
     e.preventDefault();
+    var url = $(this).data('url');
+    console.log(url);
     $.ajax({
         type: 'POST',
-        url: '{% url "basket:add_to_basket" %}',
+        url: url,
         data: {
-            product_id: $('#add-button').val(),
-            productqty: $('#select option: selected').text(),
-            csrfmiddlewaretoken: "{{csrf_token}}",
+            productid: $('#add-button').val(),
+            productqty: $('#select option:selected').val(),
+            csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
             action: 'post'
         },
         success: function (json) {
+            console.log(json);
             document.getElementById('basket-qty').innerHTML = json.qty
         },
         error: function (xhr, errmsg, err) {}
