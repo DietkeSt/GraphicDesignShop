@@ -1,7 +1,6 @@
 $(document).on('click', '#add-button', function (e) {
     e.preventDefault();
     var url = $(this).data('url');
-    console.log(url);
     $.ajax({
         type: 'POST',
         url: url,
