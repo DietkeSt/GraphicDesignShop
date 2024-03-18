@@ -141,6 +141,17 @@ input[type="color"]:focus,
     font-size: 0.75rem;
 }
 
+/* Register Page styling */
+.account-form input {
+    border: 2px solid #ccc;
+    height: calc(2em + .75rem + 2px);
+}
+
+.account-form input:focus {
+    border-color: #E83D95;
+    box-shadow: none;
+}
+
 /* Footer Styles */
 footer {
     height: 30vh;
