@@ -144,3 +144,6 @@ LOGIN_URL = '/account/login/'
 
 # Email setting
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+# Password reset setting
+PASSWORD_RESET_TIMEOUT_DAYS = 3
