@@ -11,6 +11,6 @@ app_name = 'store_basket'
 
 urlpatterns = [
     path('', views.basket_summary, name='basket_summary'),
-    path('', views.add_to_basket, name='add_to_basket'),
+    path('add/', views.add_to_basket, name='add_to_basket'),
 ]
     
