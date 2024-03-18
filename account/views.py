@@ -1,16 +1,11 @@
-from django.contrib.auth import login, logout
-from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
 from django.template.loader import render_to_string
-from django.utils.encoding import force_bytes, force_text
-from django.utils.http import urlsafe_base64_decode, urlsafe_base64_encode
+from django.utils.encoding import force_bytes
+from django.utils.http import urlsafe_base64_encode
 
-from orders.views import user_orders
-
-from .forms import RegistrationForm, UserEditForm
-from .models import UserBase
+from .forms import RegistrationForm
 from .tokens import account_activation_token
 
 
@@ -40,3 +35,8 @@ def account_register(request):
     else:
         registerForm = RegistrationForm()
     return render(request, 'account/registration/register.html', {'form': registerForm})
+
+
+def dashboard_view(request):
+    # Your dashboard view logic here
+    return render(request, 'account/user/dashboard.html')
