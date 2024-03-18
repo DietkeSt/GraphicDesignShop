@@ -10,7 +10,7 @@ $(document).on('click', '#add-button', function (e) {
             action: 'post'
         },
         success: function (json) {
-
+            document.getElementById('basket-qty').innerHTML = json.qty
         },
         error: function (xhr, errmsg, err) {}
     });
