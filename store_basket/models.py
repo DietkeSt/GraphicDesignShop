@@ -23,10 +23,8 @@ class Basket():
         product_id = str(product.id)
 
         if product_id in self.basket:
-        # Update the existing quantity by adding the new quantity
             self.basket[product_id]['qty'] += qty
         else:
-        # Add the new product with the given quantity
             self.basket[product_id] = {'price': str(product.price), 'qty': qty}
 
         self.session.modified = True     
@@ -51,3 +49,29 @@ class Basket():
             item['price'] = Decimal(item['price'])
             item['total_price'] = item['price'] * item['qty']
             yield item
+
+    def update(self, product, qty):
+        """
+        Update values in session data
+        """
+        product_id = str(product)
+        if product_id in self.basket:
+            self.basket[product_id]['qty'] = qty
+        self.save()
+
+    def get_total_price(self):
+        return sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
+
+    def delete(self, product):
+        """
+        Delete item from session data
+        """
+        product_id = str(product)
+
+        if product_id in self.basket:
+            del self.basket[product_id]
+            print(product_id)
+            self.save()
+
+    def save(self):
+        self.session.modified = True
