@@ -43,6 +43,7 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
     first_name = models.CharField(max_length=150, blank=True)
     about = models.TextField(_(
         'about'), max_length=500, blank=True)
+    profile_image = models.ImageField(_('profile image'), upload_to='profile_images/', null=True, blank=True)
     # Delivery details
     country = CountryField()
     phone_number = models.CharField(max_length=15, blank=True)
