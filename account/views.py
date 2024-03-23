@@ -1,3 +1,6 @@
+from django.contrib import messages
+from django.contrib.auth import login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
 from django.http import HttpResponse
 from django.shortcuts import redirect, render
@@ -5,8 +8,51 @@ from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes
 from django.utils.http import urlsafe_base64_encode
 
-from .forms import RegistrationForm
+from .forms import RegistrationForm, UserEditForm
+from .models import UserBase
 from .tokens import account_activation_token
+
+
+@login_required
+def dashboard(request):
+    return render(request,
+                  'account/user/dashboard.html',)
+
+
+@login_required
+def custom_logout(request):
+    logout(request)
+    next_page = request.GET.get('next', '/')
+    return render(request, 'account/registration/logout.html')
+
+
+@login_required
+def edit_details(request):
+    if request.method == 'POST':
+        user_form = UserEditForm(request.POST, request.FILES, instance=request.user)
+
+        if user_form.is_valid():
+            user = user_form.save(commit=False)
+            clear_image = request.POST.get('clear_image', False)
+            if clear_image:
+                user.profile_image.delete()  # Delete the existing profile image
+                user.profile_image = None  # Set profile image to None
+            user.save()
+            messages.success(request, 'Details successfully updated!')
+            return redirect('account:edit_details')
+    else:
+        user_form = UserEditForm(instance=request.user)
+
+    return render(request, 'account/user/edit_details.html', {'user_form': user_form})
+
+
+@login_required
+def delete_user(request):
+    user = UserBase.objects.get(user_name=request.user)
+    user.is_active = False
+    user.save()
+    logout(request)
+    return redirect('account:delete_confirmation')
 
 
 def account_register(request):
@@ -37,6 +83,16 @@ def account_register(request):
     return render(request, 'account/registration/register.html', {'form': registerForm})
 
 
-def dashboard_view(request):
-    # Your dashboard view logic here
-    return render(request, 'account/user/dashboard.html')
+def account_activate(request, uidb64, token):
+    try:
+        uid = force_text(urlsafe_base64_decode(uidb64))
+        user = UserBase.objects.get(pk=uid)
+    except(TypeError, ValueError, OverflowError, user.DoesNotExist):
+        user = None
+    if user is not None and account_activation_token.check_token(user, token):
+        user.is_active = True
+        user.save()
+        login(request, user)
+        return redirect('account:dashboard')
+    else:
+        return render(request, 'account/registration/activation_invalid.html')
