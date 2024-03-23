@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import JsonResponse
+from django.http import JsonResponse, HttpResponseRedirect
+from django.urls import reverse
 
 from .models import Basket
 from store.models import Product
@@ -46,3 +47,9 @@ def basket_update(request):
         baskettotal = basket.get_total_price()
         response = JsonResponse({'qty': basketqty, 'subtotal': baskettotal})
         return response
+    
+
+def clear_basket(request):
+    if 'skey' in request.session:
+        del request.session['skey']
+    return HttpResponseRedirect(reverse('store:all_products'))
