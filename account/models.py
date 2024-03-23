@@ -45,7 +45,7 @@ class UserBase(AbstractBaseUser, PermissionsMixin):
         'about'), max_length=500, blank=True)
     profile_image = models.ImageField(_('profile image'), upload_to='profile_images/', null=True, blank=True)
     # Delivery details
-    country = CountryField()
+    country = models.CharField(_('country'), max_length=200, null=True, blank=True, choices=[('', 'Select Country')] + list(CountryField().choices))
     phone_number = models.CharField(max_length=15, blank=True)
     postcode = models.CharField(max_length=12, blank=True)
     address_line_1 = models.CharField(max_length=150, blank=True)
