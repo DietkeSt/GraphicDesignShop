@@ -1,0 +1,26 @@
+{% extends "../../base.html" %}
+{% block title %}Logged Out{% endblock %}
+{% block content %}
+
+
+<div class="container-fluid">
+    <div class="row no-gutter">
+        <div class="col-md-12">
+            <div class="login d-flex align-items-center py-5">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6  mx-auto">
+                            <div class="account-logout p-4 rounded">
+                                <h3 class="mb-4">You have been logged out.</h3>
+                                <p><a href="{% url 'account:login' %}">Click here to log in again</a></p>
+                            </div>
+                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
