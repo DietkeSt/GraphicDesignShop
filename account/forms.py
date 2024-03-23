@@ -94,16 +94,14 @@ class UserEditForm(forms.ModelForm):
             attrs={'class': 'form-control mb-3', 'placeholder': 'email', 'id': 'form-email', 'readonly': 'readonly'}))
 
     user_name = forms.CharField(
-        label='Firstname', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'form-firstname', 'readonly': 'readonly'}))
-
-    first_name = forms.CharField(
         label='Username', min_length=4, max_length=50, widget=forms.TextInput(
-            attrs={'class': 'form-control mb-3', 'placeholder': 'Firstname', 'id': 'form-lastname'}))
+            attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'form-username'}))
+    
+    profile_image = forms.ImageField(label='Profile Image', required=False)
 
     class Meta:
         model = UserBase
-        fields = ('email', 'user_name', 'first_name',)
+        fields = ('email', 'user_name', 'profile_image',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
