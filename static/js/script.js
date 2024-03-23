@@ -62,4 +62,22 @@ $(document).on('click', '.delete-button', function (e) {
       error: function (xhr, errmsg, err) {}
     });
   })
-    
+  
+// Remove Alert message after 5 seconds
+$(document).ready(function() {
+  setTimeout(function() {
+    $('.alert').fadeOut('slow', function() {
+      $(this).remove();
+    });
+  }, 5000);
+});
+
+// Function to display the selected filename
+function displayFileName(input) {
+  const fileNameElement = document.getElementById('file-name');
+  if (input.files.length > 0) {
+      fileNameElement.textContent = input.files[0].name;
+  } else {
+      fileNameElement.textContent = '';
+  }
+}
