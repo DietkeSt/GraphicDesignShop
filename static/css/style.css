@@ -44,6 +44,14 @@ input[type="color"]:focus,
   outline: 0 none;
 }
 
+a {
+    color: #E83D95;
+}
+
+a:hover {
+    color: #E56D90;
+}
+
 .btn-primary {
     color: #fff;
     background-color: #E83D95;;
@@ -59,7 +67,7 @@ input[type="color"]:focus,
 /* Top Banner Styles */
 .top-banner {
     background-color: black;
-    padding: 0.5em 2em;
+    padding: 0.5em;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -148,8 +156,34 @@ input[type="color"]:focus,
 }
 
 .account-form input:focus {
-    border-color: #E83D95;
+    border-color: #E56D90;
     box-shadow: none;
+}
+
+/* Form Styling */
+
+.container-fluid {
+        max-width: 100%;
+    }
+
+    .account-form input {
+        border: 2px solid #ccc;
+        height: calc(2em + .75rem + 2px);
+    }
+
+    .account-form input:focus {
+        border-color: #E56D90;
+        box-shadow: none;
+    }
+
+/* Custom styles for the checkbox */
+.form-check-input {
+    max-height: 1em;
+}
+
+.form-check-input:checked {
+    background-color: #E56D90;
+    border-color: #E83D95;
 }
 
 /* Footer Styles */
