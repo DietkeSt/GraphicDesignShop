@@ -70,6 +70,11 @@ $(document).ready(function() {
       $(this).remove();
     });
   }, 5000);
+
+  $('#ordersCard').on('click', function() {
+    $('#orderDetails').toggle(); // Toggle visibility of order details
+    $(this).toggleClass('highlighted'); // Toggle highlighting on the card
+  });
 });
 
 // Function to display the selected filename
@@ -80,4 +85,95 @@ function displayFileName(input) {
   } else {
       fileNameElement.textContent = '';
   }
+}
+
+// Initialize Stripe if the payment form exists
+if ($('#payment-form').length > 0) {
+  var stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
+  var elements = stripe.elements();
+
+  var style = {
+      base: {
+          color: "#000",
+          lineHeight: '2.4',
+          fontSize: '16px',
+          "::placeholder": {
+              color: "#aab7c4"
+          }
+      },
+      invalid: {
+          color: "#fa755a",
+          iconColor: "#fa755a"
+      }
+  };
+
+  var card = elements.create("card", { style: style });
+  card.mount("#card-element");
+
+  card.on('change', ({error}) => {
+      let displayError = document.getElementById('card-errors');
+      if (error) {
+          displayError.textContent = error.message;
+          $('#card-errors').addClass('alert alert-info');
+      } else {
+          displayError.textContent = '';
+          $('#card-errors').removeClass('alert alert-info');
+      }
+  });
+
+  // Get the client secret from the submit button data attribute
+  var submitButton = document.getElementById('submit');
+  var clientSecret = submitButton.getAttribute('data-secret');
+
+  // Handle form submission for payment
+    var form = document.getElementById('payment-form');
+    form.addEventListener('submit', function(ev) {
+        ev.preventDefault();
+
+        var custName = document.getElementById("custName").value;
+        var custAdd = document.getElementById("custAdd").value;
+        var custAdd2 = document.getElementById("custAdd2").value;
+        var postCode = document.getElementById("postCode").value;
+
+        $.ajax({
+            type: "POST",
+            url: 'http://127.0.0.1:8000/orders/add/',
+            data: {
+                order_key: clientSecret,
+                csrfmiddlewaretoken: CSRF_TOKEN,
+                action: "post",
+            },
+            success: function(json) {
+                console.log(json.success)
+
+                stripe.confirmCardPayment(clientSecret, {
+                    payment_method: {
+                        card: card,
+                        billing_details: {
+                            address: {
+                                line1: custAdd,
+                                line2: custAdd2
+                            },
+                            name: custName
+                        },
+                    }
+                }).then(function(result) {
+                    if (result.error) {
+                        console.log(result.error.message);
+                        // Show error to your customer (e.g., insufficient funds)
+                        $('#card-errors').text(result.error.message).addClass('alert alert-danger');
+                    } else {
+                        // The payment has been processed!
+                        if (result.paymentIntent.status === 'succeeded') {
+                            console.log('Payment succeeded');
+                            // Redirect to success page or update UI
+                            window.location.replace("http://127.0.0.1:8000/payment/orderplaced/");
+                        }
+                    }
+                });
+
+            },
+            error: function(xhr, errmsg, err) {},
+        });
+    });
 }

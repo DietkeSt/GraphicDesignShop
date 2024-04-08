@@ -14,6 +14,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('basket/', include('store_basket.urls', namespace='store_basket')),
     path('account/', include('account.urls', namespace='account')),
+    path('payment/', include('payment.urls', namespace='payment')),
+    path('orders/', include('orders.urls', namespace='orders')),
     path('', include('store.urls', namespace='store')),
 ] + static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
 

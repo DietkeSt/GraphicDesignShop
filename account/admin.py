@@ -1,6 +1,6 @@
 from django.contrib import admin
 
-from .models import UserBase
+from .models import Customer
 
 
 class UserBaseAdmin(admin.ModelAdmin):
@@ -14,4 +14,4 @@ class UserBaseAdmin(admin.ModelAdmin):
     profile_image_thumbnail.allow_tags = True
     
 
-admin.site.register(UserBase)
+admin.site.register(Customer)

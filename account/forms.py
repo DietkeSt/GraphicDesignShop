@@ -2,7 +2,7 @@ from django import forms
 from django.contrib.auth.forms import (AuthenticationForm, PasswordResetForm,
                                        SetPasswordForm)
 
-from .models import UserBase
+from .models import Customer
 
 
 class UserLoginForm(AuthenticationForm):
@@ -20,7 +20,7 @@ class UserLoginForm(AuthenticationForm):
 
 class RegistrationForm(forms.ModelForm):
 
-    user_name = forms.CharField(
+    name = forms.CharField(
         label='Enter Username', min_length=4, max_length=50, help_text='Required')
     email = forms.EmailField(max_length=100, help_text='Required', error_messages={
         'required': 'Sorry, you will need an email'})
@@ -29,15 +29,15 @@ class RegistrationForm(forms.ModelForm):
         label='Repeat password', widget=forms.PasswordInput)
 
     class Meta:
-        model = UserBase
-        fields = ('user_name', 'email',)
+        model = Customer
+        fields = ('name', 'email',)
 
     def clean_user_name(self):
-        user_name = self.cleaned_data['user_name'].lower()
-        r = UserBase.objects.filter(user_name=user_name)
+        name = self.cleaned_data['name'].lower()
+        r = Customer.objects.filter(name=name)
         if r.count():
             raise forms.ValidationError("Username already exists")
-        return user_name
+        return name
 
     def clean_password2(self):
         cd = self.cleaned_data
@@ -47,14 +47,14 @@ class RegistrationForm(forms.ModelForm):
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        if UserBase.objects.filter(email=email).exists():
+        if Customer.objects.filter(email=email).exists():
             raise forms.ValidationError(
                 'Please use another Email, that is already taken')
         return email
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['user_name'].widget.attrs.update(
+        self.fields['name'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'Username'})
         self.fields['email'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'E-mail', 'name': 'email', 'id': 'id_email'})
@@ -71,7 +71,7 @@ class PwdResetForm(PasswordResetForm):
 
     def clean_email(self):
         email = self.cleaned_data['email']
-        u = UserBase.objects.filter(email=email)
+        u = Customer.objects.filter(email=email)
         if not u:
             raise forms.ValidationError(
                 'Unfortunatley we can not find that email address')
@@ -93,17 +93,17 @@ class UserEditForm(forms.ModelForm):
         label='Account email (can not be changed)', max_length=200, widget=forms.TextInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'email', 'id': 'form-email', 'readonly': 'readonly'}))
 
-    user_name = forms.CharField(
+    name = forms.CharField(
         label='Username', min_length=4, max_length=50, widget=forms.TextInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'form-username'}))
     
     profile_image = forms.ImageField(label='Profile Image', required=False)
 
     class Meta:
-        model = UserBase
-        fields = ('email', 'user_name', 'profile_image',)
+        model = Customer
+        fields = ('email', 'name', 'profile_image',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
-        self.fields['user_name'].required = True
+        self.fields['name'].required = True
         self.fields['email'].required = True

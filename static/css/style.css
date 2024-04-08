@@ -38,7 +38,8 @@ input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
 .uneditable-input:focus,
-.dropdown-menu {   
+.dropdown-menu,
+.highlighted {   
   border-color: #E83D95;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(232, 61, 149, 0.6);
   outline: 0 none;
@@ -116,6 +117,11 @@ a:hover {
     height: 2.5rem;
 }
 
+.search-form,
+.top-search-bar {
+    height: 2rem;
+}
+
 .search-button i {
     font-size: 1.25rem;
 }
@@ -137,7 +143,7 @@ a:hover {
 #basket-qty {
     position: absolute;
     top: -0.5rem;
-    right: -0.5rem;
+    right: 0rem;
     background-color: #E83D95;
     color: white;
     border-radius: 50%;

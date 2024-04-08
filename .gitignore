@@ -27,4 +27,4 @@ venv/
 ####
 htmlcov/
 .coverage
-.pytest_cache
+.pytest_cachesendgrid.env
