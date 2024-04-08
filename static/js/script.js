@@ -78,7 +78,12 @@ $(document).ready(function() {
 
   // Check if the current URL path is /account/addresses/
   if (window.location.pathname === '/account/addresses/') {
-      $('#addressesCard').addClass('highlighted'); // Ensure you have an ID 'addressesCard' for the Addresses card
+      $('#addressesCard').addClass('highlighted');
+  }
+
+  // Check if the current URL path is /account/addresses/
+  if (window.location.pathname === '/account/profile/edit/') {
+    $('#profileCard').addClass('highlighted');
   }
 });
 
