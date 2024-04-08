@@ -3,14 +3,12 @@
 {% block title %}User Dashboard{%endblock %} 
 {% block content %}
 
-<main class="pt-5">
-  <div class="container" style="max-width: 1000px">
+<div class="container pt-5" style="max-width: 1000px">
     <div class="col-12">
       <h1 class="h2">Your Order Dashboard</h1>
     </div>
     <div class="col-12 d-flex justify-content-between">
-      <div>Manage your <b>orders</b> and personal details</div>
-      <div><a href="{% url "account:edit_details" %}">Change Details</a></div>
+      <div>Manage your <b>orders</b></div>
     </div>
     <hr />
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
@@ -36,9 +34,10 @@
         </div>
         </a>
       </div>
+      <!-- Profile Card-->
       <div class="col">
-        <a href="#" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
-        <div class="card mb-3">
+        <a href="{% url "account:edit_details" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
+        <div id="profileCard" class="card mb-3">
           <div class="row g-0">
             <div class="col-2 position-relative">
               <svg class="position-absolute top-50 start-50 translate-middle" xmlns="http://www.w3.org/2000/svg" width="30" height="30" fill="currentColor" class="bi bi-shield-lock" viewBox="0 0 16 16">
@@ -48,14 +47,15 @@
             </div>
             <div class="col-10">
               <div class="card-body ps-0 ps-md-1">
-                <h1 class="h5">Login & Security</h1>
-                <p class="card-text small text-muted">Edit login, email and phone number</p>
+                <h1 class="h5">Your Profile</h1>
+                <p class="card-text small text-muted">Edit or delete your account details</p>
               </div>
             </div>
           </div>
         </div>
         </a>
       </div>
+      <!-- Address Card-->
       <div class="col">
         <a href="{% url "account:addresses" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
         <div class="card mb-3">
@@ -75,10 +75,9 @@
         </div>
         </a>
       </div>
-      
-    </div>
-    <!-- Orders -->
-    <div class="container" id="orderDetails">
+</div>
+<!-- Orders -->
+<div class="container" id="orderDetails">
       {% for order in orders %}
       <div class="row g-3">
         
@@ -142,11 +141,6 @@
       </div>
       {% endfor %}
   
-    </div>
-</main>
-
-
-
-
+</div>
 
 {% endblock %}
