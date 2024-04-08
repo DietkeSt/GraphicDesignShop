@@ -71,10 +71,15 @@ $(document).ready(function() {
     });
   }, 5000);
 
-  $('#ordersCard').on('click', function() {
-    $('#orderDetails').toggle(); // Toggle visibility of order details
-    $(this).toggleClass('highlighted'); // Toggle highlighting on the card
-  });
+  // Check if the current URL path is /account/dashboard/
+  if (window.location.pathname === '/account/dashboard/') {
+    $('#ordersCard').addClass('highlighted');
+  }
+
+  // Check if the current URL path is /account/addresses/
+  if (window.location.pathname === '/account/addresses/') {
+      $('#addressesCard').addClass('highlighted'); // Ensure you have an ID 'addressesCard' for the Addresses card
+  }
 });
 
 // Function to display the selected filename
