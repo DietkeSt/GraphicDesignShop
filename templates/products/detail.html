@@ -33,8 +33,12 @@
 
                             </div>
                             {% csrf_token %}
-                            <div class="col-6 text-end"><button type="button" id="add-button" value="{{product.id}}" class="btn btn-secondary btn-sm" data-url="{% url 'store_basket:add_to_basket' %}">Add to
-                                    basket</button></div>
+                            <div class="col-6 text-end d-grid gap-2">
+                                <button type="button" id="add-button" value="{{product.id}}" class="btn btn-secondary btn-sm" data-url="{% url 'store_basket:add_to_basket' %}">
+                                    Add to basket
+                                </button>
+                                <a href="#" class="btn btn-sm btn-light fw500" role="button" aria-disabled="true">Add to Wishlist</a>
+                            </div>
                         </div>
                     </div>
                 </div>
