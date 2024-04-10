@@ -68,9 +68,9 @@
                     {% endif %}
                     </a>
                     <ul class="dropdown-menu text-small" style="">
-                    <li><a class="dropdown-item" href="{% url 'account:dashboard' %}">Orders</a></li>
-                    <li><a class="dropdown-item" href="{% url 'account:edit_details' %}">Profile Settings</a></li>
-                    <li><a class="dropdown-item" href="#">Wishlist</a></li>
+                    <li><a class="dropdown-item" href="{% url 'account:dashboard' %}">Orders <i class="fa-solid fa-gift"></i></a></li>
+                    <li><a class="dropdown-item" href="{% url 'account:edit_details' %}">Account <i class="fa-solid fa-user"></i></a></li>
+                    <li><a class="dropdown-item" href="#">Wishlist <i class="fa-solid fa-heart"></i></a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'account:logout' %}">Sign Out</a></li>
                     </ul>
@@ -90,10 +90,10 @@
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-none d-md-block fw500" href="#" id="navbarDropdown" role="button"
                   data-bs-toggle="dropdown" aria-expanded="false">
-                  All
+                  Shop
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/">All</a></li>
+                  <li><a class="dropdown-item" href="/">All Categories</a></li>
                   {% for c in categories %}
                   <li {% if category.slug == c.slug %}class="selected" {% endif %}>
                     <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
