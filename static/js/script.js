@@ -104,6 +104,14 @@ function displayFileName(input) {
   }
 }
 
+// Function to submit and reset the address form
+function submitForm() {
+  var form = document.getElementsByName('address_form')[0];
+  form.submit(); // Submit the form
+  form.reset();  // Reset all form data
+  return false; // Prevent page refresh
+}
+
 // Initialize Stripe if the payment form exists
 if ($('#payment-form').length > 0) {
   var stripe = Stripe(STRIPE_PUBLISHABLE_KEY);
