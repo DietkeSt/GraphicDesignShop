@@ -63,25 +63,32 @@ $(document).on('click', '.delete-button', function (e) {
     });
   })
   
-// Remove Alert message after 5 seconds
 $(document).ready(function() {
+
+  // Array of paths to highlight the addresses card
+  var highlightAddressPaths = [
+    '/account/addresses/',
+    '/account/add_address/'
+  ];
+
+  // Remove Alert message after 5 seconds
   setTimeout(function() {
     $('.alert').fadeOut('slow', function() {
       $(this).remove();
     });
   }, 5000);
 
-  // Check if the current URL path is /account/dashboard/
+  // Highlight Order section
   if (window.location.pathname === '/account/dashboard/') {
     $('#ordersCard').addClass('highlighted');
   }
 
-  // Check if the current URL path is /account/addresses/
-  if (window.location.pathname === '/account/addresses/') {
+  // Highlight Addresses section
+  if (highlightAddressPaths.includes(window.location.pathname)) {
       $('#addressesCard').addClass('highlighted');
   }
 
-  // Check if the current URL path is /account/addresses/
+  // Highlight Profile section
   if (window.location.pathname === '/account/profile/edit/') {
     $('#profileCard').addClass('highlighted');
   }
