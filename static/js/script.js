@@ -14,6 +14,7 @@ $(document).on('click', '#add-button', function (e) {
         success: function (json) {
             console.log(json);
             document.getElementById('basket-qty').innerHTML = json.qty
+            window.location.reload();
         },
         error: function (xhr, errmsg, err) {}
     });
