@@ -37,6 +37,7 @@ $(document).on('click', '.delete-button', function (e) {
         $('.product-item[data-index="' + prodid + '"]').remove();
         document.getElementById("subtotal").innerHTML = json.subtotal;
         document.getElementById("basket-qty").innerHTML = json.qty
+        window.location.reload();
       },
       error: function (xhr, errmsg, err) {}
     });
@@ -59,6 +60,7 @@ $(document).on('click', '.delete-button', function (e) {
       success: function (json) {
         document.getElementById("basket-qty").innerHTML = json.qty
         document.getElementById("subtotal").innerHTML = json.subtotal
+        window.location.reload();
       },
       error: function (xhr, errmsg, err) {}
     });
