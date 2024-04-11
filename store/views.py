@@ -11,7 +11,12 @@ def all_products(request):
     query = request.GET.get('q')
 
     if query:
-        products = products.filter(Q(title__icontains=query) | Q(description__icontains=query))
+        products = products.filter(
+            Q(title__icontains=query) |
+            Q(description__icontains=query) |
+            Q(category__name__icontains=query) |
+            Q(category__description__icontains=query)
+        )
     elif 'q' in request.GET:
         messages.error(request, "You didn't enter any search criteria!")
         return redirect(reverse('store:all_products'))
