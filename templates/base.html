@@ -51,8 +51,8 @@
     <div class="top-banner-container">
         <div class="top-banner container">
           <div class="d-flex align-items-left flex-grow-1">  
-            <form class="d-md-flex d-none search-form">
-              <input class="form-control top-search-bar" type="search" placeholder="Search" aria-label="Search">
+            <form class="d-md-flex d-none search-form" method="GET" action="{% url 'store:all_products' %}">
+              <input class="form-control top-search-bar" type="search" name="q" placeholder="Search" aria-label="Search">
               <button class="btn search-button" type="submit"><i class="fas fa-search text-white" aria-hidden="true"></i></button>
             </form>
           </div>
@@ -143,8 +143,8 @@
                 </li>
                 {% endfor %}
               </ul>
-              <form class="d-flex w-100 d-md-none">
-                <input class="form-control" type="search" placeholder="Search" aria-label="Search">
+              <form class="d-flex w-100 d-md-none" method="GET" action="{% url 'store:all_products' %}">
+                <input class="form-control" type="search" placeholder="Search" name="q" aria-label="Search">
                 <button class="btn search-button" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
               </form>
             </div>
