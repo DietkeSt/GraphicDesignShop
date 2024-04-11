@@ -157,13 +157,22 @@
     <div class="container">
       {% comment %} Messages {% endcomment %}
         <div class="col-md-12">
-            {% if messages %}
-              {% for message in messages %}
-                <div class="col-12 col-lg-7 mx-auto mt-5 alert alert-warning text-center alert-{{ message.tags }}" role="alert">
-                  {{message|safe}} <a href="{% url "account:wishlist" %}" class="alert-link">Wishlist</a>.
-                </div>
-              {% endfor %}
-            {% endif %}                 
+          {% if messages %}
+          {% for message in messages %}
+              <div class="col-12 col-lg-7 mx-auto mt-5 alert 
+                {% if 'addition' in message.tags %}alert-success
+                {% elif 'update' in message.tags %}alert-warning
+                {% elif 'deletion' in message.tags %}alert-danger{% endif %}
+                text-center" role="alert">
+                  {{ message|safe }}
+                  {% if 'wishlist' in message.tags %}
+                      <a href="{% url 'account:wishlist' %}" class="alert-link">Wishlist</a>.
+                  {% elif 'basket' in message.tags %}
+                      <a href="{% url 'store_basket:basket_summary' %}" class="alert-link">Basket</a>.
+                  {% endif %}
+              </div>
+          {% endfor %}
+      {% endif %}                 
         </div>
       {% block page_header %}
       {% endblock %}
