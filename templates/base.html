@@ -70,7 +70,7 @@
                     <ul class="dropdown-menu text-small" style="">
                     <li><a class="dropdown-item" href="{% url 'account:dashboard' %}">Orders <i class="fa-solid fa-gift"></i></a></li>
                     <li><a class="dropdown-item" href="{% url 'account:edit_details' %}">Account <i class="fa-solid fa-user"></i></a></li>
-                    <li><a class="dropdown-item" href="#">Wishlist <i class="fa-solid fa-heart"></i></a></li>
+                    <li><a class="dropdown-item" href="{% url "account:wishlist" %}">Wishlist <i class="fa-solid fa-heart"></i></a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="{% url 'account:logout' %}">Sign Out</a></li>
                     </ul>
