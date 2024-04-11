@@ -92,6 +92,12 @@ $(document).ready(function() {
   if (window.location.pathname === '/account/profile/edit/') {
     $('#profileCard').addClass('highlighted');
   }
+
+  // Highlight Wishlist section
+  if (window.location.pathname === '/account/wishlist/') {
+    $('#wishlistCard').addClass('highlighted');
+  }
+
 });
 
 // Function to display the selected filename
