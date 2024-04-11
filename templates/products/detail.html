@@ -37,7 +37,7 @@
                                 <button type="button" id="add-button" value="{{product.id}}" class="btn btn-secondary btn-sm" data-url="{% url 'store_basket:add_to_basket' %}">
                                     Add to basket
                                 </button>
-                                <a href="{% url "account:user_wishlist" product.id  %}" class="btn btn-sm btn-light fw500" role="button" aria-disabled="true">Add to Wishlist</a>
+                                <a href="{% url 'account:add_to_wishlist' product.id %}" class="btn btn-sm btn-light fw500" role="button">Add to Wishlist</a>
                             </div>
                         </div>
                     </div>
