@@ -26,12 +26,20 @@ def wishlist(request):
 @login_required
 def add_to_wishlist(request, id):
     product = get_object_or_404(Product, id=id)
+    if not product.users_wishlist.filter(id=request.user.id).exists():
+        product.users_wishlist.add(request.user)
+        messages.success(request, f"Added {product.title} to your ", extra_tags='wishlist addition')
+    else:
+        messages.info(request, f"{product.title} is already on your ", extra_tags='wishlist update')
+    return HttpResponseRedirect(request.META["HTTP_REFERER"])
+
+
+@login_required
+def remove_from_wishlist(request, id):
+    product = get_object_or_404(Product, id=id)
     if product.users_wishlist.filter(id=request.user.id).exists():
         product.users_wishlist.remove(request.user)
-        messages.success(request, product.title + " has been removed from your ", extra_tags='wishlist update')
-    else:
-        product.users_wishlist.add(request.user)
-        messages.success(request, "Added " + product.title + " to your ", extra_tags='wishlist addition')
+        messages.info(request, f"{product.title} has been removed.", extra_tags='deletion')
     return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
 
