@@ -93,12 +93,8 @@
   <div class="card mb-3 rounded-0">
     <div class="row g-0">
       <div class="col-md-2">
-        {% for image in product.product_image.all  %}
-          {% if image.is_feature %}
-          <img class="img-fluid d-block p-2" width="135px" src="{{ image.image.url }}"
-            alt="{{ image.image.alt_text }}" />
-          {% endif %}
-        {% endfor %}
+        <img class="img-fluid d-block p-2" width="135px" src="{{ product.image.url }}"
+             alt="{{ product.image_alt_text }}" />
       </div>
       <div class="col-md-10">
         <div class="card-body">
