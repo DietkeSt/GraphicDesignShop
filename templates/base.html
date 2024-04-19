@@ -119,19 +119,68 @@
                 <img src="{% static 'images/logo-black.png' %}" height="50">
               </a>
             </div>
-            <a type="button" role="button" href="{% url 'store_basket:basket_summary' %}"="" class="btn store-basket">
+            <!-- Basket -->
+            <div class="dropdown text-end d-flex align-center">
+                <a type="button" role="button" href="{% url 'store_basket:basket_summary' %}" class="btn store-basket">
 
-              {% with total_qty=basket|length %}
-                  <div id="basket-qty" class="d-inline-flex">
-                      {% if total_qty > 0 %}
-                          {{ total_qty }}
+                  {% with total_qty=basket|length %}
+                      <div id="basket-qty" class="d-inline-flex">
+                          {% if total_qty > 0 %}
+                              {{ total_qty }}
+                          {% else %}
+                              0
+                          {% endif %}
+                      </div>
+                  {% endwith %}
+                  <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+                </a>
+                <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle basket-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                </a>
+                <div class="dropdown-menu dropdown-menu-end basket-dropdown" aria-labelledby="dropdownMenuLink">
+                  <!-- Basket items preview -->
+                  <div id="basket-preview">
+                    <div class="container">
+                      {% if basket|length == 0 %}
+                        <div class="text-center">Your basket is empty.</div>
                       {% else %}
-                          0
+                        {% for item in basket %}
+                        {% with product=item.product %}
+                        <div data-index="{{product.id}}" class="row mb-2 p-2 bg-light">
+                          <!-- Image column -->
+                          <div class="col-6 col-md-3 d-flex justify-content-center align-items-center">
+                              <img class="img-fluid" alt="{{ product.title }}" src="{{ product.image.url }}" style="max-width: 100%; max-height: 100px; height: auto;">
+                          </div>
+                          <!-- Title column -->
+                          <div class="col-6 col-md-3 text-center d-flex align-items-center justify-content-center">
+                              <a href="{{ product.get_absolute_url }}" class="text-decoration-none text-reset">
+                                  <span>{{ product.title }}</span>
+                              </a>
+                          </div>
+                          <!-- Quantity column -->
+                          <div class="col-6 col-md-3 text-center d-flex align-items-center justify-content-center">
+                              <span>Qty: {{item.qty}}</span>
+                          </div>
+                          <!-- Price column -->
+                          <div class="col-6 col-md-3 text-end d-flex align-items-center justify-content-center">
+                              <span>€{{ product.price }}</span>
+                          </div>
+                        </div>
+                        {% endwith %}
+                        {% endfor %}
+                        <div class="dropdown-divider"></div>
+
+                        <div class="row px-2">
+                          <!-- Total price columns -->
+                          <div class="col-6 col-md-3 p-2 text-center ms-auto">
+                              <strong>Total: €{{basket.get_total_price}}</strong>
+                          </div>
                       {% endif %}
-                  </div>
-              {% endwith %}
-              <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-            </a>
+                    </div>
+                    </div>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item" href="{% url 'store_basket:basket_summary' %}">View Basket</a>
+                    </div>
+                </div>
           </div>
           <div class="d-md-none d-lg-none d-xl-none">
             <div class="collapse navbar-collapse" id="navbarCollapse">
