@@ -53,6 +53,10 @@ a:hover {
     color: #E56D90;
 }
 
+a.dropdown-item:active {
+    background-color: #E83D95;
+}
+
 .btn-primary {
     color: #fff;
     background-color: #E83D95;;
@@ -155,6 +159,23 @@ a:hover {
     font-size: 0.75rem;
 }
 
+.basket-toggle {
+    color: black;
+}
+
+.basket-toggle:hover {
+    color: #E83D95;
+}
+
+#basket-preview .container {
+    display: flex;
+    flex-direction: column;
+}
+
+.basket-dropdown {
+    min-width: 25vw; 
+}
+
 /* Register Page styling */
 .account-form input {
     border: 2px solid #ccc;
@@ -208,4 +229,17 @@ footer a {
 footer a:hover {
     color: #E83D95;
     text-decoration: underline;
+}
+
+/* Media queries */
+@media (max-width: 1399px) {
+    .basket-dropdown {
+        min-width: 40vw; 
+    }
+}
+
+@media (max-width: 768px) {
+    .basket-dropdown {
+        min-width: 60vw; 
+    }
 }
