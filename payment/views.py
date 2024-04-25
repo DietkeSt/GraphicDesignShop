@@ -36,16 +36,20 @@ def BasketView(request):
     total = total.replace('.', '')
     total = int(total)
 
+    order_key = request.session.get('order_key')
+
     intent = stripe.PaymentIntent.create(
         amount=total,
         currency='eur',
-        metadata={'userid': request.user.id}
+        metadata={'order_key': order_key}
     )
+
+    print("Stripe Intent created with order_key:", order_key)
 
     return render(request, 'payment/process_payment.html', {'client_secret': intent.client_secret, 
                                                             'STRIPE_PUBLISHABLE_KEY': os.environ.get('STRIPE_PUBLISHABLE_KEY')})
 
-
+      
 @csrf_exempt
 def stripe_webhook(request):
     payload = request.body
@@ -56,14 +60,14 @@ def stripe_webhook(request):
             json.loads(payload), stripe.api_key
         )
     except ValueError as e:
-        print(e)
+        print("Error parsing webhook payload:", e)
         return HttpResponse(status=400)
 
-    # Handle the event
     if event.type == 'payment_intent.succeeded':
-        payment_confirmation(event.data.object.client_secret)
+        order_key = event.data.object.metadata['order_key']
+        print("Webhook received for order_key:", order_key)  # Check the console for this output
+        payment_confirmation(order_key)
+        return HttpResponse(status=200)
 
-    else:
-        print('Unhandled event type {}'.format(event.type))
-
+    print("Unhandled event type:", event.type)
     return HttpResponse(status=200)
