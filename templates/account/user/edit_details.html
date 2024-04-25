@@ -4,7 +4,7 @@
 {% block title %}User Dashboard{% endblock %}
 {% block content %}
 
-<div class="container pt-5" style="max-width: 1000px">
+<div class="container" style="max-width: 1000px">
         <div class="col-12">
         <h1 class="h2">Your Account Dashboard</h1>
         </div>
@@ -12,7 +12,7 @@
         <div>Manage your <b>profile</b> settings</div>
         </div>
         <hr />
-        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-2 pt-2">
         <!-- Orders Card-->
         <div class="col">
             <a href="{% url "account:dashboard" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
@@ -87,7 +87,7 @@
         </div>
 </div>
 <!-- Profile -->
-<div class="col-6 mx-auto pb-4 login">
+<div class="col-6 mx-auto py-2 login">
     <form class="account-form" method="post" enctype="multipart/form-data">
         {% if user_form.is_valid and profile_form.is_valid  %}
         <div class="alert alert-primary" role="alert">
@@ -139,7 +139,7 @@
         {% csrf_token %}
         <p class=" h3 pt-4 font-weight-bold">Delete Account</p>
         <p>Are you sure you want to delete your account?</p>
-            <button type="submit" role="button" class="w-100 btn btn-danger btn-block py-2 mb-4 mt-2 fw-bold">
+            <button type="submit" role="button" class="w-100 btn btn-danger btn-block py-2 mt-2 fw-bold">
                 Delete
             </button>
         </form>

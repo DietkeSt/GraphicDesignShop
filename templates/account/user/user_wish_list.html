@@ -3,7 +3,7 @@
 {% block title %}User Wishlist{%endblock %} 
 {% block content %}
 
-<div class="container pt-5" style="max-width: 1000px">
+<div class="container" style="max-width: 1000px">
     <div class="col-12">
       <h1 class="h2">Your Wishlist Dashboard</h1>
     </div>
@@ -11,7 +11,7 @@
         <div>Manage your <b>wishlist</b></div>
     </div>
     <hr />
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-2 pt-2">
       <!-- Orders Card-->
       <div class="col">
         <a href="{% url "account:dashboard" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
@@ -86,7 +86,7 @@
       </div>
 </div>
 <!-- Wishlist -->
-<div class="container px-0">
+<div class="container px-0 pt-2">
   {% if wishlist %}
   {% for product in wishlist  %}
 

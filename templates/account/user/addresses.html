@@ -3,7 +3,7 @@
 {% block title %}User Dashboard{%endblock %} 
 {% block content %}
 
-<div class="container pt-5" style="max-width: 1000px">
+<div class="container" style="max-width: 1000px">
     <div class="col-12">
       <h1 class="h2">Your Address Dashboard</h1>
     </div>
@@ -11,14 +11,14 @@
         <div>Manage your <b>addresses</b></div>
     </div>
     <hr />
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-2 pt-2">
       <!-- Orders Card-->
       <div class="col">
         <a href="{% url "account:dashboard" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
         <div id="ordersCard" class="card mb-3">
           <div class="row g-0">
             <div class="col-2 position-relative">
-                <i class="fa-solid fa-gift position-absolute top-50 start-50 translate-middle" style="font-size: 30px;"></i>
+                <i class="fa-solid fa-gift position-absolute top-50 start-50 translate-middle" style="font-size: 25px;"></i>
             </div>
             <div class="col-10">
               <div class="card-body ps-0 ps-md-1">
@@ -36,7 +36,7 @@
         <div id="profileCard" class="card mb-3">
           <div class="row g-0">
             <div class="col-2 position-relative">
-                <i class="fa-solid fa-user position-absolute top-50 start-50 translate-middle" style="font-size: 30px;"></i>
+                <i class="fa-solid fa-user position-absolute top-50 start-50 translate-middle" style="font-size: 25px;"></i>
             </div>
             <div class="col-10">
               <div class="card-body ps-0 ps-md-1">
@@ -54,7 +54,7 @@
         <div id="addressesCard" class="card mb-3">
           <div class="row g-0">
             <div class="col-2 position-relative">
-                <i class="fa-solid fa-truck position-absolute top-50 start-50 translate-middle" style="font-size: 30px;"></i>
+                <i class="fa-solid fa-truck position-absolute top-50 start-50 translate-middle" style="font-size: 25px;"></i>
             </div>
             <div class="col-10">
               <div class="card-body ps-0 ps-md-1">
@@ -72,7 +72,7 @@
         <div id="wishlistCard" class="card mb-3">
           <div class="row g-0">
             <div class="col-2 position-relative">
-              <i class="fa-solid fa-heart position-absolute top-50 start-50 translate-middle" style="font-size: 30px;"></i>
+              <i class="fa-solid fa-heart position-absolute top-50 start-50 translate-middle" style="font-size: 25px;"></i>
             </div>
             <div class="col-10">
               <div class="card-body ps-0 ps-md-1">
@@ -86,7 +86,7 @@
       </div>
 </div>
 <!-- Addresses -->
-<div class="container px-0">
+<div class="container px-0 pt-2">
     <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         <div class="col">
         <a href="{% url "account:add_address" %}" class="text-reset text-decoration-none" role="button"

@@ -6,8 +6,8 @@
 
 
 {% if search_term %}
-    <div class="pt-5 text-center container">
-        <div class="row py-lg-5">
+    <div class="text-center container">
+        <div class="row pb-2">
             <div class="col-lg-6 col-md-8 mx-auto">
                 <h1 class="fw-bold">Search Results</h1>
                 <p class="lead text-muted">Showing results for "{{ search_term }}:"</p>
@@ -17,8 +17,8 @@
 {% else %}
 
  {% comment %} Hero Section {% endcomment %}
-  <section class="py-5 text-center container">
-      <div class="row py-lg-5">
+  <section class="text-center container">
+      <div class="row pb-4">
           <div class="col-lg-6 col-md-8 mx-auto">
               <h1 class="h1 fw-bold">Crafting Your Vision into Reality</h1>
               <p class="lead text-muted">Explore a portfolio where innovation meets functionality, and every design is a bridge between your ideas and their realization. Our bespoke design services, crafted by a visionary team, are tailored to elevate your brand, tell your story, and engage your audience like never before. From captivating graphics to seamless web designs, we turn concepts into tangible experiences.</p>
@@ -30,7 +30,7 @@
   </section>
 {% endif %}
 {% comment %} Album Section {% endcomment %}
-<div class="album py-5 mb-5 bg-light">
+<div class="album py-5 bg-light">
     <div class="container">
       {% if products|length or search_term %}
           {% if search_term %}
@@ -66,7 +66,7 @@
 
 {% if search_term %}
 <div class="text-center container">
-    <div class="row pb-5">
+    <div class="row pt-4">
         <div class="col-lg-6 col-md-8 mx-auto">
           <a class="small" href="{% url 'store:all_products' %}">Back to all services</a>
         </div>

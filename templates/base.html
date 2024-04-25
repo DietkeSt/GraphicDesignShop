@@ -204,12 +204,12 @@
     </header>
   {% comment %} Main content container {% endcomment %}
   <main class="main">
-    <div class="container">
+    <div class="container py-5">
       {% comment %} Messages {% endcomment %}
         <div class="col-md-12">
           {% if messages %}
           {% for message in messages %}
-              <div class="col-12 col-lg-7 mx-auto mt-5 alert 
+              <div class="col-12 col-lg-7 mx-auto mb-5 alert 
                 {% if 'addition' in message.tags %}alert-success
                 {% elif 'update' in message.tags %}alert-warning
                 {% elif 'deletion' in message.tags %}alert-danger{% endif %}
@@ -233,8 +233,8 @@
   </main>
   {% comment %} Footer {% endcomment %}
   <footer class="footer">
-    <div class="container">
-        <footer class="py-5">
+    <div class="container px-4">
+        <footer class="pt-5">
           <div class="row">
             <div class="col-6 col-md-2 mb-3">
               <h5>Section</h5>
@@ -282,12 +282,13 @@
             </div>
           </div>
       
-          <div class="d-flex flex-column flex-sm-row justify-content-between py-4 my-4 border-top">
+          <div class="d-flex flex-column flex-sm-row justify-content-between pt-4 my-4 border-top">
             <p>© 2024 ArtisticEdge, Inc. All rights reserved.</p>
             <ul class="list-unstyled d-flex">
-              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#twitter"></use></svg></a></li>
-              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#instagram"></use></svg></a></li>
-              <li class="ms-3"><a class="link-body-emphasis" href="#"><svg class="bi" width="24" height="24"><use xlink:href="#facebook"></use></svg></a></li>
+              <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa-brands fa-twitter"></i></a></li>
+              <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa-brands fa-instagram"></i></a></li>
+              <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa-brands fa-facebook"></i></a></li>
+              <li class="ms-3"><a class="link-body-emphasis" href="#"><i class="fa-brands fa-linkedin"></i></a></li>
             </ul>
           </div>
         </footer>

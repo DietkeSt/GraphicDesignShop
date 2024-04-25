@@ -117,8 +117,8 @@ a.dropdown-item:active {
     text-align: center;
 }
 
-.form-control {
-    height: 2.5rem;
+.form-control, .form-select {
+    height: 3rem;
 }
 
 .search-form,
@@ -215,7 +215,7 @@ a.dropdown-item:active {
 
 /* Footer Styles */
 footer {
-    height: 30vh;
+    min-height: 30vh;
     flex-shrink: 0;
     background-color: black;
     color: white;
