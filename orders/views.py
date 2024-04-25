@@ -29,8 +29,13 @@ def add(request):
         return response
 
 
-def payment_confirmation(data):
-    Order.objects.filter(order_key=data).update(billing_status=True)
+def payment_confirmation(order_key):
+    print("Attempting to update billing status for order_key:", order_key)
+    updated_rows = Order.objects.filter(order_key=order_key).update(billing_status=True)
+    if updated_rows == 0:
+        print("No order found with order_key:", order_key)
+    else:
+        print("Billing status updated for order_key:", order_key)
 
 
 def user_orders(request):
