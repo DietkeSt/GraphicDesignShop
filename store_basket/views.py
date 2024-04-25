@@ -9,7 +9,12 @@ from store.models import Product
 
 def basket_summary(request):
     basket = Basket(request)
-    return render(request, 'basket/summary.html', {'basket': basket})
+    number_range = range(1, 101)
+    context = {
+        'number_range': number_range,
+        'basket': basket,
+    }    
+    return render(request, 'basket/summary.html', context)
 
 def add_to_basket(request):
     basket = Basket(request)
