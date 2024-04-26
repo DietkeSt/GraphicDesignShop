@@ -1,4 +1,5 @@
 /*------ Global Settings------*/
+
 *,
 *::before,
 *::after {
@@ -59,14 +60,46 @@ a.dropdown-item:active {
 
 .btn-primary {
     color: #fff;
-    background-color: #E83D95;;
-    border-color: #E83D95;;
+    background-color: #E83D95;
+    border-color: #E83D95;
 }
 
-.btn-primary:hover {
+.btn-primary:hover,
+.btn-primary:focus,
+.btn-primary:active,
+.btn-primary.active,
+.show > .btn-primary.dropdown-toggle {
     color: #fff;
-    background-color: #E56D90;;
-    border-color: #E56D90;;
+    background-color: #E56D90;
+    border-color: #E56D90;
+}
+
+.btn-primary:focus, 
+.btn-primary.focus {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(232, 61, 149, 0.6) !important;
+    outline: 0;
+}
+
+.btn-secondary {
+    color: #E83D95;
+    background-color: #fff;
+    border-color: #E83D95;
+}
+
+.btn-secondary:hover, 
+.btn-secondary:focus,
+.btn-secondary:active,
+.btn-secondary.active,
+.show > .btn-secondary.dropdown-toggle  {
+    color: #E56D90;
+    background-color: #fff;
+    border-color: #E56D90;
+}
+
+.btn-secondary:focus, 
+.btn-secondary.focus {
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(232, 61, 149, 0.6) !important;
+    outline: 0;
 }
 
 /* Top Banner Styles */
