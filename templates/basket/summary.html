@@ -54,8 +54,6 @@
       </div>
     </div>
   </div>
-  {% endwith %}
-  {% endfor %}
   <div class="col-12 text-end">
     <div class="h6 fw-bold">
       Total to pay: €
@@ -64,12 +62,14 @@
       </div>
     </div>
   </div>
-</div>
-<div class="col-md-5 col-lg-4 order-md-last p-0 order-3">
-  <div class="d-grid gap-2 ">
-    <a role="button" href="{% url "payment:basket" %}" class="btn btn-success fw-bold" type="button">Checkout</a>
-    <button class="btn btn-light" type="button">Save for later</button>
+  <div class="col-md-5 col-lg-4 order-md-last p-0 order-3">
+    <div class="d-grid gap-2 ">
+      <a role="button" href="{% url "payment:basket" %}" class="btn btn-primary fw-bold" type="button">Checkout</a>
+      <a href="{% url 'account:add_to_wishlist' item.product.id %}" class="btn btn-secondary" role="button">Add to Wishlist</a>
+    </div>
   </div>
+  {% endwith %}
+  {% endfor %}
 </div>
   {% endif %}
 
