@@ -42,6 +42,7 @@
   {% endblock %}
 
   {% block extra_js %}
+    <script id="mcjs">!function(c,h,i,m,p){m=c.createElement(h),p=c.getElementsByTagName(h)[0],m.async=1,m.src=i,p.parentNode.insertBefore(m,p)}(document,"script","https://chimpstatic.com/mcjs-connected/js/users/3b79d343ff245a0fae0275448/9ea1663d6d48a1216f28be329.js");</script>
   {% endblock%}
 
   <title>ArtisticEdge {% block extra_title %}{% endblock %}</title>
@@ -270,13 +271,29 @@
             </div>
       
             <div class="col-md-5 offset-md-1 mb-3">
-              <form>
+              <!-- Newsletter -->
+              
+              <form action="https://gmail.us18.list-manage.com/subscribe/post?u=3b79d343ff245a0fae0275448&amp;id=bf5cc9409a&amp;f_id=0070c6e0f0" method="post" id="mc-embedded-subscribe-form"> 
                 <h5>Subscribe to our newsletter</h5>
                 <p>Stay up to date on new design offerings.</p>
                 <div class="d-flex flex-column flex-sm-row w-100 gap-2">
-                  <label for="newsletter1" class="visually-hidden">Email address</label>
-                  <input id="newsletter1" type="text" class="form-control" placeholder="Email address">
-                  <button class="btn btn-primary" type="button">Subscribe</button>
+                  <label for="mce-EMAIL" class="visually-hidden">Email address</label>
+                  <input id="mce-EMAIL" type="email" name="EMAIL" style="height: 2.5rem;"class="form-control required email" placeholder="Email address" required="" value="">
+                  <span id="mce-EMAIL-HELPERTEXT" class="helper_text"></span>
+                  <div id="mce-responses" class="clear foot">
+                    <div class="response" id="mce-error-response" style="display: none;"></div>
+                    <div class="response" id="mce-success-response" style="display: none;"></div>
+                  </div>
+                  <div aria-hidden="true" style="position: absolute; left: -5000px;">
+                    /* real people should not fill this in and expect good things - do not remove this or risk form bot signups */
+                    <input type="text" name="b_3b79d343ff245a0fae0275448_bf5cc9409a" tabindex="-1" value="">
+                  </div>
+                  <div class="optionalParent">
+                    <div class="clear foot">
+                      <input class="button btn btn-primary" type="submit"  name="subscribe" id="mc-embedded-subscribe" value="Subscribe" style="height: 2.5rem">
+                      </input>
+                    </div>
+                  </div>
                 </div>
               </form>
             </div>
