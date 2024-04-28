@@ -113,6 +113,14 @@
           </div>
           <div class="text-end">
             Order Status: <span class="fw-bold">{{ order.get_order_status_display }}</span>
+            <!-- Conditionally display download link if the status is 'Finalized' -->
+            {% if order.order_status == 'finalized' and order.digital_product %}
+            <div>
+                <a href="{{ order.digital_product.url }}" class="btn btn-primary mt-2" download>
+                    Download Product
+                </a>
+            </div>
+            {% endif %}
           </div>
         </div>
         <div class="col-md-5 col-lg-4 order-md-last p-0 order-3">
