@@ -169,8 +169,13 @@ EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD', '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')
 DEFAULT_FROM_EMAIL = 'artisticedge.noreply@gmail.com'
+
+# Mailchimp
+MAILCHIMP_API_KEY = os.getenv('MAILCHIMP_API_KEY', '154f824decce6bd60bc918ad0d92997c-us18')
+MAILCHIMP_SERVER_PREFIX = os.getenv('MAILCHIMP_SERVER_PREFIX', 'us18')
+MAILCHIMP_LIST_ID = os.getenv('MAILCHIMP_LIST_ID', 'bf5cc9409a')
 
 # Password reset setting
 PASSWORD_RESET_TIMEOUT_DAYS = 3
