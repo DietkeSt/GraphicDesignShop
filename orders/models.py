@@ -17,7 +17,15 @@ class Order(models.Model):
     updated = models.DateTimeField(auto_now=True)
     total_paid = models.DecimalField(max_digits=5, decimal_places=2)
     order_key = models.CharField(max_length=200)
+    buyer_note = models.TextField(blank=True, null=True, max_length=500)
     billing_status = models.BooleanField(default=False)
+    STATUS_CHOICES = (
+        ('received', 'Received'),
+        ('in_progress', 'In Progress'),
+        ('finalized', 'Finalized'),
+    )
+    order_status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='received')
+    digital_product = models.FileField(upload_to='orders/products/', blank=True, null=True)
 
     class Meta:
         ordering = ('-created',)
