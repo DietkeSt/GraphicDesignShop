@@ -154,17 +154,38 @@
           <hr>
           <div class="col-md-12 col-lg-12 order-md-last pb-2 order-3">
             <div class="d-grid gap-2 ">
-              <button class="btn btn-warning" type="button">Problem with order</button>
+              <button class="btn btn-warning problem-with-order-button" type="button">Problem with order</button>
               <button class="btn btn-light" type="button">Leave a review</button>
             </div>
-          </div>
-  
+          </div> 
           {% endfor %}
-        </div>
-  
+        </div> 
       </div>
       {% endfor %}
-  
+</div>
+{% comment %} Contact Form Section {% endcomment %}
+<div id="order-contact-form" class="container my-5" style="display: none;">
+  <div class="row">
+      <div class="col-md-8 mx-auto">
+          <h2>Contact Us</h2>
+          <form action="{% url 'store:contact_form_submit' %}" method="POST">
+              {% csrf_token %}
+              <div class="mb-3">
+                  <label for="name" class="form-label">Name</label>
+                  <input type="text" class="form-control" id="name" name="name" required>
+              </div>
+              <div class="mb-3">
+                  <label for="email" class="form-label">Email</label>
+                  <input type="email" class="form-control" id="email" name="email" required>
+              </div>
+              <div class="mb-3">
+                  <label for="message" class="form-label">Message</label>
+                  <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary">Send</button>
+          </form>
+      </div>
+  </div>
 </div>
 
 {% endblock %}
