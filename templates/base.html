@@ -95,7 +95,7 @@
                   Shop
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="/">All Categories</a></li>
+                  <li><a class="dropdown-item" href="{% url 'store:all_products' %}#services-section">All Services</a></li>
                   {% for c in categories %}
                   <li {% if category.slug == c.slug %}class="selected" {% endif %}>
                     <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
@@ -103,6 +103,9 @@
                   {% endfor %}
                 </ul>
               </li>
+              <a class="nav-link d-none d-md-block fw500" href="{% url 'store:all_products' %}#contact-form-section" aria-expanded="false">
+                Contact
+              </a>
             </ul>
             <button class="navbar-toggler border-0 ms-auto" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
