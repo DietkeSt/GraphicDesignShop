@@ -1,9 +1,7 @@
-{% load i18n %}{% autoescape off %}
-Hi {{ order.user.first_name }},
+{% autoescape off %}
+We just wanted to update you that your order status is now: {{ order.get_order_status_display }}.
 
-Thanks for your order! Your order status is now: {{ order.get_order_status_display }}.
+Once it's finalized and ready for download, we'll let you know!
 
-We will update you once the order status changes.
-
-{% blocktranslate %}The {{ site_name }} team{% endblocktranslate %}
+The ArtisticEdge team
 {% endautoescape %}
