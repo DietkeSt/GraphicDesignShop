@@ -74,6 +74,27 @@ $(document).ready(function() {
     '/account/add_address/'
   ];
 
+  // Toggle visibility of contact form
+  function toggleContactForm() {
+    var contactFormSection = $('#order-contact-form');
+    contactFormSection.toggle();
+  }
+
+  // Function to scroll to the contact form section
+  function scrollToContactForm() {
+    var contactFormSection = $('#order-contact-form');
+    $('html, body').animate({
+        scrollTop: contactFormSection.offset().top
+    }, 500);
+  } 
+
+  // Add click event listener to "Problem with order" button to toggle contact form
+  $(document).on('click', '.problem-with-order-button', function(e) {
+    e.preventDefault();
+    toggleContactForm();
+    scrollToContactForm();
+  });
+
   // Remove Alert message after 5 seconds
   setTimeout(function() {
     $('.alert').fadeOut('slow', function() {
