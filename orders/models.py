@@ -47,7 +47,7 @@ class Order(models.Model):
     def send_status_email(self):
         domain = Site.objects.get_current().domain
         subject = f"Update on Your Order #{self.id}"
-        template_name = f'orders/emails/order_{self.order_status}_email.html'
+        template_name = f'orders/order_{self.order_status}_email.html'
         
         message_html = render_to_string(template_name, {
             'order': self,
