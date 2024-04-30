@@ -1,0 +1,14 @@
+{% load i18n %}{% autoescape off %}
+Hi {{ order.user.first_name }},
+
+Your order status is now: {{ order.get_order_status_display }}!
+
+{% if order.digital_product %}
+Here is your download link:
+<a href="http://{{ domain }}{{ order.digital_product.url }}" download>Download Your Design</a>
+{% endif %}
+
+You can also always navigate to your <a href="http://{{ domain }}/account/dashboard/" download>Orders Dashboard</a> in your account to download the Design at a later time.
+
+{% blocktranslate %}The {{ site_name }} team{% endblocktranslate %}
+{% endautoescape %}

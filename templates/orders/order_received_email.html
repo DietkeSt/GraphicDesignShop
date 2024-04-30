@@ -1,0 +1,9 @@
+{% load i18n %}{% autoescape off %}
+Hi {{ order.user.first_name }},
+
+Thanks for your order! Your order status is now: {{ order.get_order_status_display }}.
+
+We will update you once the order status changes.
+
+{% blocktranslate %}The {{ site_name }} team{% endblocktranslate %}
+{% endautoescape %}
