@@ -1,7 +1,10 @@
 from django.contrib import messages
+from django.http import HttpResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Q
 from django.urls import reverse
+from django.core.mail import send_mail
+from django.conf import settings
 from .models import Category, Product
 
 
@@ -38,3 +41,21 @@ def category_list(request, category_slug=None):
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, in_stock=True)
     return render(request, 'products/detail.html', {'product': product})
+
+
+def contact_form_submit(request):
+    if request.method == 'POST':
+        name = request.POST.get('name')
+        email = request.POST.get('email')
+        message = request.POST.get('message')
+        # Compose email
+        subject = f"New Contact From {name}"
+        message = f"Received message from {name} <{email}>: \n\n{message}"
+        email_from = 'artisticedge.noreply@gmail.com'
+        email_to = email
+        send_mail(subject, message, email_from, [email_to])
+        # Set success message
+        messages.success(request, 'Thank you for your message!', extra_tags='addition')
+        
+        return redirect('store:all_products')
+    return render(request, 'contact.html')
