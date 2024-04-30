@@ -1,5 +1,6 @@
 from django.http.response import JsonResponse
-from django.shortcuts import render
+from django.shortcuts import get_object_or_404
+from django.http import HttpResponse
 
 from store_basket.models import Basket
 
@@ -38,12 +39,10 @@ def add(request):
 
 
 def payment_confirmation(order_key):
-    print("Attempting to update billing status for order_key:", order_key)
-    updated_rows = Order.objects.filter(order_key=order_key).update(billing_status=True)
-    if updated_rows == 0:
-        print("No order found with order_key:", order_key)
-    else:
-        print("Billing status updated for order_key:", order_key)
+    order = get_object_or_404(Order, order_key=order_key)
+    order.billing_status = True
+    order.save()
+    return HttpResponse("Payment confirmed successfully")
 
 
 def user_orders(request):
