@@ -281,7 +281,7 @@ textarea.form-control:focus {
     font-size: 24px;
 }
 
-.star-rating:hover:after {
+.star-rating-detail:hover:after {
     content: attr(data-tooltip);
     position: absolute;
     left: 10em;
@@ -298,7 +298,7 @@ textarea.form-control:focus {
     z-index: 20;
 }
 
-.star-rating:hover:before {
+.star-rating-detail:hover:before {
     content: '';
     position: absolute;
     top: 40%;
@@ -311,6 +311,28 @@ textarea.form-control:focus {
     border-bottom: .25em solid transparent;
     border-right: .25em solid #E83D95; 
     z-index: 21;
+}
+
+.rating-form {
+    font-size: 0;
+}
+.star-label {
+    display: inline-block;
+    font-size: 24px;
+    color: gold;
+    cursor: pointer;
+}
+
+.star-radio {
+    display: none;
+}
+
+.star {
+    color: #ccc;
+}
+
+.star-radio:checked + .star {
+    color: gold;
 }
 
 /* Footer Styles */
