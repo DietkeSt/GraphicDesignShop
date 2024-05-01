@@ -166,7 +166,7 @@
 {% comment %} Contact Form Section {% endcomment %}
 <div id="order-contact-form" class="container my-5" style="display: none;">
   <div class="row">
-      <div class="col-md-8 mx-auto">
+      <div class="col-6 mx-auto">
           <h2>Contact Us</h2>
           <form action="{% url 'store:contact_form_submit' %}" method="POST">
               {% csrf_token %}
@@ -180,9 +180,9 @@
               </div>
               <div class="mb-3">
                   <label for="message" class="form-label">Message</label>
-                  <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
+                  <textarea class="form-control" id="message" name="message" rows="10" maxlength="500" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Send</button>
+              <button type="submit" class="btn btn-primary w-100">Send</button>
           </form>
       </div>
   </div>
