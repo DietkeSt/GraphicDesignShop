@@ -273,6 +273,46 @@ textarea.form-control:focus {
     border-color: #E83D95;
 }
 
+/* Star Rating Styles */
+.star-rating {
+    position: relative;
+    cursor: pointer;
+    color: gold; 
+    font-size: 24px;
+}
+
+.star-rating:hover:after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: 10em;
+    top: 0;
+    background: white;
+    border: #E83D95;
+    border-radius: .25rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(232, 61, 149, 0.6);
+    outline: 0 none;
+    color: black;
+    font-size: 16px;
+    line-height: 1.6;
+    padding: 5px 10px;
+    z-index: 20;
+}
+
+.star-rating:hover:before {
+    content: '';
+    position: absolute;
+    top: 40%;
+    left: 6.3em; 
+    border-style: solid;
+    border-color: transparent transparent #E83D95 transparent;
+    width: 0; 
+    height: 0; 
+    border-top: .25em solid transparent;
+    border-bottom: .25em solid transparent;
+    border-right: .25em solid #E83D95; 
+    z-index: 21;
+}
+
 /* Footer Styles */
 footer {
     min-height: 30vh;
