@@ -37,6 +37,8 @@ class Product(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     users_wishlist = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="user_wishlist", blank=True)
+    average_rating = models.FloatField(default=0.0, help_text="Average Rating of the Product")
+    ratings_count = models.IntegerField(default=0, help_text="Total Number of Ratings")
     objects = models.Manager()
     products = ProductManager()
 
