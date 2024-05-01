@@ -1,10 +1,9 @@
 from django.contrib import messages
-from django.http import HttpResponse
+from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Q
 from django.urls import reverse
 from django.core.mail import send_mail
-from django.conf import settings
 from .models import Category, Product
 
 
@@ -57,5 +56,6 @@ def contact_form_submit(request):
         # Set success message
         messages.success(request, 'Thank you for your message!', extra_tags='addition')
         
-        return redirect('store:all_products')
+        # Redirect to the current page
+        return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request, 'contact.html')
