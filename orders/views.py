@@ -1,10 +1,14 @@
 from django.http.response import JsonResponse
+from django.views.decorators.http import require_POST
+from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
 
 from store_basket.models import Basket
 
-from .models import Order, OrderItem
+from .models import Order, OrderItem, Review
+from store.models import Product
 
 
 def add(request):
@@ -49,3 +53,32 @@ def user_orders(request):
     user_id = request.user.id
     orders = Order.objects.filter(user_id=user_id).filter(billing_status=True)
     return orders
+
+
+@require_POST
+@csrf_exempt
+@login_required
+def submit_review(request, product_id):
+    try:
+        product = Product.objects.get(pk=product_id)
+        rating = int(request.POST.get('rating'))
+        comment = request.POST.get('comment', '')
+
+        review = Review.objects.create(
+            product=product,
+            user=request.user,
+            rating=rating,
+            comment=comment
+        )
+
+        # Update product rating
+        reviews = Review.objects.filter(product=product)
+        average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
+        count = reviews.count()
+        product.average_rating = average_rating
+        product.ratings_count = count
+        product.save()
+
+        return JsonResponse({'message': 'Review submitted successfully!'})
+    except Exception as e:
+        return JsonResponse({'error': str(e)}, status=400)
