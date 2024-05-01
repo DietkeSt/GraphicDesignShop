@@ -50,8 +50,8 @@
 
 <body>
     {% comment %} Banner {% endcomment %}
-    <div class="top-banner-container">
-        <div class="top-banner container">
+    <div class="top-banner-container bg-dark">
+        <div class="top-banner container bg-dark">
           <div class="d-flex align-items-left flex-grow-1">  
             <form class="d-md-flex d-none search-form" method="GET" action="{% url 'store:all_products' %}">
               <input class="form-control top-search-bar" type="search" name="q" placeholder="Search" aria-label="Search">
@@ -208,7 +208,7 @@
     </header>
   {% comment %} Main content container {% endcomment %}
   <main class="main">
-    <div class="container py-5">
+    <div class="py-5">
       {% comment %} Messages {% endcomment %}
         <div class="col-md-12">
           {% if messages %}
@@ -236,9 +236,9 @@
     </div>
   </main>
   {% comment %} Footer {% endcomment %}
-  <footer class="footer">
+  <footer class="footer bg-dark">
     <div class="container px-4">
-        <footer class="pt-5">
+        <footer class="pt-5 bg-dark">
           <div class="row">
             <div class="col-6 col-md-2 mb-3">
               <h5>Section</h5>
