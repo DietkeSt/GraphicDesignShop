@@ -4,6 +4,7 @@ from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django.shortcuts import get_object_or_404
 from django.http import HttpResponse
+from django.db.models import Avg
 
 from store_basket.models import Basket
 
@@ -59,26 +60,29 @@ def user_orders(request):
 @csrf_exempt
 @login_required
 def submit_review(request, product_id):
-    try:
-        product = Product.objects.get(pk=product_id)
-        rating = int(request.POST.get('rating'))
-        comment = request.POST.get('comment', '')
+    if request.method == 'POST':
+        try:
+            product = Product.objects.get(pk=product_id)
+            rating = int(request.POST.get('rating'))
+            comment = request.POST.get('comment', '')
 
-        review = Review.objects.create(
-            product=product,
-            user=request.user,
-            rating=rating,
-            comment=comment
-        )
+            Review.objects.create(
+                product=product,
+                user=request.user,
+                rating=rating,
+                comment=comment
+            )
 
-        # Update product rating
-        reviews = Review.objects.filter(product=product)
-        average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
-        count = reviews.count()
-        product.average_rating = average_rating
-        product.ratings_count = count
-        product.save()
+            # Update product rating
+            reviews = Review.objects.filter(product=product)
+            average_rating = reviews.aggregate(Avg('rating'))['rating__avg']
+            count = reviews.count()
+            product.average_rating = average_rating
+            product.ratings_count = count
+            product.save()
 
-        return JsonResponse({'message': 'Review submitted successfully!'})
-    except Exception as e:
-        return JsonResponse({'error': str(e)}, status=400)
+            return JsonResponse({'message': 'Review added successfully!'}, status=200)
+        except Exception as e:
+            return JsonResponse({'error': str(e)}, status=400)
+    else:
+        return JsonResponse({'error': 'Invalid request method.'}, status=405)
