@@ -236,6 +236,10 @@ a.dropdown-item:active {
         box-shadow: none;
     }
 
+textarea.form-control {
+    min-height: 10em;
+}
+
 /* Custom styles for the checkbox */
 .form-check-input {
     max-height: 1em;
