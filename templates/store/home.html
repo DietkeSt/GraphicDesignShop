@@ -30,30 +30,32 @@
   </section>
 {% endif %}
 {% comment %} Album Section {% endcomment %}
-<div id="services-section" class="album py-5 bg-light">
+<div id="services-section" class="album py-5 bg-light bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white">
     <div class="container">
       {% if products|length or search_term %}
           {% if search_term %}
           {% else %}
-          <div class="pb-3 h5">All Services</div>
+          <h2 class="pb-3">All Services</h2>
           {% endif %}
           {% if products|length %}
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
             {% for product in products %}
+            <a class="product-link text-decoration-none" href="{{ product.get_absolute_url }}">
               <div class="col">
-                <div class="card shadow-sm">
-                  <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
-                  <div class="card-body text-center">
-                    <p class="card-text">
-                      <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-                    </p>
-                    <div class="d-flex justify-content-center align-items-center">
-                      <small class="text-muted">€{{ product.price }}</small>
+                <div class="card shadow-sm" style="border-radius: 2em 0;">
+                    <div class="my-3 p-3">
+                      <h3 class="text-dark card-text">
+                        {{ product.title }}
+                      </h3>
+                      <div class="d-flex justify-content-center align-items-center">
+                        <p class="text-muted lead text-dark m-0">€{{ product.price }}</p>
+                      </div>
                     </div>
-                  </div>
+                    <img class="img-fluid" style="border-radius: 2em 0;" alt="Responsive image" src="{{ product.image.url }}">
                 </div>
               </div>
-              {% endfor %}
+            </a> 
+            {% endfor %}
           </div>
           {% else %}
           <div class="col text-center">
@@ -62,21 +64,23 @@
           {% endif %}
       {% endif %}
     </div>
-  </div>
+</div>
 
 {% if search_term %}
 <div class="text-center container">
     <div class="row pt-4">
         <div class="col-lg-6 col-md-8 mx-auto">
-          <a class="small" href="{% url 'store:all_products' %}">Back to all services</a>
+          <a href="{% url 'store:all_products' %}">Back to all services</a>
         </div>
     </div>
 </div>
 {% endif %}
+
 {% comment %} Contact Form Section {% endcomment %}
+{% if not search_term %}
 <div id="contact-form-section" class="container mt-5">
   <div class="row">
-      <div class="col-md-8 mx-auto">
+      <div class="col-lg-6 col-md-8 mx-auto">
           <h2>Contact Us</h2>
           <form action="{% url 'store:contact_form_submit' %}" method="POST">
               {% csrf_token %}
@@ -92,11 +96,12 @@
                   <label for="message" class="form-label">Message</label>
                   <textarea class="form-control" id="message" name="message" rows="3" required></textarea>
               </div>
-              <button type="submit" class="btn btn-primary">Send</button>
+              <button type="submit" class="btn btn-primary my-2 w-100">Send</button>
           </form>
       </div>
   </div>
 </div>
+{% endif %}
   
 
 {% endblock %}
