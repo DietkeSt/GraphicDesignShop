@@ -123,24 +123,35 @@ $(document).ready(function() {
   }
 
   // Event listener for star rating changes
-  $(document).on('change', '.star-rating input[type="radio"]', function(e) {
-    var rating = $(this).val();
-    var productID = $(this).closest('.card').data('product-id');
+  $(document).on('change', '.star-rating input[type="radio"]', function() {
+    $(this).closest('.row').find('.leave-review-btn').data('rating', $(this).val());
+  });
+  
+  // When the 'Leave a review' button is clicked
+  $(document).on('click', '.leave-review-btn', function() {
+    var rating = $(this).data('rating');
+    var productID = $(this).data('product-id'); 
+    if (!rating) {
+        alert('Please select a rating before submitting your review.');
+        return;
+    }
     var url = '/submit-review/' + productID + '/';
+    console.log("Submitting to URL: ", url);
+
     $.ajax({
         type: 'POST',
         url: url,
         data: {
-            rating: rating,
-            csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
-            action: 'post'
+            'rating': rating,
+            'csrfmiddlewaretoken': $('input[name="csrfmiddlewaretoken"]').val(),
+            'action': 'post'
         },
         success: function(response) {
             alert('Thank you for your review!');
-            console.log(response);
         },
         error: function(xhr, errmsg, err) {
-            console.error('Error:', errmsg);
+          console.log(xhr.status + ": " + xhr.responseText);  // Provides more detail about the error
+          alert('Error submitting review: ' + errmsg);
         }
     });
   });
