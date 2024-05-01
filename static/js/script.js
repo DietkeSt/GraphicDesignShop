@@ -135,6 +135,14 @@ $(document).ready(function() {
     $(this).closest('.star-rating').data('rating', rating);
   });
 
+  // Toggle review form visibility on clicking 'Leave a review'
+  $(document).on('click', '.open-review-btn', function() {
+    var productID = $(this).data('product-id');
+    var reviewForm = $('.star-rating[data-product-id="' + productID + '"]');
+    // Toggle visibility
+    reviewForm.toggle();
+  });
+
   // Click event to submit review
   $('.leave-review-btn').click(function() {
     var container = $(this).closest('.star-rating');
@@ -159,6 +167,7 @@ $(document).ready(function() {
         },
         success: function(response) {
             alert('Thank you for your review!');
+            container.hide();
         },
         error: function(xhr, errmsg, err) {
           console.log(xhr.status + ": " + xhr.responseText);  // Provides more detail about the error
