@@ -122,7 +122,46 @@ $(document).ready(function() {
     $('#wishlistCard').addClass('highlighted');
   }
 
+  // Event listener for star rating changes
+  $(document).on('change', '.star-rating input[type="radio"]', function(e) {
+    var rating = $(this).val();
+    var productID = $(this).closest('.card').data('product-id');
+    var url = '/submit-review/' + productID + '/';
+    $.ajax({
+        type: 'POST',
+        url: url,
+        data: {
+            rating: rating,
+            csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
+            action: 'post'
+        },
+        success: function(response) {
+            alert('Thank you for your review!');
+            console.log(response);
+        },
+        error: function(xhr, errmsg, err) {
+            console.error('Error:', errmsg);
+        }
+    });
+  });
+
 });
+
+// Function to get CSRF token
+function getCookie(name) {
+  let cookieValue = null;
+  if (document.cookie && document.cookie !== '') {
+      const cookies = document.cookie.split(';');
+      for (let i = 0; i < cookies.length; i++) {
+          const cookie = cookies[i].trim();
+          if (cookie.substring(0, name.length + 1) === (name + '=')) {
+              cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+              break;
+          }
+      }
+  }
+  return cookieValue;
+}
 
 // Function to display the selected filename
 function displayFileName(input) {
