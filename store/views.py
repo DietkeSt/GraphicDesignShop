@@ -20,7 +20,7 @@ def all_products(request):
             Q(category__description__icontains=query)
         )
     elif 'q' in request.GET:
-        messages.error(request, "You didn't enter any search criteria!")
+        messages.error(request, "You didn't enter any search criteria!", extra_tags='update')
         return redirect(reverse('store:all_products'))
 
     context = {
