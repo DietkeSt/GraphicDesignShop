@@ -155,9 +155,16 @@
           <div class="col-md-12 col-lg-12 order-md-last pb-2 order-3">
             <div class="d-grid gap-2 ">
               <button class="btn btn-warning problem-with-order-button" type="button">Problem with order</button>
-              <button class="btn btn-light" type="button">Leave a review</button>
+              <button class="btn btn-light leave-review-btn" data-product-id="{{ product.id }}" type="button">Leave a review</button>
             </div>
           </div> 
+          <div class="star-rating">
+            <input type="radio" id="5-stars" name="rating" value="5" /><label for="5-stars" class="star">&#9733;</label>
+            <input type="radio" id="4-stars" name="rating" value="4" /><label for="4-stars" class="star">&#9733;</label>
+            <input type="radio" id="3-stars" name="rating" value="3" /><label for="3-stars" class="star">&#9733;</label>
+            <input type="radio" id="2-stars" name="rating" value="2" /><label for="2-stars" class="star">&#9733;</label>
+            <input type="radio" id="1-star" name="rating" value="1" /><label for="1-star" class="star">&#9733;</label>
+          </div>
           {% endfor %}
         </div> 
       </div>
