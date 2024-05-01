@@ -13,7 +13,7 @@
             <h1 class="mb-0 h4">{{ product.title }}</h1>
             <div>
                 <!-- Display the average rating as stars -->
-                <div data-tooltip="Average Rating: {{ average_rating }}" class="star-rating">
+                <div data-tooltip="Average Rating: {{ average_rating }}" class="star-rating star-rating-detail">
                     {% for i in range %}
                         {% if forloop.counter0 < average_rating %}
                             <span>&#9733;</span> <!-- filled star -->
