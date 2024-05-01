@@ -58,6 +58,15 @@ a.dropdown-item:active {
     background-color: #E83D95;
 }
 
+/* Button Styles */
+.btn {
+    transition: transform 0.3s ease-in-out;
+}
+
+.btn:hover {
+    transform: scale(1.05);
+}
+
 .btn-primary {
     color: #fff;
     background-color: #E83D95;
@@ -209,6 +218,15 @@ a.dropdown-item:active {
     min-width: 25vw; 
 }
 
+/* Services styling */
+.product-link {
+    transition: transform 0.3s ease-in-out;
+}
+
+.product-link:hover {
+    transform: scale(1.05);
+}
+
 /* Register Page styling */
 .account-form input {
     border: 2px solid #ccc;
@@ -238,6 +256,11 @@ a.dropdown-item:active {
 
 textarea.form-control {
     min-height: 10em;
+}
+textarea.form-control:focus {
+    border-color: #E83D95;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(232, 61, 149, 0.6);
+    outline: 0 none;
 }
 
 /* Custom styles for the checkbox */
