@@ -122,22 +122,33 @@ $(document).ready(function() {
     $('#wishlistCard').addClass('highlighted');
   }
 
-  // Event listener for star rating changes
-  $(document).on('change', '.star-rating input[type="radio"]', function() {
-    $(this).closest('.row').find('.leave-review-btn').data('rating', $(this).val());
+  // Change event for radio buttons to update visual stars
+  $('.star-rating input[type="radio"]').change(function() {
+    var rating = $(this).val();
+    $(this).closest('.star-rating').find('.star').each(function(index) {
+        if (index < rating) {
+            $(this).text('★').css('color', 'gold');  // Filled star
+        } else {
+            $(this).text('☆').css('color', 'gray');  // Empty star
+        }
+    });
+    $(this).closest('.star-rating').data('rating', rating);
   });
-  
-  // When the 'Leave a review' button is clicked
-  $(document).on('click', '.leave-review-btn', function() {
-    var rating = $(this).data('rating');
-    var productID = $(this).data('product-id'); 
+
+  // Click event to submit review
+  $('.leave-review-btn').click(function() {
+    var container = $(this).closest('.star-rating');
+    var rating = container.data('rating');
+    var productID = $(this).data('product-id');
+    
     if (!rating) {
         alert('Please select a rating before submitting your review.');
         return;
     }
+    
     var url = '/submit-review/' + productID + '/';
     console.log("Submitting to URL: ", url);
-
+    
     $.ajax({
         type: 'POST',
         url: url,
@@ -153,8 +164,8 @@ $(document).ready(function() {
           console.log(xhr.status + ": " + xhr.responseText);  // Provides more detail about the error
           alert('Error submitting review: ' + errmsg);
         }
+      });
     });
-  });
 
 });
 
