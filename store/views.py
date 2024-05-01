@@ -39,7 +39,12 @@ def category_list(request, category_slug=None):
 
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, in_stock=True)
-    return render(request, 'products/detail.html', {'product': product})
+    average_rating = round(product.average_rating)
+    return render(request, 'products/detail.html', {
+        'product': product,
+        'average_rating': average_rating,
+        'range': range(5)  # Provides the range function to the template
+    })
 
 
 def contact_form_submit(request):
