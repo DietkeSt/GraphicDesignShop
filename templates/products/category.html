@@ -5,7 +5,7 @@
 {% block content %}
 {% comment %} Album Section {% endcomment %}
 <div class="album py-5 bg-dark text-center text-white">
-  <div class="container">
+  <div class="container" style="max-width: 1000px">
     <h2 class="pb-3">{{ category.name }}</h2>
     <div class="row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
       {% for product in products %}
