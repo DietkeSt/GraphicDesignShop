@@ -10,7 +10,7 @@
   </div>
   <hr />
   {% if basket|length == 0 %}
-  <div class="col-12">Your basket is empty. Go back to to <a href="/">Services.</a></div>
+  <div class="col-12">Your basket is empty. Go back to to <a href="{% url 'store:all_products' %}#services-section">All Services.</a></div>
   {% else %}
   {% for item in basket %}
   {% with product=item.product %}
