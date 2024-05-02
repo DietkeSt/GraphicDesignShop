@@ -51,43 +51,65 @@
 <body>
     {% comment %} Banner {% endcomment %}
     <div class="top-banner-container bg-dark">
-        <div class="top-banner container bg-dark">
-          <div class="d-flex align-items-left flex-grow-1">  
-            <form class="d-md-flex d-none search-form" method="GET" action="{% url 'store:all_products' %}">
-              <input class="form-control top-search-bar" type="search" name="q" placeholder="Search" aria-label="Search">
-              <button class="btn search-button" type="submit"><i class="fas fa-search text-white" aria-hidden="true"></i></button>
-            </form>
-          </div>
-            {% if request.user.is_authenticated %}  
-                <span class="greeting-text">Hi {{ request.user.name }}!</span>
-                <div class="dropdown text-end">
-                    <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
-                    {% if request.user.profile_image %}
-                        <img src="{{ request.user.profile_image.url }}" alt="{{ request.user.name }}" width="32" height="32" class="rounded-circle">
-                    {% else %}
-                        <!-- Default profile image if user has not uploaded one -->
-                        <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Image" width="32" height="32" class="rounded-circle">
-                    {% endif %}
-                    </a>
-                    <ul class="dropdown-menu text-small" style="">
-                    <li><a class="dropdown-item" href="{% url 'account:dashboard' %}">Orders <i class="fa-solid fa-gift"></i></a></li>
-                    <li><a class="dropdown-item" href="{% url 'account:edit_details' %}">Account <i class="fa-solid fa-user"></i></a></li>
-                    <li><a class="dropdown-item" href="{% url "account:wishlist" %}">Wishlist <i class="fa-solid fa-heart"></i></a></li>
-                    <li><hr class="dropdown-divider"></li>
-                    <li><a class="dropdown-item" href="{% url 'account:logout' %}">Sign Out</a></li>
-                    </ul>
-                </div>
-            {% else %}
-                <a href="{% url 'account:login' %}">Sign in</a>&nbsp;<span class="text-muted"> or</span>&nbsp;<a href="{% url 'account:register' %}">Register</a>
-            {% endif %}
+      <div class="top-banner container bg-dark">
+        <div class="d-flex align-items-left flex-grow-1">  
+          <form class="d-md-flex d-none search-form" method="GET" action="{% url 'store:all_products' %}">
+            <input class="form-control top-search-bar" type="search" name="q" placeholder="Search" aria-label="Search">
+            <button class="btn search-button" type="submit"><i class="fas fa-search text-white" aria-hidden="true"></i></button>
+          </form>
         </div>
+        {% if request.user.is_authenticated %}  
+          <span class="greeting-text">
+            Hi {{ request.user.name }}!
+          </span>
+          <div class="dropdown text-end">
+            <a href="#" class="d-block link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+              {% if request.user.profile_image %}
+                <img src="{{ request.user.profile_image.url }}" alt="{{ request.user.name }}" width="32" height="32" class="rounded-circle">
+              {% else %}
+                <!-- Default profile image if user has not uploaded one -->
+                <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Image" width="32" height="32" class="rounded-circle">
+              {% endif %}
+            </a>
+            <ul class="dropdown-menu text-small" style="">
+              <li>
+                <a class="dropdown-item" href="{% url 'account:dashboard' %}">
+                  Orders <i class="fa-solid fa-gift"></i>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'account:edit_details' %}">
+                  Account <i class="fa-solid fa-user"></i>
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url "account:wishlist" %}">
+                  Wishlist <i class="fa-solid fa-heart"></i>
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'account:logout' %}">
+                  Sign Out
+                </a>
+              </li>
+            </ul>
+          </div>
+        {% else %}
+          <a href="{% url 'account:login' %}">Sign in</a>&nbsp;<span class="text-muted"> or</span>&nbsp;<a href="{% url 'account:register' %}">Register</a>
+        {% endif %}
+      </div>
     </div>
     {% comment %} Navigation & Header {% endcomment %}
     <header>
-      {% comment %} New setting {% endcomment %}
       <nav class="navbar navbar-expand-md navbar-light bg-white border-bottom">
         <div class="container">
           <div class="d-flex w-100 navbar-collapse">
+            <a class="navbar-brand d-none d-md-block" href="/">
+              <img src="{% static 'images/logo-black.png' %}" height="50">
+            </a>
             <ul class="navbar-nav me-auto mb-2 mb-md-0">
               <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle d-none d-md-block fw500" href="#" id="navbarDropdown" role="button"
@@ -95,19 +117,25 @@
                   Shop
                 </a>
                 <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                  <li><a class="dropdown-item" href="{% url 'store:all_products' %}#services-section">All Services</a></li>
+                  <li>
+                    <a class="dropdown-item" href="{% url 'store:all_products' %}#services-section">
+                      All Services
+                    </a>
+                  </li>
                   {% for c in categories %}
                   <li {% if category.slug == c.slug %}class="selected" {% endif %}>
                     <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
                   </li>
                   {% endfor %}
                 </ul>
-              </li>
-              <a class="nav-link d-none d-md-block fw500" href="{% url 'store:all_products' %}#contact-form-section" aria-expanded="false">
-                Contact
-              </a>
+              </li> 
+              <li class="nav-item">
+                <a class="nav-link d-none d-md-block fw500" href="{% url 'store:all_products' %}#contact-form-section" aria-expanded="false">
+                  Contact
+                </a>
+              </li>            
             </ul>
-            <button class="navbar-toggler border-0 ms-auto" type="button" data-bs-toggle="collapse"
+            <button class="navbar-toggler border-0 ms-auto justify-content-left" type="button" data-bs-toggle="collapse"
               data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false"
               aria-label="Toggle navigation">
               <div>
@@ -117,10 +145,12 @@
                     d="M2.5 11.5A.5.5 0 0 1 3 11h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 7h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4A.5.5 0 0 1 3 3h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z" />
                 </svg>
               </div>
-              <span class="fs15 fw500">Menu</span>
+              <span>
+                Menu
+              </span>
             </button>
             <div class="d-flex justify-content-center align-items-center flex-grow-1">
-              <a class="navbar-brand" href="/">
+              <a class="navbar-brand d-md-none" href="/">
                 <img src="{% static 'images/logo-black.png' %}" height="50">
               </a>
             </div>
@@ -190,12 +220,32 @@
           <div class="d-md-none d-lg-none d-xl-none">
             <div class="collapse navbar-collapse" id="navbarCollapse">
               <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li><a class="dropdown-item" href="/">All</a></li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'store:all_products' %}">
+                    Home
+                  </a>
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'store:all_products' %}#contact-form-section">
+                    Contact
+                  </a>
+                </li>
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'store:all_products' %}#services-section">
+                    All Services
+                  </a>
+                </li>
                 {% for c in categories %}
                 <li {% if category.slug == c.slug %}class="selected" {% endif %}>
                   <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
                 </li>
                 {% endfor %}
+                <li>
+                  <hr class="dropdown-divider">
+                </li>
               </ul>
               <form class="d-flex w-100 d-md-none" method="GET" action="{% url 'store:all_products' %}">
                 <input class="form-control" type="search" placeholder="Search" name="q" aria-label="Search">
