@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
-from django.db.models import Q
+from django.db.models import Q, Avg
 from django.urls import reverse
 from django.core.mail import send_mail
 from .models import Category, Product
@@ -34,7 +34,16 @@ def all_products(request):
 def category_list(request, category_slug=None):
     category = get_object_or_404(Category, slug=category_slug)
     products = Product.objects.filter(category=category, is_active=True)
-    return render(request, 'products/category.html', {'category': category, 'products': products})
+
+    for product in products:
+        # Calculate average rating for each product
+        product.average_rating = round(product.average_rating)
+
+    return render(request, 'products/category.html', {
+        'category': category, 
+        'products': products,
+        'range': range(5)
+    })
 
 
 def product_detail(request, slug):
@@ -43,7 +52,7 @@ def product_detail(request, slug):
     return render(request, 'products/detail.html', {
         'product': product,
         'average_rating': average_rating,
-        'range': range(5)  # Provides the range function to the template
+        'range': range(5)
     })
 
 
