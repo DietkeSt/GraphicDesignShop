@@ -172,8 +172,29 @@ a.dropdown-item:active {
     font-size: 1.25rem;
 }
 
-/* Basket Styles */
+#navbarCollapse {
+    border: solid 1px #E83D95;
+    border-radius: .25rem;
+    box-shadow: 0 1px 1px rgba(0, 0, 0, 0.075) inset, 0 0 8px rgba(232, 61, 149, 0.6);
+  
+}
 
+#navbarCollapse input.form-control {
+    margin-left: 0.75em;
+    margin-bottom: 0.75em;
+}  
+
+#navbarCollapse .search-button {
+    margin-bottom: 0.75em;
+}  
+
+.navbar-toggler:focus {
+    outline: 0;
+    box-shadow: none;
+    color: #E83D95;
+}
+
+/* Basket Styles */
 .store-basket {
     position: relative;
     display: flex;
