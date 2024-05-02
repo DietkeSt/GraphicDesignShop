@@ -38,7 +38,7 @@
           <h2 class="pb-3">All Services</h2>
           {% endif %}
           {% if products|length %}
-          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center">
             {% for product in products %}
             <a class="product-link text-decoration-none" href="{{ product.get_absolute_url }}">
               <div class="col">
