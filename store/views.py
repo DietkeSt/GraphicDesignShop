@@ -9,7 +9,7 @@ from .models import Category, Product
 
 def all_products(request):
     """ Shows all products, including sorting and search queries """
-    products = Product.products.all()
+    products = Product.objects.filter(is_active=True)
     query = request.GET.get('q')
 
     if query:
@@ -23,9 +23,14 @@ def all_products(request):
         messages.error(request, "You didn't enter any search criteria!", extra_tags='update')
         return redirect(reverse('store:all_products'))
 
+    for product in products:
+        # Calculate average rating for each product
+        product.average_rating = round(product.average_rating)
+
     context = {
         'products': products,
-        'search_term': query
+        'search_term': query,
+        'range': range(5)
     }
 
     return render(request, 'store/home.html', context)
