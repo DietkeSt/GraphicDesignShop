@@ -207,6 +207,10 @@ a.dropdown-item:active {
     font-size: 1.25rem;
 }
 
+a.btn.store-basket:focus {
+    outline: 0;
+}
+
 #basket-qty {
     position: absolute;
     top: -0.5rem;
