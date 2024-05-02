@@ -4,32 +4,35 @@
 
 {% block content %}
 {% comment %} Album Section {% endcomment %}
-<div class="album py-5 bg-light">
-    <div class="container">
-
-      <div class="pb-3 h5">{{ category.name }}</div>
-      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
-
-        {% for product in products %}
-
+<div class="album py-5 bg-dark text-center text-white">
+  <div class="container">
+    <h2 class="pb-3">{{ category.name }}</h2>
+    <div class="row justify-content-center row-cols-1 row-cols-sm-2 row-cols-md-3 g-4">
+      {% for product in products %}
+      <a class="product-link text-decoration-none" href="{{ product.get_absolute_url }}">
         <div class="col">
-          <div class="card shadow-sm">
-            <img class="img-fluid" alt="Responsive image" src="{{ product.image.url }}">
-            <div class="card-body text-center">
-              <p class="card-text">
-                <a class="text-dark text-decoration-none" href="{{ product.get_absolute_url }}">{{ product.title }}</a>
-              </p>
+          <div class="card shadow-sm" style="border-radius: 2em 0;">
+            <div class="my-3 p-3">
+              <h3 class="text-dark card-text">
+                {{ product.title }}
+              </h3>
               <div class="d-flex justify-content-center align-items-center">
-                <small class="text-muted">€{{ product.price }}</small>
+                <p class="text-muted lead text-dark m-0">€{{ product.price }}</p>
               </div>
             </div>
+            <img class="img-fluid" style="border-radius: 2em 0;" alt="Responsive image" src="{{ product.image.url }}">
           </div>
         </div>
-
-        {% endfor %}
-
-      </div>
+      </a> 
+      {% endfor %}
     </div>
   </div>
-
+</div>
+<div class="text-center container">
+  <div class="row pt-4">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <a href="{% url 'store:all_products' %}#services-section">Back to all services</a>
+      </div>
+  </div>
+</div>
 {% endblock %}
