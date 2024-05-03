@@ -15,6 +15,7 @@ from .forms import RegistrationForm, UserEditForm, UserAddressForm
 from orders.views import user_orders
 from .models import Customer, Address
 from .tokens import account_activation_token
+from newsletter.views import check_subscription_status
 
 
 @login_required
@@ -59,6 +60,9 @@ def custom_logout(request):
 
 @login_required
 def edit_details(request):
+    # Check newsletter subscription status
+    is_subscribed = check_subscription_status(request.user.email)
+
     if request.method == 'POST':
         user_form = UserEditForm(request.POST, request.FILES, instance=request.user)
 
@@ -74,7 +78,10 @@ def edit_details(request):
     else:
         user_form = UserEditForm(instance=request.user)
 
-    return render(request, 'account/user/edit_details.html', {'user_form': user_form})
+    return render(request, 'account/user/edit_details.html', {
+        'user_form': user_form,
+        'is_subscribed': is_subscribed
+    })
 
 
 @login_required
