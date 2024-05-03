@@ -144,18 +144,21 @@
         </button>
     </form>
     <hr class="mb-3">
-    <form class="account-form" action="{% url "newsletter:unsubscribe_newsletter" %}" method="post">
+    {% if is_subscribed %}
+    <form action="{% url 'newsletter:unsubscribe_newsletter' %}" method="post">
         {% csrf_token %}
         <p class=" h3 pt-4 font-weight-bold">Newsletter</p>
         <p>You are currently signed up for our Newsletter.</p>
         <a href="{% url 'newsletter:unsubscribe_newsletter' %}" class="fw-bold w-100 btn btn-danger">Unsubscribe from Newsletter</a>
     </form>
-    <form class="account-form" action="{% url "newsletter:subscribe_newsletter" %}" method="post">
+    {% else %}
+    <form action="{% url 'newsletter:subscribe_newsletter' %}" method="post">
         {% csrf_token %}
         <p class=" h3 pt-4 font-weight-bold">Newsletter</p>
         <p>Do you wish to subscribe to our Newsletter?</p>
         <a href="{% url 'newsletter:subscribe_newsletter' %}" class="fw-bold w-100 btn btn-primary">Subscribe to Newsletter</a>
-    </form>    
+    </form>
+    {% endif %} 
 </div>
             
 {% endblock %}
