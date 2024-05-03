@@ -84,4 +84,4 @@ def contact_form_submit(request):
 
 def portfolio(request):
     items = PortfolioItem.objects.all()
-    return render(request, 'portfolio.html', {'items': items})
+    return render(request, 'store/portfolio.html', {'items': items})
