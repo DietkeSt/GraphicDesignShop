@@ -1,7 +1,6 @@
 {% extends '../base.html' %}
 {% load static %}
 
-
 {% block content %}
 
 <section id="portfolio-section" class="py-5 bg-light">
@@ -12,13 +11,35 @@
             {% for item in items %}
             <div class="col">
                 <div class="card shadow-sm" style="border-radius: 2em 0;">
-                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}" style="border-radius: 2em 0;">
+                    <a href="#" data-toggle="modal" data-target="#portfolioItemModal{{ forloop.counter }}" title="Click to view close-up image">
+                        <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}" style="border-radius: 2em 0;">
+                    </a>
                     <div class="card-body text-center">
                         <h5 class="card-title">{{ item.title }}</h5>
                         <p class="card-text">{{ item.description }}</p>
                     </div>
                 </div>
             </div>
+
+            <!-- Modal for portfolio item {{ forloop.counter }} -->
+            <div class="modal fade" id="portfolioItemModal{{ forloop.counter }}" tabindex="-1" role="dialog" aria-labelledby="portfolioItemModalLabel{{ forloop.counter }}" aria-hidden="true">
+                <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="portfolioItemModalLabel{{ forloop.counter }}">{{ item.title }}</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="{{ item.image.url }}" class="img-fluid" alt="{{ item.title }}">
+                            <p>{{ item.description }}</p>
+                            <!-- Add other details as needed -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
             {% endfor %}
         </div>
         {% else %}
