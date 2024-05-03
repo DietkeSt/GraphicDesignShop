@@ -7,6 +7,21 @@ import base64
 import requests
 import hashlib
 
+
+def check_subscription_status(email):
+    email_hash = hashlib.md5(email.lower().encode('utf-8')).hexdigest()
+    api_key = settings.MAILCHIMP_API_KEY
+    url = f"https://{settings.MAILCHIMP_SERVER_PREFIX}.api.mailchimp.com/3.0/lists/{settings.MAILCHIMP_LIST_ID}/members/{email_hash}"
+    user_pass = base64.b64encode(f"anystring:{api_key}".encode()).decode('utf-8')
+    headers = {"Authorization": f"Basic {user_pass}"}
+
+    response = requests.get(url, headers=headers)
+    if response.status_code == 200:
+        data = response.json()
+        return data['status'] in ['subscribed', 'pending']
+    return False
+
+
 def subscribe_newsletter(request):
     if not request.user.is_authenticated:
         messages.error(request, "You need to be logged in to subscribe.", extra_tags='update')
