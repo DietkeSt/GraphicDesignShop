@@ -130,6 +130,11 @@
                 </ul>
               </li> 
               <li class="nav-item">
+                <a class="nav-link d-none d-md-block fw500" href="{% url 'store:portfolio' %}" aria-expanded="false">
+                  Portfolio
+                </a>
+              </li>  
+              <li class="nav-item">
                 <a class="nav-link d-none d-md-block fw500" href="{% url 'store:all_products' %}#contact-form-section" aria-expanded="false">
                   Contact
                 </a>
@@ -225,6 +230,11 @@
                     Home
                   </a>
                 </li>
+                <li>
+                  <a class="dropdown-item" href="{% url 'store:portfolio' %}">
+                    Portfolio
+                  </a>
+                </li> 
                 <li>
                   <a class="dropdown-item" href="{% url 'store:all_products' %}#contact-form-section">
                     Contact
