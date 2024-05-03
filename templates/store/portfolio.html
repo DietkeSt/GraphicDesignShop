@@ -11,7 +11,7 @@
             {% for item in items %}
             <div class="col">
                 <div class="card shadow-sm" style="border-radius: 2em 0;">
-                    <a href="#" data-toggle="modal" data-target="#portfolioItemModal{{ forloop.counter }}" title="Click to view close-up image">
+                    <a href="#" data-toggle="modal" data-target="#portfolioItemModal{{ forloop.counter }}" class="portfolio-image" data-tooltip="Click image to view close-up">
                         <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}" style="border-radius: 2em 0;">
                     </a>
                     <div class="card-body text-center">
