@@ -19,6 +19,6 @@ class ProductAdmin(admin.ModelAdmin):
 
 @admin.register(PortfolioItem)
 class PortfolioItemAdmin(admin.ModelAdmin):
-    list_display = ['title', 'image', 'created_at']
+    list_display = ['title', 'image', 'date_added']
     search_fields = ['title', 'description']
-    list_filter = ['created_at']
+    list_filter = ['date_added']
