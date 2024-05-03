@@ -3,14 +3,17 @@
 
 {% block content %}
 
-<section id="portfolio-detail" class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8 offset-md-2">
-                <img src="{{ portfolio_item.image.url }}" class="img-fluid mb-4" alt="{{ portfolio_item.title }}">
-                <h2>{{ portfolio_item.title }}</h2>
-                <p>{{ portfolio_item.description }}</p>
-            </div>
+<section id="portfolio-detail" class="text-center container">
+    {% comment %} Hero Container for Portfolio {% endcomment %}
+    <div class="row pb-4">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <img src="{{ portfolio_item.image.url }}" class="img-fluid mb-4" alt="{{ portfolio_item.title }}">
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{ portfolio_item.title }}</h2>
+            <p>{{ portfolio_item.description }}</p>
         </div>
     </div>
 </section>
