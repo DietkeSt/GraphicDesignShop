@@ -54,10 +54,12 @@ def category_list(request, category_slug=None):
 def product_detail(request, slug):
     product = get_object_or_404(Product, slug=slug, in_stock=True)
     average_rating = round(product.average_rating)
+    number_range = range(1, 101)
     return render(request, 'products/detail.html', {
         'product': product,
         'average_rating': average_rating,
-        'range': range(5)
+        'range': range(5),
+        'number_range': number_range
     })
 
 
