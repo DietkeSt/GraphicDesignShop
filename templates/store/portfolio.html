@@ -1,0 +1,32 @@
+{% extends '../base.html' %}
+{% load static %}
+
+
+{% block content %}
+
+<section id="portfolio-section" class="py-5 bg-light">
+    <div class="container">
+        <h2 class="text-center">Portfolio</h2>
+        {% if items %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center">
+            {% for item in items %}
+            <div class="col">
+                <div class="card shadow-sm" style="border-radius: 2em 0;">
+                    <img src="{{ item.image.url }}" class="card-img-top" alt="{{ item.title }}" style="border-radius: 2em 0;">
+                    <div class="card-body text-center">
+                        <h5 class="card-title">{{ item.title }}</h5>
+                        <p class="card-text">{{ item.description }}</p>
+                    </div>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        {% else %}
+        <div class="text-center">
+            <p>No portfolio items found.</p>
+        </div>
+        {% endif %}
+    </div>
+</section>
+
+{% endblock %}
