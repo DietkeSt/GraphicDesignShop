@@ -51,3 +51,13 @@ class Product(models.Model):
 
     def __str__(self):
         return self.title
+    
+
+class PortfolioItem(models.Model):
+    title = models.CharField(max_length=200)
+    description = models.TextField()
+    image = models.ImageField(upload_to='portfolio_images/')
+    date_added = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.title
