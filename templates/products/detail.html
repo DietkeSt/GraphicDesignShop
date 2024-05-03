@@ -36,10 +36,9 @@
                 <div class="col-6">
                     <label for="select">Qty</label>
                     <select id="select">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
+                        {% for num in number_range %}
+                        <option value="{{ num }}" {% if num == item.qty %}selected{% endif %}>{{ num }}</option>
+                        {% endfor %}
                     </select>
                 </div>
                 {% csrf_token %}
