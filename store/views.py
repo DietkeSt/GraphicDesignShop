@@ -1,10 +1,10 @@
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404, redirect, render
-from django.db.models import Q, Avg
+from django.db.models import Q
 from django.urls import reverse
 from django.core.mail import send_mail
-from .models import Category, Product
+from .models import Category, Product, PortfolioItem
 
 
 def all_products(request):
@@ -80,3 +80,8 @@ def contact_form_submit(request):
         # Redirect to the current page
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request, 'contact.html')
+
+
+def portfolio(request):
+    items = PortfolioItem.objects.all()
+    return render(request, 'portfolio.html', {'items': items})
