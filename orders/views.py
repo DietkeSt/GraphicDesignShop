@@ -43,11 +43,8 @@ def add(request):
         return response
 
 
-def payment_confirmation(order_key):
-    order = get_object_or_404(Order, order_key=order_key)
-    order.billing_status = True
-    order.save()
-    return HttpResponse("Payment confirmed successfully")
+def payment_confirmation(data):
+    Order.objects.filter(order_key=data).update(billing_status=True)
 
 
 def user_orders(request):
