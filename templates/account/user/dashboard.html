@@ -86,103 +86,106 @@
       </div>
 </div>
 <!-- Orders -->
-<div class="container pt-2 card rounded-2" id="orderDetails">
-      {% for order in orders %}
+<div class="container px-0 pt-2" id="orderDetails"> 
+  {% for order in orders %}
+  <div class="card mb-3 rounded-2 p-3">     
       <div class="row g-3 p-2">
-        <div class="col-12 bg-light p-3 d-flex justify-content-between rounded-2">
-          <div class="d-flex d-flex-inline">
-            <div class="pe-3">
-              {{ order.created }}
-              <div class="dropdown">
-                <a class="text-reset text-decoration-none dropdown-toggle" href="#" role="link" id="dropdownLink" data-bs-toggle="dropdown" aria-expanded="false">
-                  Order Address
-                </a>
-                <ul class="dropdown-menu text-center" aria-labelledby="dropdownLink">
-                  <li class="item small">{{order.full_name}}</li>
-                  <li class="item small">{{order.address1}}</li>
-                  <li class="item small">{{order.address2}}</li>
-                  <li class="item small">{{order.post_code}}</li>
-                </ul>
-              </div>
-            </div>
-          </div>
-          <div class="text-end">
-            Total paid: <span class="fw-bold">€{{ order.total_paid }}</span>
-          </div>
-        </div>
-  
-        <div class="col-md-12 col-lg-12 p-0">
-  
-          {% for item in order.items.all %}
-  
-          <div class="card mb-3 border-0">
-            <div class="row g-0">
-              <div class="col-md-2">
-                <img class="img-fluid" style="width:90px" src="{{item.product.image.url}}" />
-              </div>
-              <div class="col-12 col-md-5">
-                <div class="card-body p-1">
-                  <a class="text-decoration-none" href="{{ item.product.get_absolute_url }}">
-                    <p class="card-text">{{item.product|title}}</p>
-                  </a>
-                  <!-- Display buyer's note -->
-                  {% if order.buyer_note %}
-                  <div class="mt-2">
-                    Order Note:
-                    <span class="fst-italic">
-                      "{{ order.buyer_note }}"
-                    </span>
+          <div class="col-12 bg-light p-3 d-flex justify-content-between rounded-2">
+              <div class="d-flex d-flex-inline">
+                  <div class="pe-3">
+                      {{ order.created }}
+                      <div class="dropdown">
+                          <a class="text-reset text-decoration-none dropdown-toggle" href="#" role="link" id="dropdownLink" data-bs-toggle="dropdown" aria-expanded="false">
+                              Order Address
+                          </a>
+                          <ul class="dropdown-menu text-center" aria-labelledby="dropdownLink">
+                              <li class="item small">{{order.full_name}}</li>
+                              <li class="item small">{{order.address1}}</li>
+                              <li class="item small">{{order.address2}}</li>
+                              <li class="item small">{{order.post_code}}</li>
+                          </ul>
+                      </div>
                   </div>
+              </div>
+              <div class="text-end">
+                  Total paid: <span class="fw-bold">€{{ order.total_paid }}</span>
+              </div>
+          </div>
+
+          <div class="col-md-12 col-lg-12 p-0">
+              {% for item in order.items.all %}
+              <div class="card mb-3 border-0">
+                  <div class="row g-0">
+                      <div class="col-md-2">
+                          <img class="img-fluid" style="width:90px" src="{{item.product.image.url}}" />
+                      </div>
+                      <div class="col-12 col-md-5">
+                          <div class="card-body p-1">
+                              <a class="text-decoration-none" href="{{ item.product.get_absolute_url }}">
+                                  <p class="card-text">{{item.product|title}}</p>
+                              </a>
+                              <div class="mt-2">
+                                  Order Items: <span class="fw-bold">{{ order.items.all|length }}</span>
+                              </div>
+                              <!-- Display buyer's note -->
+                              {% if order.buyer_note %}
+                              <div class="mt-2">
+                                  Order Note:
+                                  <span class="fst-italic">
+                                      "{{ order.buyer_note }}"
+                                  </span>
+                              </div>
+                              {% endif %}
+                              <div class="mt-2">
+                                  Order Status: <span class="fw-bold">{{ order.get_order_status_display }}</span>
+                              </div>
+                          </div>
+                      </div>
+                      <div class="text-end d-flex flex-column justify-content-end col-12 col-md-5"> 
+                          <!-- Conditionally display download link if the status is 'Finalized' -->
+                          {% if order.order_status == 'finalized' and order.digital_product %}
+                          <div>
+                              <a href="{{ order.digital_product.url }}" class="btn btn-primary mt-2 col-12" download>
+                                  Download Product
+                              </a>
+                          </div>
+                          {% endif %}
+                      </div>
+                  </div>
+              </div>
+              <hr>
+              <div class="row g-0">
+                <div class="col-12 col-lg-5 ms-lg-auto text-end">
+                  {% if order.order_status == 'finalized' %}
+                  <button class="btn btn-secondary open-review-btn w-100 w-lg-auto mb-2" data-product-id="{{ item.product.id }}" type="button">Leave a review</button>
                   {% endif %}
-                  <div class="mt-2">
-                    Order Status: <span class="fw-bold">{{ order.get_order_status_display }}</span>
+                  <button class="btn btn-light problem-with-order-button w-100 w-lg-auto" type="button">Problem with order</button>
+                </div>
+              </div>      
+              <form class="py-4 star-rating justify-content-center" data-product-id="{{ item.product.id }}" style="display: none;">
+                  <div class="d-flex justify-content-center">
+                      {% for star in "12345" %}
+                      <label class="mx-1 mb-2 star-label">
+                          <input type="radio" name="rating" value="{{ star }}" class="star-radio"/>
+                          <span class="star">&#9734;</span>
+                      </label>
+                      {% endfor %}
                   </div>
-                </div>
-              </div>
-              <div class="text-end d-flex flex-column justify-content-end col-12 col-md-5"> 
-                <!-- Conditionally display download link if the status is 'Finalized' -->
-                {% if order.order_status == 'finalized' and order.digital_product %}
-                <div>
-                    <a href="{{ order.digital_product.url }}" class="btn btn-primary mt-2 col-12" download>
-                        Download Product
-                    </a>
-                </div>
-                {% endif %}
-              </div>
-            </div>
-          </div>
-          <hr>
-          <div class="col-md-12 col-lg-12 order-md-last pb-2 order-3">
-            <div class="d-grid gap-2 ">
-              <button class="btn btn-warning problem-with-order-button" type="button">Problem with order</button>
-              {% if order.order_status == 'finalized' %}
-              <button class="btn btn-light open-review-btn" data-product-id="{{ item.product.id }}" type="button">Leave a review</button>
-              {% endif %}
-            </div>
-          </div> 
-          <form class="py-4 star-rating justify-content-cente" data-product-id="{{ item.product.id }}" style="display: none;">
-            <div class="d-flex justify-content-center">
-              {% for star in "12345" %}
-              <label class="mx-1 mb-2 star-label">
-                  <input type="radio" name="rating" value="{{ star }}" class="star-radio"/>
-                  <span class="star">&#9734;</span>
-              </label>
+                  <div class="d-flex justify-content-center">
+                      <button class="btn btn-secondary leave-review-btn" data-product-id="{{ item.product.id }}" type="button">Submit review</button>
+                  </div>
+              </form>
+
               {% endfor %}
-            </div>
-            <div class="d-flex justify-content-center">
-              <button class="btn btn-secondary leave-review-btn" data-product-id="{{ item.product.id }}" type="button">Submit review</button>
-            </div>
-          </form>
-        
-          {% endfor %}
-        </div> 
+          </div> 
       </div>
-      {% endfor %}
+  </div>
+  {% endfor %}
 </div>
 {% comment %} Contact Form Section {% endcomment %}
 <div id="order-contact-form" class="container my-5" style="display: none;">
   <div class="row">
-      <div class="col-6 mx-auto">
+      <div class="col-md-6 col-12 mx-auto">
           <h2>Contact Us</h2>
           <form action="{% url 'store:contact_form_submit' %}" method="POST">
               {% csrf_token %}
