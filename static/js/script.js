@@ -80,13 +80,35 @@ $(document).ready(function() {
     contactFormSection.toggle();
   }
 
-  // Function to scroll to the contact form section
-  function scrollToContactForm() {
+   // Function to scroll to the contact form section
+   function scrollToContactForm() {
     var contactFormSection = $('#order-contact-form');
+    var offset = 128; 
     $('html, body').animate({
-        scrollTop: contactFormSection.offset().top
+        scrollTop: contactFormSection.offset().top - offset
     }, 500);
   } 
+
+  // Function to adjust padding based on hash
+  function adjustPaddingForHash() {
+    // Array of section IDs that require dynamic padding
+    const sections = ['contact-form-section', 'services-section'];
+
+    // Loop through each section
+    sections.forEach(sectionId => {
+        const section = $('#' + sectionId);
+        // Check if the current hash matches the section ID
+        if (window.location.hash === '#' + sectionId) {
+            section.css('padding-top', '8em'); // Adds padding when navigated to
+        } else {
+            section.css('padding-top', '0'); // Removes padding otherwise
+        }
+    });
+  }
+
+  // Call adjustPaddingForHash on load and on hash change
+  adjustPaddingForHash();
+  $(window).on('hashchange', adjustPaddingForHash);
 
   // Add click event listener to "Problem with order" button to toggle contact form
   $(document).on('click', '.problem-with-order-button', function(e) {
