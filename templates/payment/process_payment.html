@@ -5,87 +5,123 @@
 
 
 <div class="container" style="max-width: 1000px">
-  <div class="row no-gutter">
-    <div class="col-md-12">
-      <div class="login d-flex align-items-center">
-        <div class="container">
+  <div class="row gx-0">
+    <div class="col-12 px-0">
+        <h1 class="h2">Checkout</h1>
+    </div>
+    <div class="col-12 px-0">
+        <p>Please fill out the form below to complete your order</p>
+    </div>
+    <hr class="col-12" />
+  </div>
+  <div class="row">
+    <div class="col-md-4 order-md-2 mb-4">
+      <h5 class="d-flex justify-content-between align-items-center mb-3">
+        <span>Your Basket</span>
+        <span class="badge badge-secondary badge-pill">3</span>
+      </h5>
+      <ul class="list-group mb-3">
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Product name</h6>
+            <small class="text-muted">Brief description</small>
+          </div>
+          <span class="text-muted">$12</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Second product</h6>
+            <small class="text-muted">Brief description</small>
+          </div>
+          <span class="text-muted">$8</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between lh-condensed">
+          <div>
+            <h6 class="my-0">Third item</h6>
+            <small class="text-muted">Brief description</small>
+          </div>
+          <span class="text-muted">$5</span>
+        </li>
+        <li class="list-group-item d-flex justify-content-between">
+          <span>Total (EUR)</span>
+          <strong>€</strong>
+        </li>
+      </ul>
+    </div>
+    <div id="payment-form" class="col-md-8 order-md-1">
+        <h5 class="mb-3">Order Details</h5>
+        <!-- Error messages in this element -->
+        <div id="card-errors" class="a" role="alert"></div>
+        <form class="needs-validation" novalidate="">
           <div class="row">
-            <div id="payment-form" class="col-12 col-lg-6 mx-auto">
-              <h3 class="mb-3">Billing address</h3>
-              <!-- Error messages in this element -->
-              <div id="card-errors" class="a" role="alert"></div>
-              <form>
-                <div class="row g-3">
-                  <div class="col-sm-7">
-                    <label for="firstName" class="form-label">Customer Name</label>
-                    <input type="text" class="form-control" id="custName" placeholder="" required>
-                    <div class="invalid-feedback">
-                      Valid first name is required.
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <label for="email" class="form-label">Email <span class="text-muted">(Optional)</span></label>
-                    <input type="email" class="form-control" id="email" placeholder="you@example.com">
-                    <div class="invalid-feedback">
-                      Please enter a valid email address for shipping updates.
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <label for="address" class="form-label">Address</label>
-                    <input type="text" class="form-control" id="custAdd" placeholder="1234 Main St" required>
-                    <div class="invalid-feedback">
-                      Please enter your shipping address.
-                    </div>
-                  </div>
-                  <div class="col-12">
-                    <label for="address2" class="form-label">Address 2 <span
-                        class="text-muted">(Optional)</span></label>
-                    <input type="text" class="form-control" id="custAdd2" placeholder="Apartment or suite">
-                  </div>
-                  <div class="col-md-5">
-                    <label for="country" class="form-label">Country</label>
-                    <select class="form-select" id="country" required>
-                      <option value="">Choose...</option>
-                      <option>Ireland</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please select a valid country.
-                    </div>
-                  </div>
-                  <div class="col-md-4">
-                    <label for="state" class="form-label">State</label>
-                    <select class="form-select" id="state" required>
-                      <option value="">Choose...</option>
-                      <option>Kerry</option>
-                    </select>
-                    <div class="invalid-feedback">
-                      Please provide a valid state.
-                    </div>
-                  </div>
-                  <div class="col-md-3">
-                    <label for="Postcode" class="form-label">Postcode</label>
-                    <input type="text" class="form-control" id="postCode" placeholder="" required>
-                    <div class="invalid-feedback">
-                      Zip code required.
-                    </div>
-                  </div>
-                </div>
-                <hr class="my-4">
-                <h4 class="mb-3">Payment</h4>
-                <label for="card-element">Credit or debit card</label>
-                <div id="card-element" class="form-control form-control-payment">
-                  <!-- Payment elements will appear here -->
-                </div>
-                <hr class="my-4">
-                <button id="submit" class="btn btn-primary w-100 fw-bold" data-secret="{{ client_secret }}">Pay</button>
-              </form>
+            <div class="mb-3">
+              <label for="firstName" class="form-label visually-hidden">Full Name</label>
+              <input type="text" class="form-control text-muted" id="custName" placeholder="" value="Full Name*" required="">
+              <div class="invalid-feedback">
+                Valid name is required.
+              </div>
             </div>
           </div>
-        </div>
-      </div>
+          <div class="mb-3">
+            <label for="email" class="form-label visually-hidden">Email Address</label>
+            <input type="email" class="form-control" id="email" placeholder="Email Address*" value="" required="">
+            <div class="invalid-feedback">
+              Please enter a valid email address for shipping updates.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="address" class="form-label visually-hidden">Address</label>
+            <input type="text" class="form-control" id="custAdd" placeholder="Address Line 1*" required>
+            <div class="invalid-feedback">
+              Please enter your street address.
+            </div>
+          </div>
+          <div class="mb-3">
+            <label for="address2" class="form-label visually-hidden">Address 2</label>
+            <input type="text" class="form-control" id="custAdd2" placeholder="Address Line 2 (Optional)">
+          </div> 
+          <div class="row">     
+            <div class="col-md-5 mb-3">
+              <label for="country" class="form-label visually-hidden">Country</label>
+              <select class="form-select text-muted" id="country" required>
+                <option value="">Choose Country*</option>
+                <option>Ireland</option>
+              </select>
+              <div class="invalid-feedback">
+                Please select a valid country.
+              </div>
+            </div>   
+            <div class="col-md-4 mb-3">
+              <label for="state" class="form-label visually-hidden">State</label>
+              <select class="form-select text-muted" id="state" required>
+                <option value="">Choose State*</option>
+                <option>Kerry</option>
+              </select>
+              <div class="invalid-feedback">
+                Please provide a valid state.
+              </div>
+            </div>  
+            <div class="col-md-3 mb-3">
+                <label for="Postcode" class="form-label visually-hidden">Postcode</label>
+                <input type="text" class="form-control" id="postCode" placeholder="Post Code*" required>
+                <div class="invalid-feedback">
+                  Post code required.
+                </div>
+              </div>
+          </div>  
+          <hr class="my-4">
+          <h5 class="mb-3">Payment</h5>
+            <label for="card-element">Credit or debit card</label>
+            <div id="card-element" class="form-control form-control-payment">
+              <!-- Payment elements will appear here -->
+            </div>
+            <hr class="my-4">
+            <button id="submit" class="btn btn-primary w-100 fw-bold" data-secret="{{ client_secret }}">Pay for Order</button>
+        </form>        
     </div>
   </div>
 </div>
+
 
 
 <script>
