@@ -1,71 +1,79 @@
 {% extends "../base.html" %}
 {% load static %}
 {% block title %}Basket Summary{% endblock %}
+
 {% block content %}
 
-
 <div class="container" style="max-width: 1000px">
-  <h1 class="h2 col-12">Your Basket</h1>
-  <div class="col-12">
-    <p>Manage your <b>items</b> in your basket</p>
+  <div class="row gx-0">
+      <div class="col-12 px-0">
+          <h1 class="h2">Your Basket</h1>
+      </div>
+      <div class="col-12 px-0">
+          <p>Manage your <b>items</b> in your basket</p>
+      </div>
+      <hr class="col-12" />
   </div>
-  <hr />
+
   {% if basket|length == 0 %}
-  <div class="col-12">Your basket is empty. Go back to to <a href="{% url 'store:all_products' %}#services-section">All Services.</a></div>
+  <div class="col-12">Your basket is empty. Go back to <a href="{% url 'store:all_products' %}#services-section">All Services.</a></div>
   {% else %}
-    {% for item in basket %}
-      {% with product=item.product %}
-      <div data-index="{{product.id}}" class="col-12 row g-2 p-3 product-item">
-        <div class="col-md-3 col-lg-3 p-2 order-md-first bg-dark align-content-center" style="border-radius: 2em 0;">
+  {% for item in basket %}
+  {% with product=item.product %}
+  <div data-index="{{ product.id }}" class="row gx-0 product-item">
+      <div class="col-lg-3 p-2 mb-lg-0 mb-2 order-md-first bg-dark align-content-center" style="border-radius: 2em 0;">
           <img class="img-fluid mx-auto d-block align-self-stretch" width="125px" style="border-radius: 2em 0;" alt="Responsive image" src="{{ product.image.url }}">
-        </div>
-        <div class="col-md-9 col-lg-9 ps-md-3 ps-lg-5 d-flex flex-column">
-          <div class="border flex-grow-1 d-flex flex-column">
-            <div class="col border-bottom">
-              <div class="row p-3">
-                <h1 class="h4 col-6">
-                  <a href="{{ product.get_absolute_url }}" class="text-decoration-none text-reset">
-                    {{ product.title }}
-                  </a>
-                </h1>
-                <div class="col-6 text-end"><span class="fw-bold">€{{ product.price }}</span></div>
+      </div>
+      <div class="col-lg-9 d-flex flex-column">
+          <div class="border rounded-2 flex-grow-1 d-flex flex-column ms-lg-3">
+              <div class="row p-3 gx-0 border-bottom">
+                  <div class="col-6 px-0">
+                      <h1 class="h4">
+                          <a href="{{ product.get_absolute_url }}" class="text-decoration-none text-reset">
+                              {{ product.title }}
+                          </a>
+                      </h1>
+                  </div>
+                  <div class="col-6 px-0 text-end">
+                      <span class="fw-bold">€{{ product.price }}</span>
+                  </div>
               </div>
-            </div>
-            <div class="col align-content-center">
-              <div class="row p-3">
-                <div class="col-md-6 col-12 gap-2 pb-2 pb-md-0 d-flex align-items-stretch justify-content-md-start justify-content-center">
-                  <select id="select{{ product.id }}">
-                    {% for num in number_range %}
-                    <option value="{{ num }}" {% if num == item.qty %}selected{% endif %}>{{ num }}</option>
-                    {% endfor %}
-                  </select>
-                  {% csrf_token %}
-                  <button type="button" id="update-button" data-index="{{product.id}}" data-update-url="{% url 'store_basket:basket_update' %}" class="btn btn-outline-secondary btn-sm update-button">
-                    Update
-                  </button>
-                  <button type="button" id="delete-button" data-index="{{product.id}}" data-delete-url="{% url 'store_basket:basket_delete' %}" class="btn btn-outline-secondary btn-sm delete-button">
-                    Delete
-                  </button>
-                </div>
-                <div class="col-md-6 col-12 text-center text-md-end">
-                  <a href="{% url 'account:add_to_wishlist' item.product.id %}" class="btn btn-secondary" role="button">Add to Wishlist</a>
+              <div class="col align-content-center">
+                <div class="row p-3">
+                  <div class="col-md-6 col-12 gap-2 pb-2 pb-md-0 d-flex align-items-stretch justify-content-start">
+                    <select id="select{{ product.id }}">
+                      {% for num in number_range %}
+                      <option value="{{ num }}" {% if num == item.qty %}selected{% endif %}>{{ num }}</option>
+                      {% endfor %}
+                    </select>
+                    {% csrf_token %}
+                    <button type="button" id="update-button" data-index="{{product.id}}" data-update-url="{% url 'store_basket:basket_update' %}" class="btn btn-light btn-sm update-button">
+                      Update
+                    </button>
+                    <button type="button" id="delete-button" data-index="{{product.id}}" data-delete-url="{% url 'store_basket:basket_delete' %}" class="btn btn-light btn-sm delete-button">
+                      Delete
+                    </button>
+                  </div>
+                  <div class="col-md-6 col-12 text-center text-md-end">
+                    <a href="{% url 'account:add_to_wishlist' item.product.id %}" class="btn btn-secondary col-md-6 col-12" role="button">Add to Wishlist</a>
+                  </div>
                 </div>
               </div>
-            </div>
           </div>
-        </div>
       </div>
-      {% endwith %}
-    {% endfor %}
-    <div class="col-12 px-4 text-end">
+  </div>
+  {% endwith %}
+  {% endfor %}
+  <div class="col-12 text-end p-3">
       <div class="h5 pt-4 pb-3 fw-bold">
-        Total to pay: €
-        <div id="subtotal" class="d-inline-flex">
-          {{basket.get_total_price}}
-        </div>
+          Total to pay: €
+          <div id="subtotal" class="d-inline-flex">
+              {{ basket.get_total_price }}
+          </div>
       </div>
-      <a role="button" href="{% url "payment:basket" %}" class="btn btn-primary col-md-2 col-12 fw-bold" type="button">Checkout</a>
-    </div>
+      <a role="button" href="{% url "payment:basket" %}" class="btn btn-primary col-md-5 col-12 fw-bold" type="button">Checkout</a>
+  </div>
   {% endif %}
 </div>
+
 {% endblock %}
