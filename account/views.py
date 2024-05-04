@@ -73,7 +73,7 @@ def edit_details(request):
                 user.profile_image.delete()  # Delete the existing profile image
                 user.profile_image = None  # Set profile image to None
             user.save()
-            messages.success(request, 'Details successfully updated!')
+            messages.success(request, 'Details successfully updated!', extra_tags='addition')
             return redirect('account:edit_details')
     else:
         user_form = UserEditForm(instance=request.user)
