@@ -39,6 +39,7 @@ input[type="url"]:focus,
 input[type="search"]:focus,
 input[type="tel"]:focus,
 input[type="color"]:focus,
+.form-select:focus,
 .uneditable-input:focus,
 .dropdown-menu,
 .highlighted {   
