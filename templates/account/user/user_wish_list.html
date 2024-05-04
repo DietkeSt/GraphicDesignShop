@@ -88,20 +88,31 @@
 <!-- Wishlist -->
 <div class="container px-0 pt-2">
   {% if wishlist %}
-  {% for product in wishlist  %}
-
-  <div class="card mb-3 rounded-2">
-    <div class="row g-0">
-      <div class="col-md-2">
-        <img class="img-fluid d-block p-2" width="135px" src="{{ product.image.url }}"
-             alt="{{ product.image_alt_text }}" />
-      </div>
-      <div class="col-md-10">
-        <div class="card-body">
-          <h5 class="card-title"><a href="{% url 'store:product_detail' slug=product.slug %}" class="text-decoration-none">{{ product.title }}</a></h5>
-          <p class="card-text">{{product.description}}</p>
-          <p class="card-text"><small class="text-muted">€{{product.price}}</small></p>
-          <a type="button" class="btn btn-primary fw500 btn-sm" href="{% url 'account:remove_from_wishlist' product.id %}">Remove from Wishlist</a>
+  {% for product in wishlist %}
+  <div class="col-md-12 col-lg-12 p-0">
+    <div class="card mb-3 rounded-2 p-3">
+      <div class="row g-0">
+        <div class="col-md-2 d-flex justify-content-center align-items-center">
+          <img class="img-fluid" style="max-width: 90px;" src="{{ product.image.url }}"
+              alt="{{ product.image_alt_text }}">
+        </div>
+        <div class="col-12 col-md-5">
+          <div class="card-body d-flex flex-column">
+            <a href="{% url 'store:product_detail' slug=product.slug %}" class="text-decoration-none">
+              <p class="card-text">{{ product.title }}</p>
+            </a>
+            <div class="mt-2">
+              {{ product.description }}
+            </div>
+            <div class="mt-2">
+              <span class="card-text text-muted">€{{ product.price }}</span>
+            </div>
+          </div>
+        </div>
+        <div class="text-end d-flex flex-column justify-content-end col-12 col-md-5">
+          <a href="{% url 'account:remove_from_wishlist' product.id %}" class="btn btn-primary mt-2 col-12">
+            Remove from Wishlist
+          </a>
         </div>
       </div>
     </div>
@@ -112,10 +123,6 @@
   <p class="card-text">No products have been added to your wishlist yet</p>
   {% endif %}
 </div>
-
-
-
-
 
 
 {% endblock %}
