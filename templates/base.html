@@ -67,7 +67,7 @@
               {% if request.user.profile_image %}
                 <img src="{{ request.user.profile_image.url }}" alt="{{ request.user.name }}" width="32" height="32" class="rounded-circle">
               {% else %}
-                <!-- Default profile image if user has not uploaded one -->
+                {% comment %} Default profile image if user has not uploaded one {% endcomment %}
                 <img src="{% static 'images/default_profile.png' %}" alt="Default Profile Image" width="32" height="32" class="rounded-circle">
               {% endif %}
             </a>
@@ -79,7 +79,7 @@
               </li>
               <li>
                 <a class="dropdown-item" href="{% url 'account:edit_details' %}">
-                  Account <i class="fa-solid fa-user"></i>
+                  Profile <i class="fa-solid fa-user"></i>
                 </a>
               </li>
               <li>
@@ -219,48 +219,49 @@
                     </div>
                 </div>
           </div>
-          <div class="d-md-none d-lg-none d-xl-none">
-            <div class="collapse navbar-collapse" id="navbarCollapse">
-              <ul class="navbar-nav me-auto mb-2 mb-md-0">
-                <li>
-                  <a class="dropdown-item" href="{% url 'store:all_products' %}">
-                    Home
-                  </a>
-                </li>
-                <li>
-                  <a class="dropdown-item" href="{% url 'store:portfolio' %}">
-                    Portfolio
-                  </a>
-                </li> 
-                <li>
-                  <a class="dropdown-item" href="{% url 'store:all_products' %}#contact-form-section">
-                    Contact
-                  </a>
-                </li>
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-                <li>
-                  <a class="dropdown-item" href="{% url 'store:all_products' %}#services-section">
-                    All Services
-                  </a>
-                </li>
-                {% for c in categories %}
-                <li {% if category.slug == c.slug %}class="selected" {% endif %}>
-                  <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
-                </li>
-                {% endfor %}
-                <li>
-                  <hr class="dropdown-divider">
-                </li>
-              </ul>
-              <form class="d-flex w-100 d-md-none" method="GET" action="{% url 'store:all_products' %}">
-                <input class="form-control" type="search" placeholder="Search" name="q" aria-label="Search">
-                <button class="btn search-button" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
-              </form>
-            </div>
+        </div>
+        <div class="d-md-none d-lg-none d-xl-none">
+          <div class="collapse navbar-collapse justify-content-flex-start" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+              <li>
+                <a class="dropdown-item" href="{% url 'store:all_products' %}">
+                  Home
+                </a>
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'store:portfolio' %}">
+                  Portfolio
+                </a>
+              </li> 
+              <li>
+                <a class="dropdown-item" href="{% url 'store:all_products' %}#contact-form-section">
+                  Contact
+                </a>
+              </li>
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+              <li>
+                <a class="dropdown-item" href="{% url 'store:all_products' %}#services-section">
+                  All Services
+                </a>
+              </li>
+              {% for c in categories %}
+              <li {% if category.slug == c.slug %}class="selected" {% endif %}>
+                <a class="dropdown-item" href="{{ c.get_absolute_url }}">{{ c.name|title }}</a>
+              </li>
+              {% endfor %}
+              <li>
+                <hr class="dropdown-divider">
+              </li>
+            </ul>
+            <form class="d-flex w-100 d-md-none" method="GET" action="{% url 'store:all_products' %}">
+              <input class="form-control" type="search" placeholder="Search" name="q" aria-label="Search">
+              <button class="btn search-button" type="submit"><i class="fas fa-search" aria-hidden="true"></i></button>
+            </form>
           </div>
         </div>
+      </div>
       </nav>
     </header>
   {% comment %} Main content container {% endcomment %}
