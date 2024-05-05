@@ -3,14 +3,12 @@
 
 {% block content %}
 
-<section id="portfolio-detail" class="text-center container">
+<section id="portfolio-detail" class="text-center container" style="max-width: 1000px">
     {% comment %} Hero Container for Portfolio {% endcomment %}
-    <div class="row pb-4">
-        <div class="col-lg-6 col-md-8 mx-auto">
-            <img src="{{ portfolio_item.image.url }}" class="img-fluid mb-4" alt="{{ portfolio_item.title }}" style="border-radius: 2em 0;">
+    <div class="card rounded-2">
+        <div class="pb-4">
+            <img src="{{ portfolio_item.image.url }}" class="rounded-2 img-contain" alt="{{ portfolio_item.title }}" style="width: 100%; max-height: 70vh;">
         </div>
-    </div>
-    <div class="row">
         <div class="col-md-12">
             <h2>{{ portfolio_item.title }}</h2>
             <p>{{ portfolio_item.description }}</p>
