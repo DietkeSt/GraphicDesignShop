@@ -8,26 +8,33 @@ from .models import Customer, Address
 class UserAddressForm(forms.ModelForm):
     class Meta:
         model = Address
-        fields = ["full_name", "phone", "address_line", "address_line2", "town_city", "postcode"]
+        fields = ["full_name", "phone", "address_line", "address_line2", "town_city", "postcode", "country"]
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         self.fields["full_name"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "Full Name"}
+            {"class": "form-control mb-2 account-form", "placeholder": "Full Name*"}
         )
-        self.fields["phone"].widget.attrs.update({"class": "form-control mb-2 account-form", "placeholder": "Phone"})
+        self.fields["phone"].widget.attrs.update({"class": "form-control mb-2 account-form", "placeholder": "Phone (Optional)"})
         self.fields["address_line"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "House Number and Street"}
+            {"class": "form-control mb-2 account-form", "placeholder": "House Number and Street*"}
         )
         self.fields["address_line2"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "Second Address Line"}
+            {"class": "form-control mb-2 account-form", "placeholder": "Second Address Line (Optional)"}
         )
         self.fields["town_city"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "City, State"}
+            {"class": "form-control mb-2 account-form", "placeholder": "City, State*"}
         )
         self.fields["postcode"].widget.attrs.update(
-            {"class": "form-control mb-2 account-form", "placeholder": "Post Code"}
+            {"class": "form-control mb-2 account-form", "placeholder": "Post Code*"}
         )
+        self.fields["country"].widget.attrs.update(
+            {"class": "form-control mb-2 account-form", "placeholder": "Country*"}
+        )
+
+        # Set fields as not required
+        self.fields["address_line2"].required = False
+        self.fields["phone"].required = False
 
 
 class UserLoginForm(AuthenticationForm):
