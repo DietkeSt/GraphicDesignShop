@@ -74,17 +74,17 @@
             <ul class="dropdown-menu text-small" style="">
               <li>
                 <a class="dropdown-item" href="{% url 'account:dashboard' %}">
-                  Orders <i class="fa-solid fa-gift"></i>
+                  <i class="fa-solid fa-gift pe-2"></i> Orders
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="{% url 'account:edit_details' %}">
-                  Profile <i class="fa-solid fa-user"></i>
+                  <i class="fa-solid fa-user pe-2"></i> Profile
                 </a>
               </li>
               <li>
                 <a class="dropdown-item" href="{% url "account:wishlist" %}">
-                  Wishlist <i class="fa-solid fa-heart"></i>
+                  <i class="fa-solid fa-heart pe-2"></i> Wishlist 
                 </a>
               </li>
               <li>
@@ -92,7 +92,7 @@
               </li>
               <li>
                 <a class="dropdown-item" href="{% url 'account:logout' %}">
-                  Sign Out
+                  <i class="fa-solid fa-power-off pe-2"></i> Sign Out
                 </a>
               </li>
             </ul>
@@ -221,7 +221,7 @@
                     </div>
                     </div>
                     <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="{% url 'store_basket:basket_summary' %}">View Basket</a>
+                    <a class="dropdown-item text-center" href="{% url 'store_basket:basket_summary' %}">View Basket</a>
                     </div>
                 </div>
           </div>
