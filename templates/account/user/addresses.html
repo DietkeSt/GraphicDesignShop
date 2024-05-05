@@ -91,7 +91,7 @@
         <div class="col">
         <a href="{% url "account:add_address" %}" class="text-reset text-decoration-none" role="button"
             style="max-width: 540px;">
-            <div class="card mb-3 h-100" style="border: dashed 2px #ccc;">
+            <div class="card mb-3 h-100 btn" style="border: dashed 2px #ccc;">
             <div class="row g-0 h-100">
                 <div class="col-12" style="min-height:100px">
                 <div class="card-body text-center position-absolute top-50 start-50 translate-middle">
@@ -109,10 +109,10 @@
         </div>
         {% for address in addresses %}
         <div class="col">
-        <div class="card {% if address.default %}highlighted{% endif %}">
-            <div class="card-header bg-white text-muted">
+        <div class="card">
+            <div class="card-header bg-white text-pink">
             {% if address.default %}
-                Default Address 
+              Default Address
             {% endif %}
             &nbsp;
             </div>

@@ -87,28 +87,19 @@
         </div>
 </div>
 <!-- Profile -->
-<div class="col-md-12 col-lg-12 p-0 login pt-2">
+<div class="container px-0 pt-2">
     <div class="card mb-3 rounded-2 p-3">
         <form class="account-form" method="post" enctype="multipart/form-data">
             <div class="row justify-content-between gap-2">
                 <div class="d-flex flex-column justify-content-start col-12 col-md-6">
                     {% if user_form.is_valid and profile_form.is_valid  %}
-                    <div class="alert alert-primary" role="alert">
-                        Details successfully updated!
-                    </div>
                     <p class="small text-center pt-0">
                         <a href="{% url "account:dashboard" %}">Back to Dashboard</a>
                     </p>
                     {%else%}
                     <p class=" h3 font-weight-bold">Edit Account</p>
                     {% endif %}
-
-                    {% if form.errors %}
-                    <div class="alert alert-primary" role="alert">
-                        Error: Please try again!
-                    </div>
-                    {% endif %}
-
+                    
                     {% csrf_token %}
                     <label class="small fw-bold">{{ user_form.email.label}}</label>
                     {{ user_form.email }}
