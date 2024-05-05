@@ -278,7 +278,7 @@ if ($('#payment-form').length > 0) {
       }
   };
 
-  var card = elements.create("card", { style: style });
+  var card = elements.create("card", { style: style, hidePostalCode: true });
   card.mount("#card-element");
 
   card.on('change', ({error}) => {
