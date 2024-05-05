@@ -118,6 +118,10 @@ a.dropdown-item:active {
     outline: 0;
 }
 
+.text-pink {
+    color: #E56D90
+}
+
 /* Top Banner Styles */
 .top-banner {
     background-color: black;
