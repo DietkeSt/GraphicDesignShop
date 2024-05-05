@@ -87,78 +87,109 @@
         </div>
 </div>
 <!-- Profile -->
-<div class="col-6 mx-auto py-2 login">
-    <form class="account-form" method="post" enctype="multipart/form-data">
-        {% if user_form.is_valid and profile_form.is_valid  %}
-        <div class="alert alert-primary" role="alert">
-            Details successfully updated!
-        </div>
-        <p class="small text-center pt-0">
-            <a href="{% url "account:dashboard" %}">Back to Dashboard</a>
-        </p>
-        {%else%}
-        <p>You can edit your account using the following form:</p>
-        {% endif %}
+<div class="col-md-12 col-lg-12 p-0 login pt-2">
+    <div class="card mb-3 rounded-2 p-3">
+        <form class="account-form" method="post" enctype="multipart/form-data">
+            <div class="row justify-content-between gap-2">
+                <div class="d-flex flex-column justify-content-start col-12 col-md-6">
+                    {% if user_form.is_valid and profile_form.is_valid  %}
+                    <div class="alert alert-primary" role="alert">
+                        Details successfully updated!
+                    </div>
+                    <p class="small text-center pt-0">
+                        <a href="{% url "account:dashboard" %}">Back to Dashboard</a>
+                    </p>
+                    {%else%}
+                    <p class=" h3 font-weight-bold">Edit Account</p>
+                    {% endif %}
 
-        {% if form.errors %}
-        <div class="alert alert-primary" role="alert">
-            Error: Please try again!
-        </div>
-        {% endif %}
+                    {% if form.errors %}
+                    <div class="alert alert-primary" role="alert">
+                        Error: Please try again!
+                    </div>
+                    {% endif %}
 
-        {% csrf_token %}
-        <label class="small font-weight-bold">{{ user_form.email.label}}</label>
-        {{ user_form.email }}
-        <label class="small font-weight-bold">{{ user_form.name.label}}</label>
-        {{ user_form.name }}
-        <label class="small font-weight-bold" for="id_profile_image">Profile Image</label>
-        <div class="mb-3">
-            {% if user.profile_image %}
-            <img src="{{ user.profile_image.url }}" alt="Profile Image" class="img-thumbnail" style="max-width: 200px;">
-            <br>
-            <div class="form-check">
-                <input class="form-check-input" type="checkbox" id="clear-image-checkbox" name="clear_image">
-                <label class="form-check-label" for="clear-image-checkbox">Remove Image</label>
+                    {% csrf_token %}
+                    <label class="font-weight-bold">{{ user_form.email.label}}</label>
+                    {{ user_form.email }}
+                    <label class="font-weight-bold">{{ user_form.name.label}}</label>
+                    {{ user_form.name }}
+                    <label class="font-weight-bold" for="id_profile_image">Profile Image</label>
+                    <div class="mb-3">
+                        {% if user.profile_image %}
+                        <img src="{{ user.profile_image.url }}" alt="Profile Image" class="img-thumbnail" style="max-width: 200px;">
+                        <br>
+                        <div class="form-check pt-2">
+                            <input class="form-check-input" type="checkbox" id="clear-image-checkbox" name="clear_image">
+                            <label class="form-check-label" for="clear-image-checkbox">Remove Image</label>
+                        </div>
+                        <span id="file-name" class="pt-2"></span>
+                        {% else %}
+                        <img src="{% static 'images/default_profile.png' %}" alt="Default Image" class="img-thumbnail" style="max-width: 200px;">
+                        {% endif %}
+                    </div>
+                    <div class="input-group pt-0">
+                        <input type="file" class="form-control visually-hidden" id="id_profile_image" name="profile_image" accept="image/*"  onchange="displayFileName(this)">
+                        <label class="btn btn-secondary rounded-2 col-12" for="id_profile_image">Choose File</label>
+                    </div>
+                </div> 
+                <div class="d-flex flex-column justify-content-end col-12 col-md-5">
+                    <button class="btn btn-primary col-12" type="submit" value="Save changes">
+                        Save Changes
+                    </button>
+                </div>
             </div>
-            {% else %}
-            <img src="{% static 'images/default_profile.png' %}" alt="Default Image" class="img-thumbnail" style="max-width: 200px;">
-            {% endif %}
-        </div>
-        <div class="input-group pb-2">
-            <input type="file" class="form-control visually-hidden" id="id_profile_image" name="profile_image" accept="image/*"  onchange="displayFileName(this)">
-            <label class="input-group-text" for="id_profile_image">Choose File</label>
-        </div>
-        <span id="file-name" class="pt-2"></span>
-
-        <button class="w-100 btn btn-primary btn-block py-2 mb-4 mt-2 fw-bold" type="submit" value="Save changes">
-            Save Changes
-        </button>
-        <hr class="mb-3">
-    </form>
-    <form class="account-form" action="{% url "account:delete_user" %}" method="post">
-        {% csrf_token %}
-        <p class=" h3 pt-4 font-weight-bold">Delete Account</p>
-        <p>Are you sure you want to delete your account?</p>
-        <button type="submit" role="button" class="w-100 btn btn-danger btn-block py-2 mt-2 mb-4 fw-bold">
-            Delete
-        </button>
-    </form>
-    <hr class="mb-3">
-    {% if is_subscribed %}
-    <form action="{% url 'newsletter:unsubscribe_newsletter' %}" method="post">
-        {% csrf_token %}
-        <p class=" h3 pt-4 font-weight-bold">Newsletter</p>
-        <p>You are currently signed up for our Newsletter.</p>
-        <a href="{% url 'newsletter:unsubscribe_newsletter' %}" class="fw-bold w-100 btn btn-danger">Unsubscribe from Newsletter</a>
-    </form>
-    {% else %}
-    <form action="{% url 'newsletter:subscribe_newsletter' %}" method="post">
-        {% csrf_token %}
-        <p class=" h3 pt-4 font-weight-bold">Newsletter</p>
-        <p>Do you wish to subscribe to our Newsletter?</p>
-        <a href="{% url 'newsletter:subscribe_newsletter' %}" class="fw-bold w-100 btn btn-primary">Subscribe to Newsletter</a>
-    </form>
-    {% endif %} 
+        </form>
+    </div>    
+    <div class="card mb-3 rounded-2 p-3">
+        <form class="account-form" action="{% url "account:delete_user" %}" method="post">
+            {% csrf_token %}
+            <div class="row justify-content-between gap-2">
+                <div class="d-flex flex-column justify-content-start col-12 col-md-6">
+                    <p class=" h3 font-weight-bold">Delete Account</p>
+                    <span>Are you sure you want to delete your account?</span>
+                </div> 
+                <div class="d-flex flex-column justify-content-end col-12 col-md-5">
+                    <button type="submit" role="button" class="btn btn-danger col-12">
+                        Delete
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="card mb-3 rounded-2 p-3">
+        {% if is_subscribed %}
+        <form action="{% url 'newsletter:unsubscribe_newsletter' %}" method="post">
+            {% csrf_token %}
+            <div class="row justify-content-between gap-2">
+                <div class="d-flex flex-column justify-content-start col-12 col-md-6">
+                    <p class=" h3 font-weight-bold">Newsletter</p>
+                    <span>You are currently signed up for our Newsletter.</span>
+                </div> 
+                <div class="d-flex flex-column justify-content-end col-12 col-md-5">
+                    <a href="{% url 'newsletter:unsubscribe_newsletter' %}" class="btn btn-danger col-12">
+                        Unsubscribe
+                    </a>
+                </div>
+            </div>
+        </form>
+        {% else %}
+        <form action="{% url 'newsletter:subscribe_newsletter' %}" method="post">
+            {% csrf_token %}
+            <div class="row justify-content-between gap-2">
+                <div class="d-flex flex-column justify-content-start col-12 col-md-6">
+                    <p class="h3 font-weight-bold">Newsletter</p>
+                    <span>Do you wish to subscribe to our Newsletter?</span>
+                </div> 
+                <div class="d-flex flex-column justify-content-end col-12 col-md-5">
+                    <a href="{% url 'newsletter:subscribe_newsletter' %}" class="btn btn-primary col-12">
+                        Subscribe
+                    </a>
+                </div>
+            </div>    
+        </form>
+        {% endif %}
+    </div> 
 </div>
             
 {% endblock %}
