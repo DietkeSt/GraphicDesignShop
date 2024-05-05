@@ -144,6 +144,30 @@ $(document).ready(function() {
     $('#wishlistCard').addClass('highlighted');
   }
 
+  // Listen for changes on the address dropdown and update address fields
+  $('#addressSelect').change(function() {
+    var addressId = $(this).val();
+    if (addressId) {
+        // Fetch address details from the server
+        $.ajax({
+            type: 'GET',
+            url: `/account/get-address-details/${addressId}/`,
+            success: function(data) {
+                $('#full_name').val(data.full_name);
+                $('#phone').val(data.phone);
+                $('#address_line').val(data.address_line);
+                $('#address_line2').val(data.address_line2 || '');
+                $('#town_city').val(data.town_city);
+                $('#postcode').val(data.postcode);
+                $('#country').val(data.country);
+            },
+            error: function(error) {
+                console.log('Error fetching address details:', error);
+            }
+        });
+    }
+  });
+
   // Change event for radio buttons to update visual stars
   $('.star-rating input[type="radio"]').change(function() {
     var rating = $(this).val();
@@ -277,16 +301,30 @@ if ($('#payment-form').length > 0) {
     form.addEventListener('submit', function(ev) {
         ev.preventDefault();
 
-        var custName = document.getElementById("custName").value;
-        var custAdd = document.getElementById("custAdd").value;
-        var custAdd2 = document.getElementById("custAdd2").value;
-        var postCode = document.getElementById("postCode").value;
+        var full_name = document.getElementById("full_name").value;
+        var email = document.getElementById("email").value;
+        var phone = document.getElementById("phone").value;
+        var address_line = document.getElementById("address_line").value;
+        var address_line2 = document.getElementById("address_line2").value;
+        var town_city = document.getElementById("town_city").value;
+        var country = document.getElementById("country").value;
+        var postcode = document.getElementById("postcode").value;
+        var buyer_note = document.getElementById("buyer_note").value;
 
         $.ajax({
             type: "POST",
             url: 'http://127.0.0.1:8000/orders/add/',
             data: {
                 order_key: clientSecret,
+                full_name: full_name,
+                email: email,
+                phone: phone,
+                address_line: address_line,
+                address_line2: address_line2,
+                town_city: town_city,
+                country: country,
+                postcode: postcode,
+                buyer_note: buyer_note,
                 csrfmiddlewaretoken: CSRF_TOKEN,
                 action: "post",
             },
@@ -298,10 +336,15 @@ if ($('#payment-form').length > 0) {
                         card: card,
                         billing_details: {
                             address: {
-                                line1: custAdd,
-                                line2: custAdd2
+                                line1: address_line,
+                                line2: address_line2,
+                                city: town_city,
+                                country: country,
+                                postal_code: postcode
                             },
-                            name: custName
+                            name: full_name,
+                            email: email,
+                            phone: phone
                         },
                     }
                 }).then(function(result) {
