@@ -2,6 +2,7 @@ import json
 import os
 import stripe
 from django.contrib.auth.decorators import login_required
+from django_countries import countries
 from django.http.response import HttpResponse
 from django.http import JsonResponse
 from django.shortcuts import render
@@ -12,6 +13,7 @@ import logging
 
 from store_basket.models import Basket
 from orders.views import payment_confirmation
+from account.views import Address
 
 logger = logging.getLogger(__name__)
 
@@ -29,6 +31,8 @@ class Error(TemplateView):
 @login_required
 def BasketView(request):
     basket = Basket(request)
+    user_addresses = Address.objects.filter(customer=request.user)
+    country_list = list(countries)
     total = str(basket.get_total_price())
     total = total.replace('.', '')
     total = int(total)
@@ -40,8 +44,13 @@ def BasketView(request):
         metadata={'userid': request.user.id}
     )
 
-    return render(request, 'payment/process_payment.html', {'client_secret': intent.client_secret, 
-                                                            'STRIPE_PUBLISHABLE_KEY': os.environ.get('STRIPE_PUBLISHABLE_KEY')})
+    return render(request, 'payment/process_payment.html', {
+        'client_secret': intent.client_secret,
+        'STRIPE_PUBLISHABLE_KEY': os.environ.get('STRIPE_PUBLISHABLE_KEY'),
+        'countries': country_list,
+        'user_addresses': user_addresses,
+        'user_email': request.user.email 
+    })
 
       
 @csrf_exempt
