@@ -75,6 +75,10 @@ def edit_details(request):
             user.save()
             messages.success(request, 'Details successfully updated!', extra_tags='addition')
             return redirect('account:edit_details')
+        else:
+            for field, errors in user_form.errors.items():
+                    for error in errors:
+                        messages.error(request, f'Error in {field}: {error}', extra_tags='updated')
     else:
         user_form = UserEditForm(instance=request.user)
 
@@ -154,10 +158,16 @@ def add_address(request):
             address_form = address_form.save(commit=False)
             address_form.customer = request.user
             address_form.save()
+            messages.success(request, 'Address successfully added!', extra_tags='addition')
             return HttpResponseRedirect(reverse("account:addresses"))
+        else:
+            for field, errors in address_form.errors.items():
+                    for error in errors:
+                        messages.error(request, f'Error in {field}: {error}', extra_tags='updated')
     else:
         address_form = UserAddressForm()
     return render(request, "account/user/edit_addresses.html", {"form": address_form})
+
 
 @login_required
 def edit_address(request, id):
@@ -166,19 +176,37 @@ def edit_address(request, id):
         address_form = UserAddressForm(instance=address, data=request.POST)
         if address_form.is_valid():
             address_form.save()
+            messages.success(request, 'Address successfully updated!', extra_tags='addition')
             return HttpResponseRedirect(reverse("account:addresses"))
+        else:
+            for field, errors in address_form.errors.items():
+                    for error in errors:
+                        messages.error(request, f'Error in {field}: {error}', extra_tags='updated')
     else:
         address = Address.objects.get(pk=id, customer=request.user)
         address_form = UserAddressForm(instance=address)
     return render(request, "account/user/edit_addresses.html", {"form": address_form})
 
+
 @login_required
 def delete_address(request, id):
-    address = Address.objects.filter(pk=id, customer=request.user).delete()
+    try:
+        address = Address.objects.get(pk=id, customer=request.user)
+        address.delete()
+        messages.success(request, 'Address successfully deleted!', extra_tags='deletion')
+    except Address.DoesNotExist:
+        messages.error(request, 'Address does not exist or you do not have permission to delete it.', extra_tags='updated')
     return redirect("account:addresses")
+
 
 @login_required
 def set_default(request, id):
-    Address.objects.filter(customer=request.user, default=True).update(default=False)
-    Address.objects.filter(pk=id, customer=request.user).update(default=True)
-    return redirect("account:addresses")  
+    try:
+        address_to_set_default = Address.objects.get(pk=id, customer=request.user)
+        Address.objects.filter(customer=request.user, default=True).update(default=False)
+        address_to_set_default.default = True
+        address_to_set_default.save()
+        messages.success(request, 'Default address successfully updated!', extra_tags='addition')
+    except Address.DoesNotExist:
+        messages.error(request, 'Address does not exist or you do not have permission to set it as default.', extra_tags='updated')
+    return redirect("account:addresses")
