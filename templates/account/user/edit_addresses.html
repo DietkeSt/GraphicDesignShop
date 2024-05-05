@@ -3,116 +3,123 @@
 {% block title %}Edit Addresses{%endblock %} 
 {% block content %}
 
-<div class="container pt-5" style="max-width: 1000px">
-    <div class="col-12">
-      <h1 class="h2">Your Address Dashboard</h1>
+<div class="container" style="max-width: 1000px">
+  <div class="col-12">
+    <h1 class="h2">Your Address Dashboard</h1>
+  </div>
+  <div class="col-12 d-flex justify-content-between">
+      <div>Manage your <b>addresses</b></div>
+  </div>
+  <hr />
+  <div class="row row-cols-1 row-cols-sm-2 row-cols-md-2 g-2 pt-2">
+    <!-- Orders Card-->
+    <div class="col">
+      <a href="{% url "account:dashboard" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
+      <div id="ordersCard" class="card mb-3">
+        <div class="row g-0">
+          <div class="col-2 position-relative">
+              <i class="fa-solid fa-gift position-absolute top-50 start-50 translate-middle" style="font-size: 25px;"></i>
+          </div>
+          <div class="col-10">
+            <div class="card-body ps-0 ps-md-1">
+              <h1 class="h5">Your Orders</h1>
+              <p class="card-text small text-muted">View or change your orders</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </a>
     </div>
-    <div class="col-12 d-flex justify-content-between">
-        <div>Manage your <b>addresses</b></div>
+    <!-- Profile Card-->
+    <div class="col">
+      <a href="{% url "account:edit_details" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
+      <div id="profileCard" class="card mb-3">
+        <div class="row g-0">
+          <div class="col-2 position-relative">
+              <i class="fa-solid fa-user position-absolute top-50 start-50 translate-middle" style="font-size: 25px;"></i>
+          </div>
+          <div class="col-10">
+            <div class="card-body ps-0 ps-md-1">
+              <h1 class="h5">Your Profile</h1>
+              <p class="card-text small text-muted">Edit or delete your account details</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      </a>
     </div>
-    <hr />
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-      <!-- Orders Card-->
-      <div class="col">
-        <a href="{% url "account:dashboard" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
-        <div id="ordersCard" class="card mb-3">
-          <div class="row g-0">
-            <div class="col-2 position-relative">
-                <i class="fa-solid fa-gift position-absolute top-50 start-50 translate-middle" style="font-size: 30px;"></i>
-            </div>
-            <div class="col-10">
-              <div class="card-body ps-0 ps-md-1">
-                <h1 class="h5">Your Orders</h1>
-                <p class="card-text small text-muted">View or change your orders</p>
-              </div>
+    <!-- Address Card-->
+    <div class="col">
+      <a href="{% url "account:addresses" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
+      <div id="addressesCard" class="card mb-3">
+        <div class="row g-0">
+          <div class="col-2 position-relative">
+              <i class="fa-solid fa-truck position-absolute top-50 start-50 translate-middle" style="font-size: 25px;"></i>
+          </div>
+          <div class="col-10">
+            <div class="card-body ps-0 ps-md-1">
+              <h1 class="h5">Your Addresses</h1>
+              <p class="card-text small text-muted">Edit your shipping addresses</p>
             </div>
           </div>
         </div>
-        </a>
       </div>
-      <!-- Profile Card-->
-      <div class="col">
-        <a href="{% url "account:edit_details" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
-        <div id="profileCard" class="card mb-3">
-          <div class="row g-0">
-            <div class="col-2 position-relative">
-                <i class="fa-solid fa-user position-absolute top-50 start-50 translate-middle" style="font-size: 30px;"></i>
-            </div>
-            <div class="col-10">
-              <div class="card-body ps-0 ps-md-1">
-                <h1 class="h5">Your Profile</h1>
-                <p class="card-text small text-muted">Edit or delete your account details</p>
-              </div>
+      </a>
+  </div>
+  <!-- Wishlist Card-->
+  <div class="col">
+      <a href="{% url "account:wishlist" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
+      <div id="wishlistCard" class="card mb-3">
+        <div class="row g-0">
+          <div class="col-2 position-relative">
+            <i class="fa-solid fa-heart position-absolute top-50 start-50 translate-middle" style="font-size: 25px;"></i>
+          </div>
+          <div class="col-10">
+            <div class="card-body ps-0 ps-md-1">
+              <h1 class="h5">Your Wishlist</h1>
+              <p class="card-text small text-muted">View your wishlist</p>
             </div>
           </div>
         </div>
-        </a>
       </div>
-      <!-- Address Card-->
-      <div class="col">
-        <a href="{% url "account:addresses" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
-        <div id="addressesCard" class="card mb-3">
-          <div class="row g-0">
-            <div class="col-2 position-relative">
-                <i class="fa-solid fa-truck position-absolute top-50 start-50 translate-middle" style="font-size: 30px;"></i>
-            </div>
-            <div class="col-10">
-              <div class="card-body ps-0 ps-md-1">
-                <h1 class="h5">Your Addresses</h1>
-                <p class="card-text small text-muted">Edit your shipping addresses</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
-      <!-- Wishlist Card-->
-      <div class="col">
-        <a href="{% url "account:wishlist" %}" class="text-reset text-decoration-none" role="button" style="max-width: 540px;">
-        <div id="wishlistCard" class="card mb-3">
-          <div class="row g-0">
-            <div class="col-2 position-relative">
-              <i class="fa-solid fa-heart position-absolute top-50 start-50 translate-middle" style="font-size: 30px;"></i>
-            </div>
-            <div class="col-10">
-              <div class="card-body ps-0 ps-md-1">
-                <h1 class="h5">Your Wishlist</h1>
-                <p class="card-text small text-muted">View your wishlist</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        </a>
-      </div>
+      </a>
+    </div>
 </div>
 <!-- Edit Addresses -->
-<div class="col-6 mx-auto pb-4">
-  <div>Add a new delivery <b>address</b> and delivery preferences</div>
-  <hr />
-  <form name="address_form" class="account-form" method="post" enctype="multipart/form-data">
-    {% if form.errors %}
-    <div class="alert alert-primary" role="alert">
-      Error: Please try again!
+<div class="col-12 p-0 pt-2">
+  <div class="card mb-3 rounded-2 p-3">
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <div class="row justify-content-between gap-2">
+          <p class=" h3 font-weight-bold">Edit/Add Address</p>
+          <form name="address_form" class="account-form" method="post" enctype="multipart/form-data">
+            {% if form.errors %}
+            <div class="alert alert-primary" role="alert">
+              Error: Please try again!
+            </div>
+            {% endif %}
+            {% csrf_token %}
+            <label class="small fw-bold">{{ form.full_name.label}}</label>
+            {{ form.full_name }}
+            <label class="small fw-bold">{{ form.phone.label}}</label>
+            {{ form.phone }}
+            <label class="small fw-bold">{{ form.address_line.label}}</label>
+            {{ form.address_line }}
+            <label class="small fw-bold">{{ form.address_line2.label}}</label>
+            {{ form.address_line2 }}
+            <label class="small fw-bold">{{ form.town_city.label}}</label>
+            {{ form.town_city }}
+            <label class="small fw-bold">{{ form.postcode.label}}</label>
+            {{ form.postcode }}
+            <label class="small fw-bold">{{ form.country.label}}</label>
+            {{ form.country }}
+            <button class="btn btn-primary col-12 mt-2" type="button" value="Submit" onclick="submitForm()">
+              Update Address
+            </button>
+          </form>
+        </div>
+      </div>
     </div>
-    {% endif %}
-    {% csrf_token %}
-    <label class="small fw-bold">{{ form.full_name.label}}</label>
-    {{ form.full_name }}
-    <label class="small fw-bold">{{ form.phone.label}}</label>
-    {{ form.phone }}
-    <label class="small fw-bold">{{ form.address_line.label}}</label>
-    {{ form.address_line }}
-    <label class="small fw-bold">{{ form.address_line2.label}}</label>
-    {{ form.address_line2 }}
-    <label class="small fw-bold">{{ form.town_city.label}}</label>
-    {{ form.town_city }}
-    <label class="small fw-bold">{{ form.postcode.label}}</label>
-    {{ form.postcode }}
-    <button class="btn btn-primary btn-block py-2 mb-4 mt-4 fw-bold w-100" type="button" value="Submit" onclick="submitForm()">
-    Add Address
-    </button>
-  </form>
-
+  </div>
 </div>
 
 {% endblock %}
