@@ -2,7 +2,7 @@ from django.contrib import messages
 from django.contrib.auth import login, logout
 from django.contrib.auth.decorators import login_required
 from django.contrib.sites.shortcuts import get_current_site
-from django.http import HttpResponse, HttpResponseRedirect
+from django.http import HttpResponse, HttpResponseRedirect, JsonResponse
 from django.shortcuts import get_object_or_404, redirect, render
 from django.urls import reverse
 from django.template.loader import render_to_string
@@ -210,3 +210,19 @@ def set_default(request, id):
     except Address.DoesNotExist:
         messages.error(request, 'Address does not exist or you do not have permission to set it as default.', extra_tags='updated')
     return redirect("account:addresses")
+
+
+def get_address_details(request, address_id):
+    try:
+        address = Address.objects.get(id=address_id, customer=request.user)
+        return JsonResponse({
+            'full_name': address.full_name,
+            'phone': address.phone or '',
+            'address_line': address.address_line,
+            'address_line2': address.address_line2 or '',
+            'town_city': address.town_city,
+            'postcode': address.postcode,
+            'country': address.country
+        })
+    except Address.DoesNotExist:
+        return JsonResponse({'error': 'Address not found'}, status=404)
