@@ -87,7 +87,7 @@
 </div>
 <!-- Addresses -->
 <div class="container px-0 pt-2">
-    <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+    <div class="row row-cols-1 row-cols-md-2 g-3">
         <div class="col">
         <a href="{% url "account:add_address" %}" class="text-reset text-decoration-none" role="button"
             style="max-width: 540px;">
@@ -109,28 +109,33 @@
         </div>
         {% for address in addresses %}
         <div class="col">
-        <div class="card pb-3">
-            <div class="card-header bg-white small text-muted">
+        <div class="card {% if address.default %}highlighted{% endif %}">
+            <div class="card-header bg-white text-muted">
             {% if address.default %}
-                Default 
+                Default Address 
             {% endif %}
             &nbsp;
             </div>
-            <div class="card-body small pb-1">
-            <p class="card-text m-0 fw-bold">{{address.full_name}}</p>
-            <p class="card-text m-0">{{address.address_line}}</p>
-            <p class="card-text m-0">{{address.address_line2}}</p>
-            <p class="card-text m-0">{{address.town_city}}</p>
-            <p class="card-text m-0">{{address.postcode}}</p>
-            <p class="card-text m-0">Phone number: {{address.phone}}</p>
-            <div class="pt-5">
-                <a href="{% url 'account:edit_address' address.id %}" class="text-decoration-none">Edit</a>
-                |
-                <a href="{% url 'account:delete_address' address.id %}" class="text-decoration-none">Delete</a>
-                {% if not address.default %}
-                | <a href="{% url 'account:set_default' address.id %}" class="text-decoration-none">Set Default</a>
-                {% endif %}
-            </div>
+            <div class="card-body p-3">
+              <p class="card-text m-0 fw-bold">{{address.full_name}}</p>
+              <p class="card-text m-0">{{address.address_line}}</p>
+              <p class="card-text m-0">{{address.address_line2}}</p>
+              <p class="card-text m-0">{{address.town_city}}</p>
+              <p class="card-text m-0">{{address.postcode}}</p>
+              <p class="card-text m-0">Phone number: {{address.phone}}</p>
+              <div class="pt-5 row">
+                <div class="col-12 col-md-6 mb-2">
+                  <a href="{% url 'account:edit_address' address.id %}" class="col-12 btn btn-light">Edit</a>
+                </div>
+                <div class="col-12 col-md-6 mb-2">
+                  <a href="{% url 'account:delete_address' address.id %}" class="col-12 btn btn-light">Delete</a>
+                </div>
+                  {% if not address.default %}
+                <div class="col-12 mb-2">
+                  <a href="{% url 'account:set_default' address.id %}" class="col-12 btn btn-secondary">Set Default</a>
+                </div>
+                  {% endif %}
+              </div>
             </div>
         </div>
         </a>
