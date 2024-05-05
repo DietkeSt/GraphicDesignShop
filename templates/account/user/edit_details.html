@@ -110,11 +110,11 @@
                     {% endif %}
 
                     {% csrf_token %}
-                    <label class="font-weight-bold">{{ user_form.email.label}}</label>
+                    <label class="small fw-bold">{{ user_form.email.label}}</label>
                     {{ user_form.email }}
-                    <label class="font-weight-bold">{{ user_form.name.label}}</label>
+                    <label class="small fw-bold">{{ user_form.name.label}}</label>
                     {{ user_form.name }}
-                    <label class="font-weight-bold" for="id_profile_image">Profile Image</label>
+                    <label class="small fw-bold" for="id_profile_image">Profile Image</label>
                     <div class="mb-3">
                         {% if user.profile_image %}
                         <img src="{{ user.profile_image.url }}" alt="Profile Image" class="img-thumbnail" style="max-width: 200px;">
