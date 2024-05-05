@@ -59,7 +59,7 @@
             <div class="col-10">
               <div class="card-body ps-0 ps-md-1">
                 <h1 class="h5">Your Addresses</h1>
-                <p class="card-text small text-muted">Edit your shipping addresses</p>
+                <p class="card-text small text-muted">Edit your addresses</p>
               </div>
             </div>
           </div>
@@ -98,11 +98,13 @@
                           <a class="text-reset text-decoration-none dropdown-toggle" href="#" role="link" id="dropdownLink" data-bs-toggle="dropdown" aria-expanded="false">
                               Order Address
                           </a>
-                          <ul class="dropdown-menu text-center" aria-labelledby="dropdownLink">
+                          <ul class="dropdown-menu p-3" aria-labelledby="dropdownLink">
                               <li class="item small">{{order.full_name}}</li>
-                              <li class="item small">{{order.address1}}</li>
-                              <li class="item small">{{order.address2}}</li>
-                              <li class="item small">{{order.post_code}}</li>
+                              <li class="item small">{{order.address_line}}</li>
+                              <li class="item small">{{order.address_line2}}</li>
+                              <li class="item small">{{order.town_city}}</li>
+                              <li class="item small">{{order.postcode}}</li>
+                              <li class="item small">{{order.country}}</li>
                           </ul>
                       </div>
                   </div>
