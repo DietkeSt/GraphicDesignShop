@@ -20,7 +20,7 @@
   {% else %}
   {% for item in basket %}
   {% with product=item.product %}
-  <div data-index="{{ product.id }}" class="row gx-0 product-item">
+  <div data-index="{{ product.id }}" class="row gx-0 product-item mb-2">
       <div class="col-lg-3 p-2 mb-lg-0 mb-2 order-md-first bg-dark align-content-center" style="border-radius: 2em 0;">
           <img class="img-fluid mx-auto d-block align-self-stretch" width="125px" style="border-radius: 2em 0;" alt="Responsive image" src="{{ product.image.url }}">
       </div>
