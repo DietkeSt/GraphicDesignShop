@@ -271,7 +271,7 @@
 
 3. Follow the steps to create the database, and you'll receive an email with the database URL. You will need the URL of your database to connect it to your Django project.
 
-    ![ElephantSQL. DB](documentation/deployment/ci_postgresql_link.png)
+    ![CI PostgreSQL link. DB](documentation/deployment/ci_postgresql_link.png)
 
 ---
 
@@ -294,7 +294,7 @@
 
 4. In your app go to the **"Settings"** tab where you add the config var `DATABASE_URL`, and for the value, copy in your database url from CI PostgreSQL.
 
-    ![ElephantSQL. DB](documentation/deployment/heroku_add_database_url.png)
+    ![CI PostgreSQL. DB](documentation/deployment/heroku_add_database_url.png)
     
     - We'll come back here later to add more config vars.
 
@@ -321,7 +321,7 @@
     import dj_database_url
     ```
 
-4. Scroll to the `DATABASES` section and update it to the following code, so that the original connection to sqlite3 is commented out and we connect to the new ElephantSQL database instead.
+4. Scroll to the `DATABASES` section and update it to the following code, so that the original connection to sqlite3 is commented out and we connect to the new database instead.
 
     ```
     # DATABASES = {
@@ -336,8 +336,85 @@
     }
     ```
 
-    - Paste in your ElephantSQL database URL in the position indicated, this is only temporary, so do not commit this file.
+    - Save your Database URL in your env.py file:
+       
+       `os.environ["DATABASE_URL"] = your database url` 
+       
+    - And update the DATABASES to the following code:
 
+        ```
+        DATABASES = {
+        'default': dj_database_url.parse(os.environ.get("DATABASE_URL")),
+        }
+        ```
+
+5. Now type in these commands into your terminal to load your new database:
+
+    - Migrate your database models: 
+        ```
+        python3 manage.py migrate
+        ```
+    - Create a superuser for your new database: 
+        ```
+        python3 manage.py createsuperuser
+        ```
+
+---
+
+### Step 4: Setup your Cloudinary 
+
+**To get Cloudinary cloud name, API key, and API secret:**
+
+1. Go to the [Cloudinary website](https://cloudinary.com/).
+
+2. Log in to your account or sign up if you don't have an account.
+
+3. Go to the the Cloudinary Dashboard by clicking on **"Dashboard"** on the left.
+
+4. At the top of the page, you will see your cloud name, API key, and API secret.
+
+5. To reveal API secret, hover over the API key container and click on the button that looks like an eye.
+
+6. Copy these values and paste them into your `env.py` file:
+
+    - ```os.environ["CLOUDINARY_CLOUD_NAME"]``` = your cloudinary cloud name.
+    - ```os.environ["CLOUDINARY_API_KEY"]``` = your cloudinary api key.
+    - ```os.environ["CLOUDINARY_API_SECRET"]``` = your cloudinary api secret.
+
+
+In your local repository:
+
+1. Open the terminal and add the Cloudinary libraries to your project:
+
+```
+pip install cloudinary django-cloudinary-storage
+```
+
+2. Update the `settings.py`:
+```
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
+
+
+# Cloudinary settings
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+)
+
+
+# Tell Django to use Cloudinary for static files and media uploads
+DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
+```
+
+3. Add cloudinary to `INSTALLED_APPS`:
+
+```
+'cloudinary_storage',
+'cloudinary',
+```
  __   
 
     1. ```ALLOWED_HOSTS``` = your heroku domain name.
