@@ -10,9 +10,15 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
-import os
 from pathlib import Path
 from dotenv import load_dotenv
+import os
+
+import dj_database_url
+
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -22,14 +28,23 @@ env_path = BASE_DIR / 'sendgrid.env'
 load_dotenv(dotenv_path=env_path)
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-#6h5j0e_^p5(dg596^bq4lv*f@_occ=o%jjc^*)91$7x9finzl'
+SECRET_KEY = os.getenv("SECRET_KEY")
 
-# SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+# Debug
+DEBUG = os.getenv("DEBUG") == "True"
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
+ALLOWED_HOSTS = [
+    '',
+    'localhost',
+    '127.0.0.1',
+    '0.0.0.0',
+]
 
-SITE_ID = 1 
+# Retrieve the Heroku host
+HEROKU_HOSTNAME = os.getenv('HEROKU_APP_NAME')
+
+if HEROKU_HOSTNAME:
+    ALLOWED_HOSTS.append(f'{HEROKU_HOSTNAME}.herokuapp.com')
 
 # Application definition
 INSTALLED_APPS = [
@@ -80,8 +95,9 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'artistic_edge.wsgi.application'
+SITE_ID = 1
 
+WSGI_APPLICATION = 'artistic_edge.wsgi.application'
 
 # Database
 # https://docs.djangoproject.com/en/5.0/ref/settings/#databases
@@ -125,18 +141,24 @@ USE_I18N = True
 USE_TZ = True
 
 
+# Cloudinary settings
+cloudinary.config(
+    cloud_name=os.environ.get("CLOUDINARY_CLOUD_NAME"),
+    api_key=os.environ.get("CLOUDINARY_API_KEY"),
+    api_secret=os.environ.get("CLOUDINARY_API_SECRET"),
+)
+
+
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
+STATIC_URL = 'static/'
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_DIRS = [BASE_DIR / 'static',]
-
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
-
-STATIC_URL = 'static/'
-
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
+# DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 
 # Basket session ID
 BASKET_SESSION_ID = 'basket'
