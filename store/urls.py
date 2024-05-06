@@ -13,7 +13,6 @@ from orders.views import submit_review
 app_name = 'store'
 
 urlpatterns = [
-    path('test/', lambda request: HttpResponse("Test page works!"), name='test'),
     path('contact/', views.contact_form_submit, name='contact_form_submit'),
     path('submit-review/<int:product_id>/', submit_review, name='submit-review'),
     path('portfolio/', views.portfolio, name='portfolio'),
