@@ -8,6 +8,9 @@ from store.models import Product
 
 
 def basket_summary(request):
+    """
+    Renders the summary page of the basket.
+    """
     basket = Basket(request)
     number_range = range(1, 101)
     context = {
@@ -17,6 +20,9 @@ def basket_summary(request):
     return render(request, 'basket/summary.html', context)
 
 def add_to_basket(request):
+    """
+    Adds a product to the basket.
+    """
     basket = Basket(request)
     if request.POST.get('action') == 'post':
         product_id = int(request.POST.get('productid'))
@@ -32,6 +38,9 @@ def add_to_basket(request):
     
 
 def basket_delete(request):
+    """
+    Deletes a product from the basket.
+    """
     basket = Basket(request)
     if request.POST.get('action') == 'post':
         product_id = int(request.POST.get('productid'))
@@ -47,6 +56,9 @@ def basket_delete(request):
 
 
 def basket_update(request):
+    """
+    Updates the quantity of a product in the basket.
+    """
     basket = Basket(request)
     if request.POST.get('action') == 'post':
         product_id = int(request.POST.get('productid'))
@@ -63,6 +75,9 @@ def basket_update(request):
     
 
 def clear_basket(request):
+    """
+    Clears the basket.
+    """
     if 'skey' in request.session:
         del request.session['skey']
     return HttpResponseRedirect(reverse('store:all_products'))
