@@ -1,3 +1,7 @@
+"""
+URL Configuration for the payment app.
+"""
+
 from django.urls import path
 
 from . import views

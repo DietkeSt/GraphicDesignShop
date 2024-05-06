@@ -3,33 +3,22 @@ import os
 import stripe
 from django.contrib.auth.decorators import login_required
 from django_countries import countries
-from django.http.response import HttpResponse
-from django.http import JsonResponse
+from django.http.response import HttpResponse, JsonResponse
 from django.shortcuts import render
 from django.views.decorators.csrf import csrf_exempt
 from django.views.generic.base import TemplateView
 from django.conf import settings
-import logging
 
 from store_basket.models import Basket
 from orders.views import payment_confirmation
 from account.views import Address
 
-logger = logging.getLogger(__name__)
-
-
-def order_placed(request):
-    basket = Basket(request)
-    basket.clear()
-    return render(request, 'payment/orderplaced.html')
-
-
-class Error(TemplateView):
-    template_name = 'payment/error.html'
-
 
 @login_required
 def BasketView(request):
+    """
+    Render the basket view for payment processing.
+    """
     basket = Basket(request)
     user_addresses = Address.objects.filter(customer=request.user)
     country_list = list(countries)
@@ -55,6 +44,9 @@ def BasketView(request):
       
 @csrf_exempt
 def stripe_webhook(request):
+    """
+    Handle webhook events from Stripe.
+    """
     payload = request.body
     event = None
 
@@ -74,3 +66,19 @@ def stripe_webhook(request):
         print('Unhandled event type {}'.format(event.type))
 
     return HttpResponse(status=200)
+
+
+def order_placed(request):
+    """
+    Render the order placed view.
+    """
+    basket = Basket(request)
+    basket.clear()
+    return render(request, 'payment/orderplaced.html')
+
+
+class Error(TemplateView):
+    """
+    Error view for payment processing.
+    """
+    template_name = 'payment/error.html'
