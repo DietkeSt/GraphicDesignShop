@@ -415,24 +415,29 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 'cloudinary_storage',
 'cloudinary',
 ```
- __   
 
-    1. ```ALLOWED_HOSTS``` = your heroku domain name.
-    2. ```CLOUDINARY_CLOUD_NAME``` = the cloud name you used when creating your cloudinary account.
-    3. ```CLOUDINARY_API_KEY``` = the api key you got when created your cloudinary account.
-    4. ```CLOUDINARY_API_SECRET``` = the api secret you got when created your cloudinary account.
-    5. ```DATABASE_URL``` = the url of your heroku postgres database.
-    6. ```REDIS_URL``` = the url of your heroku redis database.
-    7. ```SECRET_KEY``` = a secret key for your app.
-    8. ```EMAIL_HOST_USER``` = the email address you going to use to send emails.
-    9. ```EMAIL_HOST_PASSWORD``` = the password for the email address you are using.
-    10. ```DEBUG``` = True during development, False during production.
-    11. ```DISABLE_COLLECTSTATIC``` = 1 during development. Remove this when deploying to production.
-    12. ```STRIPE_PUBLIC_KEY``` = the public key you got when created your stripe account.
-    13. ```STRIPE_SECRET_KEY``` = the secret key you got when created your stripe account.
-    14. ```STRIPE_WEBHOOK_SECRET``` = the secret key you got when created your stripe webhook.
+---
 
-5. In your app go to the "Deploy" tab.
+### Step 4: Deploy to Heroku
+
+1. Go back to your [Heroku Settings](https://dashboard.heroku.com/apps/artisticedge/settings) **"Reaveal the current Config Vars"** and add the following missing values:
+
+    - ```ALLOWED_HOSTS``` = your heroku domain name.
+    - ```CLOUDINARY_CLOUD_NAME``` = the cloud name you used when creating your cloudinary account.
+    - ```CLOUDINARY_API_KEY``` = the api key you got when created your cloudinary account.
+    - ```CLOUDINARY_API_SECRET``` = the api secret you got when created your cloudinary account.
+    - ```DATABASE_URL``` = the url of your heroku postgres database.
+    - ```SECRET_KEY``` = a secret key for your app.
+    - ```EMAIL_HOST_USER``` = the email address you going to use to send emails.
+    - ```EMAIL_HOST_PASSWORD``` = the password for the email address you are using.
+    - ```MAILCHIMP_API_KEY``` = for newsletter signup in your app.
+    - ```DEBUG``` = True during development, False during production.
+    - ```DISABLE_COLLECTSTATIC``` = 1 during development. Remove this when deploying to production.
+    - ```STRIPE_PUBLIC_KEY``` = the public key you got when created your stripe account.
+    - ```STRIPE_SECRET_KEY``` = the secret key you got when created your stripe account.
+    - ```STRIPE_WEBHOOK_SECRET``` = the secret key you got when created your stripe webhook.
+
+2. Navigate to the "Deploy" tab.
 
     1. If it's already possible, connect your Heroku account to your GitHub account and then click on the "Deploy" button.
     2. If not, you need to copy the Heroku CLI command to connect your heroku app and your local repository.
