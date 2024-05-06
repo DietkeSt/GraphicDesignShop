@@ -1,5 +1,5 @@
 """
-URL patterns for the orders app.
+URL configuration for the orders app.
 """
 
 from django.urls import path
