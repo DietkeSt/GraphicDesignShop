@@ -1,0 +1,29 @@
+{% extends "../../base.html" %}
+{% block title %}404 Error{% endblock %}
+{% block content %}
+
+
+<div class="container" style="max-width: 1000px">
+    <div class="row no-gutter">
+        <div class="col-md-12">
+            <div class="login d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6  mx-auto">
+                            <div class="account-logout p-4 rounded">
+                                <h1 class="mb-4">404 Error</h1>
+                                <div class="card h-100 shadow-sm" style="border-radius: 2em 0;">
+                                    <img src="{% static 'images/404error.png' %}" alt="404 error warning image">
+                                </div>
+                                <strong>Oh! It seems that this page doesn't exist.</strong>
+                                <p><a href="{% url 'store:all_products' %}">Click here to go back home</a></p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
