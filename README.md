@@ -180,13 +180,8 @@ I have used Django EmailMultiAlternatives to send the newsletter.
 
 ![NewsLetter](documentation/web_marketing/newsletter.png)
 
-2. Promo Codes
 
-To send a newsletter about new loyalty programs with promo codes to all customers, the manager can create a newsletter using the same form with a promo code field filled with a legend. Django EmailMultiAlternatives is also responsible for it.
-
-![Promo Codes](documentation/web_marketing/promo_email.png)
-
-3. Facebook
+2. Facebook
 
 Facebook is essential for the store to be able to reach customers. According to the statistics, the store has a good reach among people who prefer to use Facebook. Facebook has excellent coverage worldwide among people who can purchase products online.
 
@@ -194,21 +189,39 @@ Facebook is essential for the store to be able to reach customers. According to 
 
 [WoWder Facebook Page](documentation/web_marketing/wowder_facebook_mockup.pdf)
 
-4. Instagram
 
-Instagram attracts people of younger ages and is essential for the store to be able to reach this age group. According to the statistics, 90% of Instagram users are under 35 years old. [See report](https://info.lse.ac.uk/staff/divisions/communications-division/digital-communications-team/assets/documents/guides/A-Guide-To-Social-Media-Platforms-and-Demographics.pdf)
+3. LinkedIn
 
-"WoWder" Instagram page is for marketing purposes to post adverts, interesting content, and engage users.
-
-[WoWder Instagram Page](documentation/web_marketing/wowder_instagram_mockup.pdf)
-
-5. Twitter
-
-Twitter has become a place for people from different backgrounds to meet and discuss various topics! That is why "WoWder" presence is also essential on this platform.
+To reach businesses and be searchable by other businesses in offering services.
 
 "WoWder" Twitter page is for marketing purposes to post adverts, and exciting content, and start the discussion about the shop itself.
 
 [WoWder Twitter Page](documentation/web_marketing/wowder_twitter_mockup.pdf)
+
+### SEO implementations in HTML
+
+META descriptions for search engines:
+
+Explore ArtisticEdge, your global partner for exceptional graphic design services. Specializing in web design, branding, and visual graphics, we elevate your brand with custom, high-quality design solutions tailored to your unique needs.
+
+Keywords:
+
+ArtisticEdge, graphic design Ireland, web design services, custom branding services, graphic design studio, visual graphics, logo design, user interface design, digital art, promotional graphics, Ireland design services, global design services
+
+Title: 
+ArtisticEdge | Expert Graphic Design Services | Ireland and Worldwide
+
+### Other SEO implementations
+
+sitemap.xml
+
+robots.txt
+
+link to external resource - rel attribute
+
+
+
+
 
 ---
 
