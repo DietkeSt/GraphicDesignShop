@@ -24,19 +24,19 @@
                             {% endfor %}
                             {% endif %}
 
-                            <label class="fw-bold small">{{ form.name.label }}<span class="text-muted small">
+                            <label class="visually-hidden">{{ form.name.label }}<span class="text-muted small">
                                 (Required)</span></label>
                             {{ form.name }}
-                            <label class="fw-bold small">{{ form.email.label}}<span class="text-muted small">
+                            <label class="visually-hidden">{{ form.email.label}}<span class="text-muted small">
                                 (Required)</span></label>
                             {{ form.email }}
-                            <label class="fw-bold small">{{ form.password.label}}<span class="text-muted small">
+                            <label class="visually-hidden">{{ form.password.label}}<span class="text-muted small">
                                 (Required)</span></label>
                              <small class="text-muted small">
                                 At least 8 characters and 1 digit
                             </small>
                             {{ form.password }}
-                            <label class="fw-bold small">{{ form.password2.label}}<span class="text-muted small">
+                            <label class="visually-hidden">{{ form.password2.label}}<span class="text-muted small">
                                 (Required)</span></label>
                             {{ form.password2 }}
                             <button class="btn btn-primary btn-block py-2 mb-4 mt-4 fw500 w-100" type="submit">Register</button>
