@@ -1,0 +1,1 @@
+web: gunicorn artistic_edge.wsgi --log-file -
