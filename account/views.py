@@ -8,11 +8,10 @@ from django.urls import reverse
 from django.template.loader import render_to_string
 from django.utils.encoding import force_bytes, force_str
 from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+
 from orders.views import user_orders
 from store.models import Product
-
 from .forms import RegistrationForm, UserEditForm, UserAddressForm
-from orders.views import user_orders
 from .models import Customer, Address
 from .tokens import account_activation_token
 from newsletter.views import check_subscription_status
@@ -20,12 +19,18 @@ from newsletter.views import check_subscription_status
 
 @login_required
 def wishlist(request):
+    """
+    View to display user's wishlist.
+    """
     products = Product.objects.filter(users_wishlist=request.user)
     return render(request, "account/user/user_wish_list.html", {"wishlist": products})
 
 
 @login_required
 def add_to_wishlist(request, id):
+    """
+    View to add a product to user's wishlist.
+    """
     product = get_object_or_404(Product, id=id)
     if not product.users_wishlist.filter(id=request.user.id).exists():
         product.users_wishlist.add(request.user)
@@ -37,6 +42,9 @@ def add_to_wishlist(request, id):
 
 @login_required
 def remove_from_wishlist(request, id):
+    """
+    View to remove a product from user's wishlist.
+    """
     product = get_object_or_404(Product, id=id)
     if product.users_wishlist.filter(id=request.user.id).exists():
         product.users_wishlist.remove(request.user)
@@ -46,6 +54,9 @@ def remove_from_wishlist(request, id):
 
 @login_required
 def dashboard(request):
+    """
+    View to display user's order dashboard.
+    """
     orders = user_orders(request)
     return render(request,
                   'account/user/dashboard.html', {'orders': orders})
@@ -53,6 +64,9 @@ def dashboard(request):
 
 @login_required
 def custom_logout(request):
+    """
+    View to log out user.
+    """
     logout(request)
     next_page = request.GET.get('next', '/')
     return render(request, 'account/registration/logout.html')
@@ -60,7 +74,9 @@ def custom_logout(request):
 
 @login_required
 def edit_details(request):
-    # Check newsletter subscription status
+    """
+    View to edit user details.
+    """
     is_subscribed = check_subscription_status(request.user.email)
 
     if request.method == 'POST':
@@ -70,8 +86,8 @@ def edit_details(request):
             user = user_form.save(commit=False)
             clear_image = request.POST.get('clear_image', False)
             if clear_image:
-                user.profile_image.delete()  # Delete the existing profile image
-                user.profile_image = None  # Set profile image to None
+                user.profile_image.delete()
+                user.profile_image = None
             user.save()
             messages.success(request, 'Details successfully updated!', extra_tags='addition')
             return redirect('account:edit_details')
@@ -90,6 +106,9 @@ def edit_details(request):
 
 @login_required
 def delete_user(request):
+    """
+    View to delete user account.
+    """
     user = Customer.objects.get(user_name=request.user)
     user.is_active = False
     user.save()
@@ -98,7 +117,9 @@ def delete_user(request):
 
 
 def account_register(request):
-
+    """
+    View to handle user registration.
+    """
     if request.user.is_authenticated:
         return redirect('account:dashboard')
 
@@ -126,6 +147,9 @@ def account_register(request):
 
 
 def account_activate(request, uidb64, token):
+    """
+    View to activate user account.
+    """
     try:
         uid = force_str(urlsafe_base64_decode(uidb64))
         user = Customer.objects.get(pk=uid)
@@ -146,12 +170,18 @@ def account_activate(request, uidb64, token):
 # Addresses
 @login_required
 def view_address(request):
+    """
+    View to display user's addresses.
+    """
     addresses = Address.objects.filter(customer=request.user)
     return render(request, "account/user/addresses.html", {"addresses": addresses})
 
 
 @login_required
 def add_address(request):
+    """
+    View to add a new address for the user.
+    """
     if request.method == "POST":
         address_form = UserAddressForm(data=request.POST)
         if address_form.is_valid():
@@ -171,6 +201,9 @@ def add_address(request):
 
 @login_required
 def edit_address(request, id):
+    """
+    View to edit a user's address.
+    """
     if request.method == "POST":
         address = Address.objects.get(pk=id, customer=request.user)
         address_form = UserAddressForm(instance=address, data=request.POST)
@@ -190,6 +223,9 @@ def edit_address(request, id):
 
 @login_required
 def delete_address(request, id):
+    """
+    View to delete user's address.
+    """
     try:
         address = Address.objects.get(pk=id, customer=request.user)
         address.delete()
@@ -201,6 +237,9 @@ def delete_address(request, id):
 
 @login_required
 def set_default(request, id):
+    """
+    View to set default address for user.
+    """
     try:
         address_to_set_default = Address.objects.get(pk=id, customer=request.user)
         Address.objects.filter(customer=request.user, default=True).update(default=False)
@@ -213,6 +252,9 @@ def set_default(request, id):
 
 
 def get_address_details(request, address_id):
+    """
+    View to get details of a user's address.
+    """
     try:
         address = Address.objects.get(id=address_id, customer=request.user)
         return JsonResponse({

@@ -6,11 +6,17 @@ from .models import Customer, Address
 
 
 class UserAddressForm(forms.ModelForm):
+    """
+    Form for user address information.
+    """
     class Meta:
         model = Address
         fields = ["full_name", "phone", "address_line", "address_line2", "town_city", "postcode", "country"]
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize form fields and attributes.
+        """
         super().__init__(*args, **kwargs)
         self.fields["full_name"].widget.attrs.update(
             {"class": "form-control mb-2 account-form", "placeholder": "Full Name*"}
@@ -38,7 +44,9 @@ class UserAddressForm(forms.ModelForm):
 
 
 class UserLoginForm(AuthenticationForm):
-
+    """
+    Login form for users.
+    """
     username = forms.CharField(widget=forms.TextInput(
         attrs={'class': 'form-control mb-3', 'placeholder': 'Username', 'id': 'login-username'}))
     password = forms.CharField(widget=forms.PasswordInput(
@@ -51,7 +59,9 @@ class UserLoginForm(AuthenticationForm):
 
 
 class RegistrationForm(forms.ModelForm):
-
+    """
+    Form for user registration.
+    """
     name = forms.CharField(
         label='Enter Username', min_length=4, max_length=50, help_text='Required')
     email = forms.EmailField(max_length=100, help_text='Required', error_messages={
@@ -65,6 +75,9 @@ class RegistrationForm(forms.ModelForm):
         fields = ('name', 'email',)
 
     def clean_user_name(self):
+        """
+        Clean and validate username.
+        """
         name = self.cleaned_data['name'].lower()
         r = Customer.objects.filter(name=name)
         if r.count():
@@ -72,12 +85,18 @@ class RegistrationForm(forms.ModelForm):
         return name
 
     def clean_password2(self):
+        """
+        Clean and validate repeated password.
+        """
         cd = self.cleaned_data
         if cd['password'] != cd['password2']:
             raise forms.ValidationError('Passwords do not match.')
         return cd['password2']
 
     def clean_email(self):
+        """
+        Clean and validate email.
+        """
         email = self.cleaned_data['email']
         if Customer.objects.filter(email=email).exists():
             raise forms.ValidationError(
@@ -85,6 +104,9 @@ class RegistrationForm(forms.ModelForm):
         return email
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize form fields and attributes.
+        """
         super().__init__(*args, **kwargs)
         self.fields['name'].widget.attrs.update(
             {'class': 'form-control mb-3', 'placeholder': 'Username'})
@@ -97,11 +119,16 @@ class RegistrationForm(forms.ModelForm):
 
 
 class PwdResetForm(PasswordResetForm):
-
+    """
+    Form for password reset.
+    """
     email = forms.EmailField(max_length=254, widget=forms.TextInput(
         attrs={'class': 'form-control mb-3', 'placeholder': 'Email', 'id': 'form-email'}))
 
     def clean_email(self):
+        """
+        Clean and validate email for password reset.
+        """
         email = self.cleaned_data['email']
         u = Customer.objects.filter(email=email)
         if not u:
@@ -111,6 +138,9 @@ class PwdResetForm(PasswordResetForm):
 
 
 class PwdResetConfirmForm(SetPasswordForm):
+    """
+    Form for resetting password.
+    """
     new_password1 = forms.CharField(
         label='New password', widget=forms.PasswordInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'New Password', 'id': 'form-newpass'}))
@@ -120,7 +150,9 @@ class PwdResetConfirmForm(SetPasswordForm):
 
 
 class UserEditForm(forms.ModelForm):
-
+    """
+    Form for user profile editing.
+    """
     email = forms.EmailField(
         label='Account email (can not be changed)', max_length=200, widget=forms.TextInput(
             attrs={'class': 'form-control mb-3', 'placeholder': 'email', 'id': 'form-email', 'readonly': 'readonly'}))
@@ -136,6 +168,9 @@ class UserEditForm(forms.ModelForm):
         fields = ('email', 'name', 'profile_image',)
 
     def __init__(self, *args, **kwargs):
+        """
+        Initialize form fields and attributes.
+        """
         super().__init__(*args, **kwargs)
         self.fields['name'].required = True
         self.fields['email'].required = True

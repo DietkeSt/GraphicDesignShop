@@ -1,17 +1,21 @@
 import uuid
-
+from django.db import models
+from django.core.mail import send_mail
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import (AbstractBaseUser, BaseUserManager,
                                         PermissionsMixin)
-from django.core.mail import send_mail
-from django.db import models
-from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 
 
 class CustomAccountManager(BaseUserManager):
+    """
+    Custom user manager for handling user creation.
+    """
 
     def create_superuser(self, email, name, password, **other_fields):
-
+        """
+        Creates and saves a superuser with the given email, name, and password.
+        """
         other_fields.setdefault('is_staff', True)
         other_fields.setdefault('is_superuser', True)
         other_fields.setdefault('is_active', True)
@@ -26,7 +30,9 @@ class CustomAccountManager(BaseUserManager):
         return self.create_user(email, name, password, **other_fields)
 
     def create_user(self, email, name, password, **other_fields):
-
+        """
+        Creates and saves a user with the given email, name, and password.
+        """
         if not email:
             raise ValueError(_('You must provide an email address'))
 
@@ -39,7 +45,9 @@ class CustomAccountManager(BaseUserManager):
 
 
 class Customer(AbstractBaseUser, PermissionsMixin):
-
+    """
+    Custom user model representing a Customer.
+    """
     email = models.EmailField(_('email address'), unique=True)
     name = models.CharField(max_length=150)
     mobile = models.CharField(max_length=20, blank=True)
@@ -59,6 +67,9 @@ class Customer(AbstractBaseUser, PermissionsMixin):
         verbose_name_plural = "Accounts"
 
     def email_user(self, subject, message):
+        """
+        Sends an email to the user.
+        """
         send_mail(
             subject,
             message,
@@ -72,6 +83,9 @@ class Customer(AbstractBaseUser, PermissionsMixin):
     
 
 class Address(models.Model):
+    """
+    Model for storing addresses related to a customer.
+    """
     id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
     customer = models.ForeignKey(Customer, verbose_name=_("Customer"), on_delete=models.CASCADE)
     full_name = models.CharField(_("Full Name"), max_length=150)
