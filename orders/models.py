@@ -1,10 +1,10 @@
-from django.db import models
+from django.conf import settings
+from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
 from django.core.mail import send_mail
+from django.db import models
 from django.template.loader import render_to_string
 from django.utils.html import strip_tags
-from django.contrib.sites.models import Site
-from django.conf import settings
 from django.utils.translation import gettext_lazy as _
 from django_countries.fields import CountryField
 
@@ -12,6 +12,9 @@ from store.models import Product
 
 
 class Order(models.Model):
+    """
+    Model representing an order placed by a user.
+    """
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='order_user')
     full_name = models.CharField(_("Full Name"), max_length=150, default='No name provided')
     phone = models.CharField(_("Phone Number"), max_length=50, default='No phone provided')
@@ -35,7 +38,9 @@ class Order(models.Model):
     digital_product = models.FileField(upload_to='orders/products/', blank=True, null=True)
 
     def save(self, *args, **kwargs):
-        # Check if the order is new or the status has changed
+        """
+        Override save method to send email notification when order status changes.
+        """
         if not self.pk:
             is_new = True
             old_status = None
@@ -49,6 +54,9 @@ class Order(models.Model):
             self.send_status_email()
 
     def send_status_email(self):
+        """
+        Send email notification about order status change.
+        """
         domain = Site.objects.get_current().domain
         subject = f"Update on Your Order #{self.id}"
         template_name = f'orders/order_{self.order_status}_email.html'
@@ -74,6 +82,9 @@ class Order(models.Model):
 
 
 class OrderItem(models.Model):
+    """
+    Model representing an item in an order.
+    """
     order = models.ForeignKey(Order,
                               related_name='items',
                               on_delete=models.CASCADE)
@@ -88,6 +99,9 @@ class OrderItem(models.Model):
     
 
 class Review(models.Model):
+    """
+    Model representing a product review rating by a user.
+    """
     product = models.ForeignKey('store.Product', on_delete=models.CASCADE, related_name='reviews')
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     rating = models.IntegerField(default=1, choices=[(i, str(i)) for i in range(1, 6)])

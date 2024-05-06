@@ -1,9 +1,7 @@
-from django.http.response import JsonResponse
+from django.http.response import JsonResponse, HttpResponseNotAllowed
 from django.views.decorators.http import require_POST
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
-from django.shortcuts import get_object_or_404
-from django.http import JsonResponse, HttpResponseNotAllowed
 from django.db.models import Avg
 
 from store_basket.models import Basket
@@ -13,6 +11,9 @@ from store.models import Product
 
 
 def add(request):
+    """
+    Endpoint to add an order.
+    """
     if request.method != 'POST':
         # Restricting to POST requests
         return HttpResponseNotAllowed(['POST'])
@@ -54,10 +55,16 @@ def add(request):
 
 
 def payment_confirmation(data):
+    """
+    Update order billing status upon payment confirmation.
+    """
     Order.objects.filter(order_key=data).update(billing_status=True)
 
 
 def user_orders(request):
+    """
+    Retrieve orders for the current logged-in user.
+    """
     user_id = request.user.id
     orders = Order.objects.filter(user_id=user_id).filter(billing_status=True)
     return orders
@@ -67,6 +74,9 @@ def user_orders(request):
 @csrf_exempt
 @login_required
 def submit_review(request, product_id):
+    """
+    Submit a review for a product.
+    """
     if request.method == 'POST':
         try:
             product = Product.objects.get(pk=product_id)
