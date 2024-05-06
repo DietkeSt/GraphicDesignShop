@@ -123,7 +123,7 @@ class PwdResetForm(PasswordResetForm):
     Form for password reset.
     """
     email = forms.EmailField(max_length=254, widget=forms.TextInput(
-        attrs={'class': 'form-control mb-3', 'placeholder': 'Email', 'id': 'form-email'}))
+        attrs={'class': 'form-control mb-3', 'placeholder': 'E-Mail Address', 'id': 'form-email'}))
 
     def clean_email(self):
         """
