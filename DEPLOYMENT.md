@@ -1,7 +1,7 @@
 # Deployment and Payment setup
 
 - The app was deployed to [Heroku](https://www.heroku.com/).
-- The database was deployed to [ElephantSQL](https://www.elephantsql.com/).
+- The database was deployed to [CI PostgreSQL](https://dbs.ci-dbs.net/).
 
 - The app can be reached by the [link](#).
 
@@ -261,31 +261,17 @@
 
 ## Heroku Deployment
 
-### Step 1: Create Database on ElephantSQL
+### Step 1: Create Database with CI PostgreSQL
 
-1. Go to [ElephantSQL](https://www.elephantsql.com/) and create a new account.
+1. Go to [PostgreSQL from Code Institute](https://dbs.ci-dbs.net/).
 
-2. Create a new instance of the database by clicking the **"+ Create New Instance"** button.
+2. Enter student email into the email address field and click the **"Submit"** button.
 
-3. Select a name for your database and select the free plan.
+    ![CI PostgreSQL. Submit.](documentation/deployment/ci_postgresql_submit.png)
 
-    ![ElephantSQL. Select a name for your database](documentation/deployment/elephantsql_name.png)
+3. Follow the steps to create the database, and you'll receive an email with the database URL. You will need the URL of your database to connect it to your Django project.
 
-4. Click **"Select Region"** and choose a region close to you.
-
-    ![ElephantSQL. Select a region](documentation/deployment/elephantsql_select_region.png)
-
-5. Click **"Review"**, check your details are correct and then click **“Create instance”**.
-
-    ![ElephantSQL. Create Instance](documentation/deployment/elephantsql_click_create_instance.png)
-
-8. Click on the name of your database to open the dashboard.
-
-    ![ElephantSQL. Open dashboard](documentation/deployment/elephantsql_click_db_name.png)
-
-9. You will see the dashboard of your database. You will need the URL of your database to connect it to your Django project.
-
-    ![ElephantSQL. DB](documentation/deployment/elephantsql_db_url.png)
+    ![ElephantSQL. DB](documentation/deployment/ci_postgresql_link.png)
 
 ---
 
@@ -306,7 +292,7 @@
 
     1. Add a Heroku Postgres database.
 
-4. In your app go to the **"Settings"** tab where you add the config var `DATABASE_URL`, and for the value, copy in your database url from ElephantSQL.
+4. In your app go to the **"Settings"** tab where you add the config var `DATABASE_URL`, and for the value, copy in your database url from CI PostgreSQL.
 
     ![ElephantSQL. DB](documentation/deployment/heroku_add_database_url.png)
     
