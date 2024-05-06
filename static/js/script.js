@@ -184,9 +184,7 @@ $(document).ready(function() {
   // Toggle review form visibility on clicking 'Leave a review'
   $(document).on('click', '.open-review-btn', function() {
     var productID = $(this).data('product-id');
-    var reviewForm = $('.star-rating[data-product-id="' + productID + '"]');
-    // Toggle visibility
-    reviewForm.toggle();
+    $('.star-rating[data-product-id="' + productID + '"]').toggle();
   });
 
   // Click event to submit review
