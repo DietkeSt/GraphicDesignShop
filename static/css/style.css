@@ -364,9 +364,8 @@ textarea.form-control:focus {
 
 img.portfolio-image,
 img.service-image {
-    border-radius: 2em 0; 
-    object-fit: cover; 
-    height: 30vh; 
+    border-radius: 2em 0;
+    object-fit: contain;
     width: 100%;
 }
 
