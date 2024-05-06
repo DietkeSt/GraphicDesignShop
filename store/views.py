@@ -4,11 +4,14 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.db.models import Q
 from django.urls import reverse
 from django.core.mail import send_mail
+
 from .models import Category, Product, PortfolioItem
 
 
 def all_products(request):
-    """ Shows all products, including sorting and search queries """
+    """
+    Displays all products, including sorting and search functionality.
+    """
     products = Product.objects.filter(is_active=True)
     query = request.GET.get('q')
 
@@ -37,6 +40,9 @@ def all_products(request):
 
 
 def category_list(request, category_slug=None):
+    """
+    Displays a list of products belonging to a particular category.
+    """
     category = get_object_or_404(Category, slug=category_slug)
     products = Product.objects.filter(category=category, is_active=True)
 
@@ -52,6 +58,9 @@ def category_list(request, category_slug=None):
 
 
 def product_detail(request, slug):
+    """
+    Displays details of a specific product.
+    """
     product = get_object_or_404(Product, slug=slug, in_stock=True)
     average_rating = round(product.average_rating)
     number_range = range(1, 101)
@@ -64,6 +73,9 @@ def product_detail(request, slug):
 
 
 def contact_form_submit(request):
+    """
+    Handles the submission of the contact form.
+    """
     if request.method == 'POST':
         name = request.POST.get('name')
         email = request.POST.get('email')
@@ -83,9 +95,15 @@ def contact_form_submit(request):
 
 
 def portfolio(request):
+    """
+    Displays the portfolio items.
+    """
     items = PortfolioItem.objects.all()
     return render(request, 'store/portfolio.html', {'items': items})
 
 def portfolio_detail(request, item_id):
+    """
+    Displays details of a specific portfolio item.
+    """
     portfolio_item = get_object_or_404(PortfolioItem, id=item_id)
     return render(request, 'store/portfolio_detail.html', {'portfolio_item': portfolio_item})

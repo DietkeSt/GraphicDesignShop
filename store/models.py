@@ -4,11 +4,20 @@ from django.conf import settings
 
 
 class ProductManager(models.Manager):
+    """
+    Manager for Product model. Retrieves only active products.
+    """
     def get_queryset(self):
+        """
+        Retrieve all active products.
+        """
         return super(ProductManager, self).get_queryset().filter(is_active=True)
     
 
 class Category(models.Model):
+    """
+    Represents a category for products.
+    """
     name = models.CharField(max_length=50, db_index=True)
     slug = models.SlugField(max_length=50, unique=True)
     description = models.TextField(max_length=255, blank=True)
@@ -17,6 +26,9 @@ class Category(models.Model):
         verbose_name_plural = 'categories'
 
     def get_absolute_url(self):
+        """
+        Get the absolute URL for a category.
+        """
         return reverse('store:category_list', args=[self.slug])
     
     def __str__(self):
@@ -24,6 +36,9 @@ class Category(models.Model):
     
 
 class Product(models.Model):
+    """
+    Represents a product.
+    """
     category = models.ForeignKey(Category, related_name='product', on_delete=models.CASCADE)
     created_by = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='product_creator')
     title = models.CharField(max_length=255)
@@ -47,6 +62,9 @@ class Product(models.Model):
         ordering = ('-created',)
 
     def get_absolute_url(self):
+        """
+        Get the absolute URL for a product.
+        """
         return reverse('store:product_detail', args=[self.slug])
 
     def __str__(self):
@@ -54,6 +72,9 @@ class Product(models.Model):
     
 
 class PortfolioItem(models.Model):
+    """
+    Represents a portfolio item.
+    """
     title = models.CharField(max_length=200)
     description = models.TextField()
     image = models.ImageField(upload_to='portfolio_images/')
