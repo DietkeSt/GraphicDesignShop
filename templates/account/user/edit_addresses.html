@@ -92,25 +92,20 @@
       <div class="row justify-content-between gap-2">
           <p class=" h3 font-weight-bold">Edit/Add Address</p>
           <form name="address_form" class="account-form" method="post" enctype="multipart/form-data">
-            {% if form.errors %}
-            <div class="alert alert-primary" role="alert">
-              Error: Please try again!
-            </div>
-            {% endif %}
             {% csrf_token %}
-            <label class="small fw-bold">{{ form.full_name.label}}</label>
+            <label class="visually-hidden">{{ form.full_name.label}}</label>
             {{ form.full_name }}
-            <label class="small fw-bold">{{ form.phone.label}}</label>
+            <label class="visually-hidden">{{ form.phone.label}}</label>
             {{ form.phone }}
-            <label class="small fw-bold">{{ form.address_line.label}}</label>
+            <label class="visually-hidden">{{ form.address_line.label}}</label>
             {{ form.address_line }}
-            <label class="small fw-bold">{{ form.address_line2.label}}</label>
+            <label class="visually-hidden">{{ form.address_line2.label}}</label>
             {{ form.address_line2 }}
-            <label class="small fw-bold">{{ form.town_city.label}}</label>
+            <label class="visually-hidden">{{ form.town_city.label}}</label>
             {{ form.town_city }}
-            <label class="small fw-bold">{{ form.postcode.label}}</label>
+            <label class="visually-hidden">{{ form.postcode.label}}</label>
             {{ form.postcode }}
-            <label class="small fw-bold">{{ form.country.label}}</label>
+            <label class="visually-hidden">{{ form.country.label}}</label>
             {{ form.country }}
             <button class="btn btn-primary col-12 mt-2" type="button" value="Submit" onclick="submitForm()">
               Update Address
