@@ -21,10 +21,6 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 env_path = BASE_DIR / 'sendgrid.env'
 load_dotenv(dotenv_path=env_path)
 
-
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
-
 # SECURITY WARNING: keep the secret key used in production secret!
 SECRET_KEY = 'django-insecure-#6h5j0e_^p5(dg596^bq4lv*f@_occ=o%jjc^*)91$7x9finzl'
 
@@ -35,9 +31,7 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 SITE_ID = 1 
 
-
 # Application definition
-
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -50,6 +44,8 @@ INSTALLED_APPS = [
     'store_basket',
     'account',
     'orders',
+    'payment',
+    'newsletter',
     'django_countries',
 ]
 
@@ -146,13 +142,9 @@ MEDIA_ROOT = BASE_DIR / 'media'
 BASKET_SESSION_ID = 'basket'
 
 # Stripe Payment
-os.environ.setdefault('STRIPE_PUBLISHABLE_KEY', 'pk_test_51P074RRoZYOXFM53qLCBQEDRnUhIMlPZqPUOg0kmjKDQGDmr14jflntdJ7O6bdRn9eq35njrI4YVZx8mcUzum7w100jNCgsUHn')
-STRIPE_SECRET_KEY = 'sk_test_51P074RRoZYOXFM53OTLlj7AzO7o2u4RLIYCfOOKFk8ikeQFxp0jXASA9sTlv9zxrMQxKqdjvJ1KIWIsZUyUvHzfL00ddvgG3Lb'
-STRIPE_ENDPOINT_SECRET = 'whsec_0BgljvPjaJHUi6jG7N9FdoWVqaYeYKO1'
-# stripe listen --forward-to localhost:8000/payment/webhook/
-# Stripe settings
-# STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
-# STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
+STRIPE_ENDPOINT_SECRET = os.getenv('STRIPE_ENDPOINT_SECRET')
 
 
 # Default primary key field type
