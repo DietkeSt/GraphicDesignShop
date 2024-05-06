@@ -1,6 +1,6 @@
-# E-commerce website
+# ArtisticEdge E-commerce Website
 
-**Deployed website: [Link to website](https://wowder.onrender.com)**
+**Deployed website: [Link to website](https://artisticedge-f8cc7b427f4c.herokuapp.com/)**
 
 
 ![Main image](documentation/readme_header.png)
