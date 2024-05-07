@@ -213,11 +213,19 @@ ArtisticEdge | Expert Graphic Design Services | Ireland and Worldwide
 
 ### Other SEO implementations
 
-sitemap.xml
+1. Implemented a sitemap.xml into the root directory for the project. 
 
-robots.txt
+  - Used https://www.xml-sitemaps.com/ to create the sitemap.xml-
+  - The sitemap can then be registered in the [Google Search Console](https://search.google.com/search-console/welcome)
+
+  **Note:** As this is not a requirement for this project, the sitemap was not registered.
+
+
+2. Implemented a robots.txt into the root directory for the project.
 
 link to external resource - rel attribute
+
+3. Google Search Console
 
 
 
