@@ -17,9 +17,9 @@ class Order(models.Model):
     """
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='order_user')
     full_name = models.CharField(_("Full Name"), max_length=150, default='No name provided')
-    phone = models.CharField(_("Phone Number"), max_length=50, default='No phone provided')
+    phone = models.CharField(_("Phone Number"), max_length=50, default='')
     address_line = models.CharField(_("Address Line 1"), max_length=255, default='No address provided')
-    address_line2 = models.CharField(_("Address Line 2"), max_length=255, default='No address provided')
+    address_line2 = models.CharField(_("Address Line 2"), max_length=255, default='')
     town_city = models.CharField(_("City, State"), max_length=150, default='No city provided')
     country = models.CharField(_("Country"), max_length=200, null=True, blank=True, choices=[('', 'Select Country')] + list(CountryField().choices))
     postcode = models.CharField(_("Postcode"), max_length=50, default='No post code provided')
