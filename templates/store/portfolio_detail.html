@@ -7,19 +7,19 @@
     {% comment %} Hero Container for Portfolio {% endcomment %}
     <div class="card rounded-2">
         <div class="pb-4 text-center">
-            <img src="{{ portfolio_item.image.url }}" class="rounded-2 img-contain" alt="{{ portfolio_item.title }}" style="width: auto; max-height: 70vh;">
+            <img src="{{ portfolio_item.image.url }}" class="rounded-2 service-image" alt="{{ portfolio_item.title }}">
         </div>
         <div class="col-md-12 p-3">
             <div class="col-12 p-3 text-center">
                 <h2>{{ portfolio_item.title }}</h2>
                 <p>{{ portfolio_item.description }}</p>
             </div>
-            <div class="row justify-content-around py-4">
-                <div class="col-5 card p-3 bg-light">
+            <div class="row justify-content-around g-4 py-4">
+                <div class="col-md-5 col-11 card p-3 bg-light">
                     <p class="h4 text-pink">Quick Turnaround:</p>
                     <p>We pride ourselves on efficiency. Our streamlined process ensures that you receive your designs quickly without compromising on quality. From the initial concept to the final touches, we work diligently to meet your timeline, providing fast turnaround times that you can rely on.</p>
                 </div> 
-                    <div class="col-5 card p-3 bg-light">    
+                    <div class="col-md-5 col-11 card p-3 bg-light">    
                     <p class="h4 text-pink">Customer Satisfaction:</p>
                     <p>Our commitment to excellence has consistently resulted in highly satisfied customers. We take the time to understand your needs and preferences, ensuring every design reflects your vision and exceeds your expectations. Don't just take our word for it—our clients rave about our attention to detail and our ability to deliver outstanding results.</p>
                 </div>
