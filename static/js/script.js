@@ -16,7 +16,19 @@ $(document).on('click', '#add-button', function (e) {
             document.getElementById('basket-qty').innerHTML = json.qty
             window.location.reload();
         },
-        error: function (xhr, errmsg, err) {}
+        error: function (xhr, errmsg, err) {
+          console.log("AJAX error in request: " + xhr.status + ' : ' + xhr.responseText);
+          
+          let message = 'Oops! Something went wrong. Please try again.';
+          if (xhr.status === 404) {
+              message = 'The requested resource was not found.';
+          } else if (xhr.status === 500) {
+              message = 'Internal server error. Please contact support if the problem persists.';
+          } else if (xhr.status === 403) {
+              message = 'You do not have permission to perform this action.';
+          }
+          alert(message);
+        }
     });
 })
 
@@ -361,7 +373,19 @@ if ($('#payment-form').length > 0) {
                 });
 
             },
-            error: function(xhr, errmsg, err) {},
+            error: function(xhr, errmsg, err) {
+              console.log("AJAX error in request: " + xhr.status + ' : ' + xhr.responseText);
+
+              let message = 'Oops! Something went wrong. Please try again.';
+              if (xhr.status === 404) {
+                  message = 'The requested resource was not found.';
+              } else if (xhr.status === 500) {
+                  message = 'Internal server error. Please contact support if the problem persists.';
+              } else if (xhr.status === 403) {
+                  message = 'You do not have permission to perform this action.';
+              }
+              alert(message);
+            }
         });
     });
 }
