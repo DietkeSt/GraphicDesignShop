@@ -1,0 +1,3 @@
+User-agent: *
+Disallow: /account/
+Sitemap: https://artisticedge-f8cc7b427f4c.herokuapp.com/sitemap.xml
