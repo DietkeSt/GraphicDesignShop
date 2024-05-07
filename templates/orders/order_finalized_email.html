@@ -2,9 +2,9 @@
 Your order status is now: {{ order.get_order_status_display }}!
 
 Here is your download link:
-<a href="http://{{ domain }}{{ order.digital_product.url }}" download>Download Your Design</a>
+<a href="{{ order.digital_product.url }}" download>Download Your Design</a>
 
-You can also navigate to your <a href="http://{{ domain }}/account/dashboard/" download>Orders Dashboard</a> in your account to download the Design.
+You can also navigate to your <a href="https://artisticedge-f8cc7b427f4c.herokuapp.com/account/dashboard/" download>Orders Dashboard</a> in your account to download the Design.
 
 The ArtisticEdge team
 {% endautoescape %}
