@@ -3,14 +3,37 @@ from django.contrib import admin
 from .models import Order, OrderItem
 
 
+class OrderItemInline(admin.TabularInline):
+    model = OrderItem
+    raw_id_fields = ['product']
+    extra = 1 
+
+
 class OrderAdmin(admin.ModelAdmin):
     """
     Customizes the administration interface for the Order model.
     """
-    list_display = ['created', 'user', 'status', 'billing_status', 'total_paid']
-    list_filter = ['status', 'billing_status', 'created']
+    list_display = ['order_date', 'user', 'order_status', 'billing_status', 'total_paid', 'order_items_list']
+    list_filter = ['order_status', 'billing_status', 'created']
+    date_hierarchy = 'created'
     search_fields = ['user__username', 'status']
     actions = ['make_received', 'make_in_progress', 'make_finalized']
+    inlines = [OrderItemInline] 
+
+    def order_date(self, obj):
+        return obj.created.strftime("%Y-%m-%d %H:%M")
+    order_date.admin_order_field = 'created'
+    order_date.short_description = 'Order Date'
+
+    def user_username(self, obj):
+        return obj.user.username
+    user_username.admin_order_field = 'user__username'
+    user_username.short_description = 'Username'
+
+    def order_items_list(self, obj):
+        items = obj.items.all()
+        return ", ".join([f"{item.product.title} x {item.quantity}" for item in items])
+    order_items_list.short_description = 'Ordered Items'
 
     def make_received(self, request, queryset):
         """
@@ -34,5 +57,4 @@ class OrderAdmin(admin.ModelAdmin):
     make_finalized.short_description = "Mark selected orders as finalized"
 
     
-admin.site.register(Order)
-admin.site.register(OrderItem)
+admin.site.register(Order, OrderAdmin)
