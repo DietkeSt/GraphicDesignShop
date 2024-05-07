@@ -323,7 +323,7 @@ if ($('#payment-form').length > 0) {
 
         $.ajax({
             type: "POST",
-            url: 'http://127.0.0.1:8000/orders/add/',
+            url: 'https://artisticedge-f8cc7b427f4c.herokuapp.com/orders/add/',
             data: {
                 order_key: clientSecret,
                 full_name: full_name,
@@ -367,7 +367,7 @@ if ($('#payment-form').length > 0) {
                         if (result.paymentIntent.status === 'succeeded') {
                             console.log('Payment succeeded');
                             // Redirect to success page or update UI
-                            window.location.replace("http://127.0.0.1:8000/payment/orderplaced/");
+                            window.location.replace("https://artisticedge-f8cc7b427f4c.herokuapp.com/payment/orderplaced/");
                         }
                     }
                 });
