@@ -106,4 +106,5 @@ def portfolio_detail(request, item_id):
     Displays details of a specific portfolio item.
     """
     portfolio_item = get_object_or_404(PortfolioItem, id=item_id)
-    return render(request, 'store/portfolio_detail.html', {'portfolio_item': portfolio_item})
+    category_products = Product.objects.filter(category=portfolio_item.category)
+    return render(request, 'store/portfolio_detail.html', {'portfolio_item': portfolio_item, 'products': category_products})
