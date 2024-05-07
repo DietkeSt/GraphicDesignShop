@@ -3,17 +3,57 @@
 
 {% block content %}
 
-<section id="portfolio-detail" class="text-center container" style="max-width: 1000px">
+<section id="portfolio-detail" class="container" style="max-width: 1000px">
     {% comment %} Hero Container for Portfolio {% endcomment %}
     <div class="card rounded-2">
-        <div class="pb-4">
-            <img src="{{ portfolio_item.image.url }}" class="rounded-2 img-contain" alt="{{ portfolio_item.title }}" style="width: 100%; max-height: 70vh;">
+        <div class="pb-4 text-center">
+            <img src="{{ portfolio_item.image.url }}" class="rounded-2 img-contain" alt="{{ portfolio_item.title }}" style="width: auto; max-height: 70vh;">
         </div>
-        <div class="col-md-12">
-            <h2>{{ portfolio_item.title }}</h2>
-            <p>{{ portfolio_item.description }}</p>
+        <div class="col-md-12 p-3">
+            <div class="col-12 p-3 text-center">
+                <h2>{{ portfolio_item.title }}</h2>
+                <p>{{ portfolio_item.description }}</p>
+            </div>
+            <div class="row justify-content-around py-4">
+                <div class="col-5 card p-3 bg-light">
+                    <p class="h4 text-pink">Quick Turnaround:</p>
+                    <p>We pride ourselves on efficiency. Our streamlined process ensures that you receive your designs quickly without compromising on quality. From the initial concept to the final touches, we work diligently to meet your timeline, providing fast turnaround times that you can rely on.</p>
+                </div> 
+                    <div class="col-5 card p-3 bg-light">    
+                    <p class="h4 text-pink">Customer Satisfaction:</p>
+                    <p>Our commitment to excellence has consistently resulted in highly satisfied customers. We take the time to understand your needs and preferences, ensuring every design reflects your vision and exceeds your expectations. Don't just take our word for it—our clients rave about our attention to detail and our ability to deliver outstanding results.</p>
+                </div>
+            </div>
+            <hr class="text-muted">
+            <p class="text-center text-muted blockquote">
+                Experience the difference with ArtisticEdge's {{ portfolio_item.title }}. 
+                <br>
+                See the <a href="#related-services "class="text-decoration-none">Related Services</a> below to bring your next project to life!
+            </p>
         </div>
     </div>
+    <!-- Products Associated with the Portfolio's Category -->
+<div class="album pt-3" id="related-services">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-4 justify-content-center">
+        {% for product in products %}
+        <a class="product-link text-decoration-none text-center" href="{{ product.get_absolute_url }}">
+          <div class="col">
+            <div class="card shadow-sm" style="border-radius: 2em 0;">
+                <div class="my-3 p-3">
+                  <h4 class="text-dark card-text">
+                    {{ product.title }}
+                  </h4>
+                  <div class="d-flex justify-content-center align-items-center">
+                    <p class="text-muted lead text-dark m-0">€{{ product.price }}</p>
+                  </div>
+                </div>
+                <img class="img-fluid service-image" alt="{{ item.title }}" src="{{ product.image.url }}">
+            </div>
+          </div>
+        </a> 
+        {% endfor %}
+      </div>
+  </div>
 </section>
 
 {% endblock %}
