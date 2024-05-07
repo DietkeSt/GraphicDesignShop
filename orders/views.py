@@ -9,6 +9,9 @@ from store_basket.models import Basket
 from .models import Order, OrderItem, Review
 from store.models import Product
 
+import logging
+logger = logging.getLogger(__name__)
+
 
 def add(request):
     """
@@ -54,11 +57,17 @@ def add(request):
     return JsonResponse({'success': 'Order successfully placed!', 'order_id': order.id})
 
 
-def payment_confirmation(data):
+def payment_confirmation(payment_intent_id):
     """
     Update order billing status upon payment confirmation.
     """
-    Order.objects.filter(order_key=data).update(billing_status=True)
+    logger.debug(f"Confirming payment for PaymentIntent ID: {payment_intent_id}")
+    order = Order.objects.filter(order_key=payment_intent_id).first()
+    if order:
+        order.billing_status = True
+        order.save()
+    else:
+        print("Order not found.")
 
 
 def user_orders(request):
