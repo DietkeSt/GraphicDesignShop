@@ -171,64 +171,77 @@ The "Wowder" store is aimed at companies interested in selling products online. 
 
 ## Web Marketing
 
-Newsletters were implemented in the email_notification app. The manager can create a newsletter and send it to all customers. It also handles sending newsletters about new loyalty programs with promo codes.
+**1. Newsletter**
 
-1. News Letter
+The newsletter was implemented by using [Mailchimp](https://mailchimp.com/). The admin can create a newsletter via the Mailchimp account and send it to all subscribed users.
 
-To send a newsletter to all customers, the manager can create a newsletter and send it to all customers.
-I have used Django EmailMultiAlternatives to send the newsletter.
+- Visitor can subscribe via the footer of the website and will be redirected to a Thank You page on the website without having to register.
 
-![NewsLetter](documentation/web_marketing/newsletter.png)
+  ![NewsLetter subscribe](documentation/web_marketing/newsletter_footer_subscription.png)
+  ![NewsLetter thank you page](documentation/web_marketing/newsletter_thankyou.png)
 
+- Signed in users can subscribe after being logged in directly in their user profile.
+- Signed in users can also unsubscribe directly in their user profile.
 
-2. Facebook
-
-Facebook is essential for the store to be able to reach customers. According to the statistics, the store has a good reach among people who prefer to use Facebook. Facebook has excellent coverage worldwide among people who can purchase products online.
-
-"WoWder" Facebook page is for marketing purposes to post adverts and exciting content and engage users.
-
-[WoWder Facebook Page](documentation/web_marketing/wowder_facebook_mockup.pdf)
+  ![NewsLetter subscribe option in account](documentation/web_marketing/account_newsletter_subscribe.png)
 
 
-3. LinkedIn
+The newsletter subscription for the account was implemented in the newsletter app which checks the user's current subscription status.
 
-To reach businesses and be searchable by other businesses in offering services.
+---
 
-"WoWder" Twitter page is for marketing purposes to post adverts, and exciting content, and start the discussion about the shop itself.
 
-[WoWder Twitter Page](documentation/web_marketing/wowder_twitter_mockup.pdf)
+**2. Facebook - [Link to Page](https://www.facebook.com/people/ArtisticEdge/61559018086019/)**
+
+Facebook is essential to be able to reach customers. According to the statistics, the store has a good reach among people who prefer to use Facebook. Facebook has excellent coverage worldwide among people who can purchase products online.
+
+"ArtisticEdge" Facebook page is for marketing purposes to post adverts and exciting content and engage users.
+
+![ArtisticEdge Facebook Page](documentation/web_marketing/facebook_mockup.png)
+
+---
+
+
+**3. LinkedIn - [Link to Page](https://www.linkedin.com/company/artisticedgedesign/)**
+
+"ArtisticEdge" LinkedIn page is useful to reach businesses in need of Web and Graphic Design Services. It is used for marketing purposes, pro-active outreach and afvert post, exciting content and to start discussions in the Design industry.
+
+![ArtisticEdge LinkedIn Page](documentation/web_marketing/linkedin_mockup.png)
+
+**Note:** *`rel="noopener noreferrer"` was used for all social links opening in a new tab*.
 
 ### SEO implementations in HTML
 
-META descriptions for search engines:
+- META descriptions for search engines:
 
-Explore ArtisticEdge, your global partner for exceptional graphic design services. Specializing in web design, branding, and visual graphics, we elevate your brand with custom, high-quality design solutions tailored to your unique needs.
+  - *Explore ArtisticEdge, your global partner for exceptional graphic design services. Specializing in web design, branding, and visual graphics, we elevate your brand with custom, high-quality design solutions tailored to your unique needs.* 
 
-Keywords:
+  The description was written to be engaging and informative, summarizing the core services ("web design, branding, visual graphics") and unique value proposition ("custom, high-quality design solutions tailored to your unique needs"). This clarity enhances click-through rates from search engine results pages by appealing directly to potential clients looking for custom design services.
 
-ArtisticEdge, graphic design Ireland, web design services, custom branding services, graphic design studio, visual graphics, logo design, user interface design, digital art, promotional graphics, Ireland design services, global design services
+- Keywords:
 
-Title: 
-ArtisticEdge | Expert Graphic Design Services | Ireland and Worldwide
+  - *ArtisticEdge, graphic design Ireland, web design services, custom branding services, graphic design studio, visual graphics, logo design, user interface design, digital art, promotional graphics, Ireland design services, global design services*
+
+  The keywords include specific services and geographical tags such as "graphic design Ireland" and "global design services" to target both local and international markets. Keywords like "web design services", "custom branding services", and "logo design" are directly related to the business's offerings, increasing the relevance of the page for those particular search queries.
+
+- Title: 
+
+  - *ArtisticEdge | Expert Graphic Design Services | Ireland and Worldwide*
+
+  The title was chosen to effectively communicate the brand name and main service offering while emphasizing geographical scope. This helps in attracting both local and global audiences.
 
 ### Other SEO implementations
 
 1. Implemented a sitemap.xml into the root directory for the project. 
 
-  - Used https://www.xml-sitemaps.com/ to create the sitemap.xml-
-  - The sitemap can then be registered in the [Google Search Console](https://search.google.com/search-console/welcome)
-
-  **Note:** As this is not a requirement for this project, the sitemap was not registered.
-
+  - Used https://www.xml-sitemaps.com/ to create the sitemap.xml
+  - The sitemap can then be registered in the [Google Search Console](https://search.google.com/search-console/welcome).
 
 2. Implemented a robots.txt into the root directory for the project.
 
-link to external resource - rel attribute
+  - The robots.txt file can be tested directly on Google [here](https://support.google.com/webmasters/answer/6062598).
 
-3. Google Search Console
-
-
-
+**Note:** *As this is not a requirement for this project, the sitemap was not registered and robots.txt was not tested.*
 
 
 ---
