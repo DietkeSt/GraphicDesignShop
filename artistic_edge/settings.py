@@ -39,6 +39,10 @@ ALLOWED_HOSTS = [
     '0.0.0.0',
 ]
 
+CORS_ALLOWED_ORIGINS = [
+    'https://artisticedge-f8cc7b427f4c.herokuapp.com',
+]
+
 # Retrieve the Heroku host
 HEROKU_HOSTNAME = os.getenv('HEROKU_APP_NAME')
 
