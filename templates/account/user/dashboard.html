@@ -147,7 +147,7 @@
                           <!-- Conditionally display download link if the status is 'Finalized' -->
                           {% if order.order_status == 'finalized' and order.digital_product %}
                           <div>
-                              <a href="{{ order.digital_product.url }}" class="btn btn-primary mt-2 col-12" download>
+                              <a href="{{ order.digital_product.url }}" target="_blank" aria-label="Opens uploaded image in new tab" class="btn btn-primary mt-2 col-12" download="{{ order.digital_product }}.png">
                                   Download Product
                               </a>
                           </div>
