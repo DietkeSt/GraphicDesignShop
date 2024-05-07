@@ -4,6 +4,9 @@ from .models import Order, OrderItem
 
 
 class OrderItemInline(admin.TabularInline):
+    """
+    Create OrderItemInLine to be used in the Order model.
+    """
     model = OrderItem
     raw_id_fields = ['product']
     extra = 1 
@@ -21,16 +24,25 @@ class OrderAdmin(admin.ModelAdmin):
     inlines = [OrderItemInline] 
 
     def order_date(self, obj):
+        """
+        Displays the created date for order.
+        """
         return obj.created.strftime("%Y-%m-%d %H:%M")
     order_date.admin_order_field = 'created'
     order_date.short_description = 'Order Date'
 
     def user_username(self, obj):
+        """
+        Displays username for order.
+        """
         return obj.user.username
     user_username.admin_order_field = 'user__username'
     user_username.short_description = 'Username'
 
     def order_items_list(self, obj):
+        """
+        Displays the order items.
+        """
         items = obj.items.all()
         return ", ".join([f"{item.product.title} x {item.quantity}" for item in items])
     order_items_list.short_description = 'Ordered Items'
