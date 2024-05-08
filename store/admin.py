@@ -31,4 +31,4 @@ class PortfolioItemAdmin(admin.ModelAdmin):
     list_display = ['title', 'image_alt_text', 'category', 'date_added']
     search_fields = ['title', 'description']
     list_filter = ['date_added']
-    list_editable = ['title', 'image_alt_text']
+    list_editable = ['image_alt_text']
