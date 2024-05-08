@@ -1,4 +1,4 @@
-# ArtisticEdge E-commerce Website
+# ArtisticEdge - Graphic Design E-Commerce Website
 
 **Deployed website: [Link to website](https://artisticedge-f8cc7b427f4c.herokuapp.com/)**
 
@@ -7,25 +7,29 @@
 
 **Card number for payment testing: 4242424242424242**
 ## About
+ArtisticEdge is more than just a graphic design service; it's a dynamic digital platform crafted specifically for creativity and client interaction. At ArtisticEdge, we merge imagination with precision to deliver custom design solutions that not only meet but exceed our clients' expectations. Whether you're browsing for inspiration or ready to commit to a project, our website is designed to support your journey from concept to completion.
 
-"WoWder" is an e-commerce website that allows customers to buy various products. It has a login system, a shopping cart, a checkout system, and a payment system. Loyal customers can get discounts on their purchases by using the coupon system. This website has a notification system that allows users to be notified when a product is available if they submit a request.
-In addition, the website has a personnel functionality that allows admin, manager, logistics, and other personnel to manage the website. The decision to implement multiple personnel roles was made due to the desire to create the project as scalable as possible and reusable in the real world.
+### Our Mission
+We are dedicated to transforming your ideas into visual realities. With a focus on customer satisfaction and efficient service, ArtisticEdge aims to provide an unmatched user experience. Our platform caters to a diverse range of design needs—from individual projects to comprehensive branding strategies. We ensure that every interaction is seamless, from the initial sign-up to the final delivery of your bespoke design.
 
 ---
 
 ## UX
 
-The website was created to be eye-catching and user-friendly. The user is given plenty of choices to choose from when they are shopping. The emphasis is on the user experience; the user can navigate the website easily to fulfill users' goals. The website is designed to be easy to use and easy to understand. Additionally, the website attracts customers to become a part of loyalty programs by giving them additional discounts on their purchases.
-It also handles all personnel functionality moving from admin to manager to logistics to other personnel.
-Business goals were to make the website as scalable as possible and reusable in the real world so that the store personnel could use it according to their position in the company.
+ArtisticEdge is designed to be both eye-catching and user-friendly. Our platform offers an intuitive navigation system, allowing users to easily explore a variety of design services tailored to their needs. We emphasize simplicity and clarity in design, making the website straightforward to use and understand. By integrating a wishlist function, we also encourage them to return and engage further at a later stage. Behind the scenes, the website supports admin functionality, enabling staff members to efficiently manage the orders. This approach ensures that ArtisticEdge is scalable and adaptable, ready to meet real-world business demands effectively.
 
 ### Target Audience
 
-This website is intended for people interested in purchasing products online, starting from bread and finishing electronics, such as TV, smartphones, or other products. It was also aimed to lure people into using this website in their daily lives. This was achieved by implementing a discount system for all customers, additional discounts for loyal customers, and a notification system that allows users to be notified when a product is available. This website may hold many products, and it is essential to make sure that the website is easy to use and navigate. 
+The website caters to a diverse audience ranging from casual browsers seeking design inspiration to serious clients looking for bespoke graphic design services. Ideal for individuals or businesses contemplating unique, tailor-made designs for branding, web presence, or visual projects, the platform ensures an enriching experience for:
+
+- **Design Enthusiasts and Browsers**: Users who explore design websites for creative ideas and latest trends without the immediate need to commit to a purchase. They benefit from easy navigation and the ability to follow updates via social media or newsletters.
+- **Potential Clients**: Individuals or businesses with specific design projects in mind. These users appreciate a straightforward and secure sign-up process, clear service descriptions, and a user-friendly interface that simplifies the process of finding and purchasing the right services.
+- **Returning Customers and Design Partners**: Those looking to establish a long-term relationship with a reliable designer, interested in customizable services and detailed project engagements. Our platform supports these interactions with features like bookmarking favorite designs, a wishlist, and seamless purchase transitions.
+- **Freelancers and Business Users**: Particularly beneficial for freelancers who own their stores or business users responsible for managing design needs in their organizations. Our site provides tools for easy management of purchases, communication, and service adjustments.
 
 ### User Stories
 
-#### First Time Visitor
+#### Persona 1: Casual Website Visitor
 
 | Issue ID    | User Story |
 |-------------|-------------|
@@ -38,7 +42,7 @@ This website is intended for people interested in purchasing products online, st
 | [#78](https://github.com/IuliiaKonovalova/e-commerce/issues/78) | As a First Time Visitor, I want to be able to register with social media, so that I can easily register my account or login. *(Future feature)* |
 
 
-#### Regular User (Customer)
+#### Persona 2: Customer Persona
 
 | Issue ID    | User Story |
 |-------------|-------------|
@@ -83,7 +87,7 @@ This website is intended for people interested in purchasing products online, st
 | [#77](https://github.com/IuliiaKonovalova/e-commerce/issues/77) | As a Regular User, I want to be able to change primary address, so that I can set the primary address without editing it. |
 
 
-#### Manager + Admin
+#### Persona 3: Potential Customer
 
 | Issue ID    | User Story |
 |-------------|-------------|
@@ -114,28 +118,11 @@ This website is intended for people interested in purchasing products online, st
 | [#200](https://github.com/IuliiaKonovalova/e-commerce/issues/200) | As a Manager, I want to be able to Allow customers to leave reviews only after they receive a product, so that I can control that reviews are relevant.  |
 
 
-#### Logistics Manager + Admin
+#### Persona 4: Service Provider (Graphic Designer and Shop Owner)
 | Issue ID    | User Story |
 |-------------|-------------|
 | [#289](https://github.com/IuliiaKonovalova/e-commerce/issues/289) | As a Logistics Manager or Admin, I want to be able to render order status, so that I can track at which stage the order is in.  |
 
-
-#### Admin
-
-| Issue ID    | User Story |
-|-------------|-------------|
-| [#48](https://github.com/IuliiaKonovalova/e-commerce/issues/48) | As an Admin, I want to be able to add promotions, so that I can increase sales and enhance customers’ loyalty.  |
-| [#92](https://github.com/IuliiaKonovalova/e-commerce/issues/92) | As an Admin, I want to be able to get a visible notice about products that are running in stock, so that I can keep stock up to date. |
-| [#93](https://github.com/IuliiaKonovalova/e-commerce/issues/93) |  As an Admin, I want to be able to be aware of units sold, so that I can be aware of sales on a particular product. |
-| [#94](https://github.com/IuliiaKonovalova/e-commerce/issues/94) | As an Admin, I want to be able to get a visible notice if there is some inconsistency in sales, so that I can be aware of possible stealing.  |
-| [#95](https://github.com/IuliiaKonovalova/e-commerce/issues/95) | As an Admin, I want to be able to get a visible notice if there a product is not salable, so that I can make a decision about stopping purchasing this product for my store.  |
-| [#185](https://github.com/IuliiaKonovalova/e-commerce/issues/185) |  As an Admin, I want to be able to send special discounts email notifications, so that I can inform loyal customers about special offers. |
-
-
-
-*All User stories were initially created in LibreOffice Calc*
-**PDF version**
-[PDF version](documentation/user_stories/user_stories.pdf)
 
 ## Business Model
 
