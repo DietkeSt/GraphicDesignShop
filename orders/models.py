@@ -74,6 +74,18 @@ class Order(models.Model):
             html_message=message_html,
         )
 
+        # Check if the order status is 'received' and send email to admins
+        if self.order_status == 'received':
+            admin_subject = f"New Order Received: Order #{self.id}"
+            admin_message = f"Please review the new order received with ID {self.id}. Check the admin panel for more details."
+
+            send_mail(
+                admin_subject,
+                admin_message,
+                'artisticedge.noreply@gmail.com',
+                settings.ADMINS
+            )
+
     class Meta:
         ordering = ('-created',)
     
