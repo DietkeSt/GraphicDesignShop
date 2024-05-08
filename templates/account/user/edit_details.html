@@ -1,9 +1,9 @@
 {% extends "../../base.html" %}
 {% load static %}
-{% block extra_title %}User Dashboard{% endblock %}
+{% block extra_title %}User Profile{% endblock %}
 {% block content %}
 
-<div class="container" style="max-width: 1000px">
+<div class="container">
         <div class="col-12">
         <h1 class="h2">Your Account Dashboard</h1>
         </div>
@@ -87,7 +87,7 @@
 </div>
 <!-- Profile -->
 <div class="container px-0 pt-2">
-    <div class="card mb-3 rounded-2 p-3">
+    <div class="card mb-3 rounded-2 p-3 px-4">
         <form class="account-form" method="post" enctype="multipart/form-data">
             <div class="row justify-content-between gap-2">
                 <div class="d-flex flex-column justify-content-start col-12 col-md-6">
@@ -131,7 +131,7 @@
             </div>
         </form>
     </div>    
-    <div class="card mb-3 rounded-2 p-3">
+    <div class="card mb-3 rounded-2 p-3 px-4">
         <form class="account-form" action="{% url "account:delete_user" %}" method="post">
             {% csrf_token %}
             <div class="row justify-content-between gap-2">
@@ -147,7 +147,7 @@
             </div>
         </form>
     </div>
-    <div class="card mb-3 rounded-2 p-3">
+    <div class="card mb-3 rounded-2 p-3 px-4">
         {% if is_subscribed %}
         <form action="{% url 'newsletter:unsubscribe_newsletter' %}" method="post">
             {% csrf_token %}
