@@ -398,349 +398,137 @@ To understand some concepts, I created several flowchart diagrams.
 
 ### Data Modeling
 
-#### Role Model
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| name          | name          | CharField    | max_length=50, unique=True, blank=True, null=False, verbose_name='Role name' |
-| description   | description   | TextField    | max_length=500, blank=True, null=True, verbose_name='Role description' |
-
-
-
-#### Profile Model
-
-When user signs up, a new profile is created. 
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| user          | user          | OneToOneField | User, on_delete=models.CASCADE, related_name='profile', verbose_name='User' |
-| first_name    | first_name    | CharField    | max_length=50, blank=True, null=True, verbose_name='First name' |
-| last_name     | last_name     | CharField    | max_length=50, blank=True, null=True, verbose_name='Last name' |
-| birthday      | birthday      | DateField    | blank=True, null=True, verbose_name='Birthday' |
-| avatar        | avatar        | CloudinaryField | blank=True, null=True, verbose_name='Avatar' |
-| subscription | subscription | BooleanField | default=False, verbose_name='Subscription' |
-| role          | role          | ForeignKey   | Role, default=1, on_delete=models.SET_NULL, null=True, verbose_name='Role' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-| updated_at    | updated_at    | DateTimeField | auto_now=True, verbose_name='Updated at' |
-
-**Note:** The role field is set to 1 by default. This is because the user is a customer by default. The role can be changed only from the admin panel. The decision to make it mandatory was made due to the store security reasons. **Only the site admin can change the role of the user in order to prevent unauthorized access.**
-
-#### Address Model
-
-Users are encouraged to create their own addresses and set the default address for the fastest purchase. 
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| user          | user          | ForeignKey   | User, on_delete=models.CASCADE, related_name='addresses', verbose_name='User' |
-| country       | country       | CharField    | max_length=50, blank=False, null=False, verbose_name='Country' |
-| county_region | county_region | CharField    | max_length=50, blank=False, null=False, verbose_name='County/region' |
-| city          | city          | CharField    | max_length=50, blank=False, null=False, verbose_name='City' |
-| address_line  | address_line  | CharField    | max_length=150, blank=False, null=False, verbose_name='Address line' |
-| zip_code      | zip_code      | CharField    | max_length=10, blank=False, null=False, verbose_name='Zip code' |
-| phone_number  | phone_number  | CharField    | max_length=15, blank=False, null=False, verbose_name='Phone' |
-| is_primary    | is_primary    | BooleanField | default=False, verbose_name='Is primary' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-| updated_at    | updated_at    | DateTimeField | auto_now=True, verbose_name='Updated at' |
-
-#### Wishlist Model
-
-When the user signs up, a new wishlist is created.
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| user          | user          | ForeignKey   | User, on_delete=models.CASCADE, related_name='wishlist', verbose_name='User' |
-| products      | products      | ManyToManyField | Product, blank=True, related_name='wishlist', verbose_name='Products' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-
-#### Category Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| name          | name          | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Category name' |
-| slug          | slug          | SlugField    | max_length=150, unique=True, blank=False, null=False, verbose_name='Category Slug' |
-| is_active     | is_active     | BooleanField | default=False, verbose_name='Is active' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-| updated_at    | updated_at    | DateTimeField | auto_now=True, verbose_name='Updated at' |
-
-#### Tag Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| name          | name          | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Tag name' |
-| slug          | slug          | SlugField    | max_length=150, unique=True, blank=False, null=False, verbose_name='Tag Slug' |
-| is_active     | is_active     | BooleanField | default=False, verbose_name='Is active' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-| updated_at    | updated_at    | DateTimeField | auto_now=True, verbose_name='Updated at' |
-
-#### Brand Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| name          | name          | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Brand name' |
-| slug          | slug          | SlugField    | max_length=150, unique=True, blank=False, null=False, verbose_name='Brand Slug' |
-| description   | description   | TextField    | max_length=500, blank=False, null=False, verbose_name='Brand description' |
-| is_active     | is_active     | BooleanField | default=False, verbose_name='Is active' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-| updated_at    | updated_at    | DateTimeField | auto_now=True, verbose_name='Updated at' |
-
-
+---
 #### Product Model
+---
+| Name            | Database Key   | Field Type    | Validation                                                             |
+|-----------------|----------------|---------------|------------------------------------------------------------------------|
+| category        | category       | ForeignKey    | `Category`, `related_name='product'`, `on_delete=models.CASCADE`       |
+| created_by      | created_by     | ForeignKey    | `settings.AUTH_USER_MODEL`, `on_delete=models.CASCADE`, `related_name='product_creator'` |
+| title           | title          | CharField     | `max_length=255`                                                       |
+| description     | description    | TextField     | `blank=True`                                                           |
+| image           | image          | ImageField    | `upload_to='images/product/'`, `default='images/default.png'`          |
+| image_alt_text  | image_alt_text | CharField     | `max_length=255`, `blank=True`, `help_text='Product Image Alternate Text'` |
+| slug            | slug           | SlugField     | `max_length=255`                                                       |
+| price           | price          | DecimalField  | `max_digits=10`, `decimal_places=2`                                     |
+| in_stock        | in_stock       | BooleanField  | `default=True`                                                         |
+| is_active       | is_active      | BooleanField  | `default=True`                                                         |
+| created         | created        | DateTimeField | `auto_now_add=True`                                                    |
+| updated         | updated        | DateTimeField | `auto_now=True`                                                        |
 
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| name          | name          | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Product name' |
-| slug          | slug          | SlugField    | max_length=150, unique=True, blank=False, null=False, verbose_name='Product Slug' |
-| description   | description   | TextField    | max_length=500, blank=False, null=False, verbose_name='Product description' |
-| category      | category      | ForeignKey   | Category, on_delete=models.CASCADE, related_name='products', verbose_name='Category' |
-| tags          | tags          | ManyToManyField | Tag, related_name='products', verbose_name='Tags' |
-| brand         | brand         | ForeignKey   | Brand, on_delete=models.CASCADE, related_name='products', verbose_name='Brand' |
-| is_active     | is_active     | BooleanField | default=False, verbose_name='Is active' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-| updated_at    | updated_at    | DateTimeField | auto_now=True, verbose_name='Updated at' |
+---
+#### Category Model
+---
 
-#### ProductImage Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| product       | product       | ForeignKey   | Product, on_delete=models.CASCADE, related_name='images', verbose_name='Product' |
-| image         | image         | CloudinaryField | null=True, blank=True, verbose_name='Image' |
-| alt_text      | alt_text      | CharField    | max_length=300, null=True, blank=True, verbose_name='Alt text' |
-| default_image | default_image | BooleanField | default=False, verbose_name='Default image' |
-| is_active     | is_active     | BooleanField | default=False, verbose_name='Is active' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-| updated_at    | updated_at    | DateTimeField | auto_now=True, verbose_name='Updated at' |
-
-#### ProductAttribute Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| name          | name          | CharField    | max_length=255, unique=True, blank=False, null=False, verbose_name='Attribute name' |
-| description   | description   | TextField    | max_length=500, blank=True, null=True, verbose_name='Attribute description' |
-
-#### ProductType Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| name          | name          | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Product type name' |
-| slug          | slug          | SlugField    | max_length=150, unique=True, blank=False, null=False, verbose_name='Product type Slug' |
-| product_type_attributes | product_type_attributes | ManyToManyField | ProductAttribute, related_name="product_type_attributes", through="ProductTypeAttribute", verbose_name='Product type attributes' |
-| description   | description   | TextField    | max_length=500, blank=False, null=False, verbose_name='Product type description' |
-
-#### ProductAttributeValue Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| product_attribute | product_attribute | ForeignKey   | ProductAttribute, on_delete=models.CASCADE, related_name='product_attribute_values', verbose_name='Product attribute' |
-| attribute_value | attribute_value | CharField    | max_length=255, blank=False, null=False, verbose_name='Attribute value' |
-
-#### ProductInventory Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| sku           | sku           | CharField    | max_length=50, null=False, unique=True, blank=False, verbose_name='Stock Keeping Unit' |
-| upc           | upc           | CharField    | max_length=12, null=False, unique=True, blank=False, verbose_name='Universal Product Code' |
-| product       | product       | ForeignKey   | Product, on_delete=models.CASCADE, related_name='inventory', verbose_name='Product' |
-| product_type  | product_type  | ForeignKey   | ProductType, on_delete=models.CASCADE, related_name='inventory', verbose_name='Product type' |
-| attribute_values | attribute_values | ManyToManyField | ProductAttributeValue, related_name="product_attribute_values", through="ProductAttributeValues", verbose_name='Attribute values' |
-| retail_price  | retail_price  | DecimalField | max_digits=9, decimal_places=2, null=False, blank=False, verbose_name='Retail price' |
-| store_price   | store_price   | DecimalField | max_digits=9, decimal_places=2, null=False, blank=False, verbose_name='Store price' |
-| sale_price    | sale_price    | DecimalField | max_digits=9, decimal_places=2, null=False, blank=False, verbose_name='Sale price' |
-| weight        | weight        | FloatField   | null=False, blank=False, verbose_name='Product weight' |
-| is_active     | is_active     | BooleanField | default=False, verbose_name='Is active' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-| updated_at    | updated_at    | DateTimeField | auto_now=True, verbose_name='Updated at' |
-
-#### Stock Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| product_inventory | product_inventory | ForeignKey   | ProductInventory, on_delete=models.CASCADE, related_name='stock', verbose_name='Product inventory' |
-| last_checked     | last_checked     | DateTimeField | null=True, blank=True, verbose_name='Last checked' |
-| units_variable   | units_variable   | IntegerField | default=0, null=False, blank=False, verbose_name='Units variable' |
-| units            | units            | IntegerField | default=0, null=False, blank=False, verbose_name='Units current' |
-| units_sold       | units_sold       | IntegerField | default=0, null=False, blank=False, verbose_name='Units sold' |
-
-#### ProductAttributeValues Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| attributevalues | attributevalues | ForeignKey   | ProductAttributeValue, on_delete=models.CASCADE, related_name='productattributevalues', verbose_name='Attribute values' |
-| productinventory | productinventory | ForeignKey   | ProductInventory, on_delete=models.CASCADE, related_name='productattributevalues', verbose_name='Product inventory' |
+| Name         | Database Key | Field Type | Validation                            |
+|--------------|--------------|------------|---------------------------------------|
+| name         | name         | CharField  | `max_length=50`, `db_index=True`      |
+| slug         | slug         | SlugField  | `max_length=50`, `unique=True`        |
+| description  | description  | TextField  | `max_length=255`, `blank=True`        |
 
 
-#### ProductTypeAttribute Model
+---
+#### PortfolioItem Model
+---
 
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| product_attribute | product_attribute | ForeignKey   | ProductAttribute, on_delete=models.CASCADE, related_name='producttypeattribute', verbose_name='Product attribute' |
-| product_type | product_type | ForeignKey   | ProductType, on_delete=models.CASCADE, related_name='producttypeattribute', verbose_name='Product type' |
+| Name            | Database Key   | Field Type    | Validation                                                  |
+|-----------------|----------------|---------------|-------------------------------------------------------------|
+| title           | title          | CharField     | `max_length=200`                                            |
+| description     | description    | TextField     | None                                                        |
+| category        | category       | ForeignKey    | `Category`, `on_delete=models.CASCADE`, `related_name='portfolio_items'` |
+| image           | image          | ImageField    | `upload_to='portfolio_images/'`                             |
+| image_alt_text  | image_alt_text | CharField     | `max_length=255`, `blank=True`, `help_text='Product Image Alternate Text'` |
+| date_added      | date_added     | DateTimeField | `auto_now_add=True`                                         |
 
-*The decision to implement unique_together model method was made due to the wider coverage of it rather than UniqueConstraint which has been added in Django 4.0.0.
-[Link to Django Documentation](https://docs.djangoproject.com/en/4.0/ref/models/options/#django.db.models.Options.unique_together)*
 
-#### EmailNewsNotification Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| email_name    | email_name    | CharField    | max_length=100, null=False, unique=True, blank=False, verbose_name='Email name' |
-| content       | content       | TextField    | null=False, blank=False, verbose_name='Content' |
-| code          | code          | CharField    | max_length=100, null=True, blank=True, verbose_name='Code' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-
-#### StockEmailNotification Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| user           | user           | ForeignKey   | User, on_delete=models.CASCADE, verbose_name='Requested user' |
-| requested_product | requested_product | ForeignKey   | Product, on_delete=models.CASCADE, verbose_name='Requested product' |
-| requested_attributes_values | requested_attributes_values | ManyToManyField | ProductAttributeValue, related_name="requested_attributes_values", through="RequestedAttributesValues", verbose_name='Requested attributes values' |
-| requested_quantity | requested_quantity | PositiveIntegerField | verbose_name='Requested quantity' |
-| created_at    | created_at    | DateTimeField | auto_now_add=True, verbose_name='Created at' |
-| answer_sent    | answer_sent    | BooleanField | default=False, verbose_name='Answer send' |
-
+---
 #### Order Model
+---
+| Name            | Database Key   | Field Type    | Validation                                                                                                     |
+|-----------------|----------------|---------------|----------------------------------------------------------------------------------------------------------------|
+| user            | user           | ForeignKey    | `settings.AUTH_USER_MODEL`, `on_delete=models.CASCADE`, `related_name='order_user'`                            |
+| full_name       | full_name      | CharField     | `max_length=150`, `default='No name provided'`                                                                 |
+| phone           | phone          | CharField     | `max_length=50`, `default=''`                                                                                  |
+| address_line    | address_line   | CharField     | `max_length=255`, `default='No address provided'`                                                              |
+| address_line2   | address_line2  | CharField     | `max_length=255`, `default=''`                                                                                 |
+| town_city       | town_city      | CharField     | `max_length=150`, `default='No city provided'`                                                                 |
+| country         | country        | CharField     | `max_length=200`, `null=True`, `blank=True`, `choices=[('', 'Select Country')] + list(CountryField().choices)` |
+| postcode        | postcode       | CharField     | `max_length=50`, `default='No post code provided'`                                                             |
+| created         | created        | DateTimeField | `auto_now_add=True`                                                                                            |
+| updated         | updated        | DateTimeField | `auto_now=True`                                                                                                |
+| total_paid      | total_paid     | DecimalField  | `max_digits=5`, `decimal_places=2`                                                                             |
+| order_key       | order_key      | CharField     | `max_length=200`                                                                                               |
+| buyer_note      | buyer_note     | TextField     | `blank=True`, `null=True`, `max_length=500`                                                                    |
+| billing_status  | billing_status | BooleanField  | `default=False`                                                                                                |
+| order_status    | order_status   | CharField     | `max_length=20`, `choices=[('received', 'Received'), ('in_progress', 'In Progress'), ('finalized', 'Finalized')]`, `default='received'` |
 
-
-```python
-    """Model for Order."""
-    PENDING = 'Pending'
-    PROCESSING = 'Processing'
-    SHIPPED = 'shipped'
-    COMPLETED = 'Completed'
-    REFUNDED = 'Refunded'
-
-    STATUS_CHOICES = (
-        (PENDING, 'Pending'),
-        (PROCESSING, 'Processing'),
-        (SHIPPED, 'Shipped'),
-        (COMPLETED, 'Completed'),
-        (REFUNDED, 'Refunded'),
-    )
-```
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| user           | user           | ForeignKey   | User, on_delete=models.CASCADE, verbose_name='Requested user' |
-| full_name      | full_name      | CharField    | max_length=50, null=False, blank=False, verbose_name='Full name' |
-| email          | email          | CharField    | max_length=50, null=False, blank=False, verbose_name='Email' |
-| phone          | phone          | CharField    | max_length=100, null=False, blank=False, verbose_name='Phone' |
-| address1       | address1       | CharField    | max_length=250, null=False, blank=False, verbose_name='Address1' |
-| address2       | address2       | CharField    | max_length=250, null=False, blank=False, verbose_name='Address2' |
-| city           | city           | CharField    | max_length=100, null=False, blank=False, verbose_name='City' |
-| county_region_state | county_region_state | CharField    | max_length=100, null=False, blank=False, verbose_name='County/Region/State' |
-| country        | country        | CharField    | max_length=100, null=False, blank=False, verbose_name='Country' |
-| zip_code       | zip_code       | CharField    | max_length=20, null=False, blank=False, verbose_name='Zip code' |
-| created        | created        | DateTimeField | auto_now_add=True, verbose_name='Created' |
-| updated        | updated        | DateTimeField | auto_now=True, verbose_name='Updated' |
-| total_paid     | total_paid     | DecimalField | max_digits=5, decimal_places=2, null=False, blank=False, verbose_name='Total paid' |
-| order_number   | order_number   | CharField    | max_length=32, null=False, editable=False, verbose_name='Order number' |
-| order_key      | order_key      | CharField    | max_length=200, blank=True, null=True, verbose_name='Order key' |
-| billing_status | billing_status | BooleanField | default=False, verbose_name='Billing status' |
-| status         | status         | CharField    | max_length=20, choices=STATUS_CHOICES, default=PENDING, verbose_name='Status' |
-
-*The decision to implement several options for the order identification numbers was due to the variety of the possibilities of the identification numbers in different countries.*
-
+---
 #### OrderItem Model
+---
 
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| order          | order          | ForeignKey   | Order, on_delete=models.CASCADE, related_name='order_item', verbose_name='Order' |
-| product_inventory | product_inventory | ForeignKey   | ProductInventory, on_delete=models.CASCADE, related_name='order_item_inventory', verbose_name='Product inventory' |
-| quantity       | quantity       | PositiveIntegerField | verbose_name='Quantity' |
+| Name      | Database Key | Field Type  | Validation                                                       |
+|-----------|--------------|-------------|------------------------------------------------------------------|
+| order     | order        | ForeignKey  | `Order`, `on_delete=models.CASCADE`, `related_name='items'`      |
+| product   | product      | ForeignKey  | `Product`, `on_delete=models.CASCADE`, `related_name='order_items'` |
+| price     | price        | DecimalField| `max_digits=5`, `decimal_places=2`                               |
+| quantity  | quantity     | PositiveIntegerField | `default=1`                                      |
 
-#### Promotion Model
 
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| name           | name           | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Name' |
-| slug           | slug           | SlugField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Slug' |
-| description    | description    | TextField    | null=False, blank=False, verbose_name='Description' |
-| promotion_code | promotion_code | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Promotion code' |
-| promotion_reduction | promotion_reduction | DecimalField | max_digits=3, decimal_places=0, default=Decimal(0), validators=PERCENTAGE_VALIDATOR, verbose_name='Promotion reduction' |
-| active         | active         | BooleanField | default=True, verbose_name='Active' |
-| start_date     | start_date     | DateTimeField | null=False, blank=False, verbose_name='Start date' |
-| end_date       | end_date       | DateTimeField | null=False, blank=False, verbose_name='End date' |
-| products_inventory_in_promotion | products_inventory_in_promotion | ManyToManyField | blank=True, related_name='products_promotions', verbose_name='Products inventory in promotion' |
-| created_at     | created_at     | DateTimeField | auto_now_add=True, verbose_name='Created at', help_text='Date and time of creation.' |
-| updated_at     | updated_at     | DateTimeField | auto_now=True, verbose_name='Updated at', help_text='Date and time of last update.' |
-
+---
 #### Review Model
+---
+
+| Name       | Database Key | Field Type    | Validation                                                         |
+|------------|--------------|---------------|--------------------------------------------------------------------|
+| product    | product      | ForeignKey    | `Product`, `on_delete=models.CASCADE`, `related_name='reviews'`    |
+| user       | user         | ForeignKey    | `settings.AUTH_USER_MODEL`, `on_delete=models.CASCADE`             |
+| rating     | rating       | IntegerField  | `default=1`, `choices=[(i, str(i)) for i in range(1, 6)]`          |
+| comment    | comment      | TextField     | `blank=True`, `null=True`                                          |
+| created_at | created_at   | DateTimeField | `auto_now_add=True`                                                |
 
 
-```python
-    STAR_CHOICES = (
-        ('1', '1'),
-        ('2', '2'),
-        ('3', '3'),
-        ('4', '4'),
-        ('5', '5'),
-    )
-```
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| user           | user           | ForeignKey   | User, on_delete=models.CASCADE, related_name='reviews', verbose_name='User' |
-| product        | product        | ForeignKey   | Product, on_delete=models.CASCADE, related_name='reviews', verbose_name='Product' |
-| order          | order          | ForeignKey   | Order, on_delete=models.CASCADE, related_name='reviews', verbose_name='Order' |
-| rating         | rating         | CharField    | max_length=20, choices=STAR_CHOICES, default=1, verbose_name='Rating' |
-| comment        | comment        | TextField    | max_length=1000, blank=True, null=True, verbose_name='Comment' |
-| created_at     | created_at     | DateTimeField | auto_now_add=True, verbose_name='Created at', help_text='Date and time of creation.' |
+---
+#### User Account Model
+---
+| Name            | Database Key   | Field Type    | Validation                                                |
+|-----------------|----------------|---------------|-----------------------------------------------------------|
+| email           | email          | EmailField    | `unique=True`, `_('email address')`                       |
+| name            | name           | CharField     | `max_length=150`                                          |
+| mobile          | mobile         | CharField     | `max_length=20`, `blank=True`                             |
+| profile_image   | profile_image  | ImageField    | `upload_to='profile_images/'`, `null=True`, `blank=True`  |
+| is_active       | is_active      | BooleanField  | `default=False`                                           |
+| is_staff        | is_staff       | BooleanField  | `default=False`                                           |
+| created         | created        | DateTimeField | `auto_now_add=True`                                       |
+| updated         | updated        | DateTimeField | `auto_now=True`                                           |
 
-#### ReviewImage Model
+---
+#### Address Model
+---
+| Name            | Database Key   | Field Type    | Validation                                                                                                   |
+|-----------------|----------------|---------------|--------------------------------------------------------------------------------------------------------------|
+| customer        | customer       | ForeignKey    | `Customer`, `on_delete=models.CASCADE`, `verbose_name=_("Customer")`                                         |
+| full_name       | full_name      | CharField     | `_("Full Name")`, `max_length=150`                                                                           |
+| phone           | phone          | CharField     | `_("Phone Number")`, `max_length=50`                                                                         |
+| address_line    | address_line   | CharField     | `_("Address Line 1")`, `max_length=255`                                                                      |
+| address_line2   | address_line2  | CharField     | `_("Address Line 2")`, `max_length=255`                                                                      |
+| town_city       | town_city      | CharField     | `_("City, State")`, `max_length=150`                                                                         |
+| country         | country        | CharField     | `_("Country")`, `max_length=200`, `null=True`, `blank=True`, `choices=[('', 'Select Country')] + list(CountryField().choices)` |
+| postcode        | postcode       | CharField     | `_("Postcode")`, `max_length=50`                                                                             |
+| created_at      | created_at     | DateTimeField | `_("Created at")`, `auto_now_add=True`                                                                       |
+| updated_at      | updated_at     | DateTimeField | `_("Updated at")`, `auto_now=True`                                                                           |
+| default         | default        | BooleanField  | `_("Default")`, `default=False`                                                                              |
 
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| review         | review         | ForeignKey   | Review, on_delete=models.CASCADE, related_name='images', verbose_name='Review' |
-| image          | image          | CloudinaryField | null=True, blank=True, verbose_name='Image' |
-
-#### Future Models:
-
-##### Supplier Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| company_name  | company_name  | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Company name' |
-| company_email | company_email | EmailField   | max_length=100, unique=True, blank=False, null=False, verbose_name='Company email' |
-| company_phone | company_phone | CharField    | max_length=20, unique=True, blank=False, null=False, verbose_name='Company phone' |
-| company_contact_name | company_contact_name | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Company contact name' |
-| country       | country       | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Country' |
-| city          | city          | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='City' |
-| state_region_county | state_region_county | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='State/region/county' |
-| zip_code      | zip_code      | CharField    | max_length=20, unique=True, blank=False, null=False, verbose_name='Zip code' |
-| address       | address       | CharField    | max_length=100, unique=True, blank=False, null=False, verbose_name='Address' |
-| notes         | notes         | TextField    | max_length=1000, blank=True, null=True, verbose_name='Notes' |
-| created_at     | created_at     | DateTimeField | auto_now_add=True, verbose_name='Created at', help_text='Date and time of creation.' |
-| updated_at     | updated_at     | DateTimeField | auto_now=True, verbose_name='Updated at', help_text='Date and time of last update.' |
-
-##### StorePurchase Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| product_inventory | product_inventory | ForeignKey   | ProductInventory, on_delete=models.CASCADE, related_name='store_purchases', verbose_name='Product inventory' |
-| units | units | PositiveIntegerField | verbose_name='Units' |
-| total_spending | total_spending | DecimalField | max_digits=5, decimal_places=2, null=False, blank=False, verbose_name='Total spending' |
-| supplier | supplier | ForeignKey   | Supplier, on_delete=models.CASCADE, related_name='store_purchases', verbose_name='Supplier' |
-| delivered | delivered | BooleanField | default=False, verbose_name='Delivered' |
-| created_at     | created_at     | DateTimeField | auto_now_add=True, verbose_name='Created at', help_text='Date and time of creation.' |
-| updated_at     | updated_at     | DateTimeField | auto_now=True, verbose_name='Updated at', help_text='Date and time of last update.' |
-
-##### LiveSupportChat Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| members       | members       | ManyToManyField | blank=True, related_name='live_support_chats', verbose_name='Members' |
-| created_at     | created_at     | DateTimeField | auto_now_add=True, verbose_name='Created at', help_text='Date and time of creation.' |
-| updated_at     | updated_at     | DateTimeField | auto_now=True, verbose_name='Updated at', help_text='Date and time of last update.' |
-
-##### LiveSupportMessage Model
-
-| Name          | Database Key  | Field Type    | Validation |
-| ------------- | ------------- | ------------- | ---------- |
-| chat          | chat          | ForeignKey   | LiveSupportChat, on_delete=models.CASCADE, related_name='messages', verbose_name='Chat' |
-| author       | author        | ForeignKey   | User, on_delete=models.CASCADE, related_name='live_support_messages', verbose_name='Author' |
-| content       | content       | TextField    | max_length=1000, blank=True, null=True, verbose_name='Content' |
-| image         | image         | CloudinaryField | null=True, blank=True, verbose_name='Image' |
-| created_at     | created_at     | DateTimeField | auto_now_add=True, verbose_name='Created at', help_text='Date and time of creation.' |
-| updated_at     | updated_at     | DateTimeField | auto_now=True, verbose_name='Updated at', help_text='Date and time of last update.' |
+---
+#### Portfolio Model
+---
+| Name            | Database Key   | Field Type    | Validation                                                  |
+|-----------------|----------------|---------------|-------------------------------------------------------------|
+| title           | title          | CharField     | `max_length=200`                                            |
+| description     | description    | TextField     | None                                                        |
+| category        | category       | ForeignKey    | `Category`, `on_delete=models.CASCADE`, `related_name='portfolio_items'` |
+| image           | image          | ImageField    | `upload_to='portfolio_images/'`                             |
+| image_alt_text  | image_alt_text | CharField     | `max_length=255`, `blank=True`, `help_text='Product Image Alternate Text'` |
+| date_added      | date_added     | DateTimeField | `auto_now_add=True`                                         |
 
 
 ---
