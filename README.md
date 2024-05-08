@@ -139,33 +139,55 @@ This website is intended for people interested in purchasing products online, st
 
 ## Business Model
 
-The Business Model is B2C, meaning that the company sells products to customers only.
-It focuses on individual transactions only.
+### Overview
+ArtisticEdge operates on a Business-to-Consumer (B2C) and Business-to-Business (B2B) model, specifically tailored for individuals and companies seeking professional graphic design services. Our platform enables customers to explore and purchase customized design solutions directly from a graphic designer.
 
+### Target Audience
 
+#### Persona 1: Casual Website Visitor
+- **Interest:** Exploring graphic design websites for inspiration and trends.
+- **Behavior:** Prefers to navigate freely without mandatory sign-ups, appreciates easy access to design portfolios and updates.
 
-### A Persona Summary of the customer
+#### Persona 2: Customer Persona
+- **Interest:** Specific project in mind, considering hiring a graphic designer.
+- **Behavior:** Seeks a secure, straightforward sign-up process to facilitate future transactions, values clear and efficient service exploration.
 
-The "WoWder" store is aimed at a diverse group of people considering their needs and wants. As everyone has different needs and wants, the store provides everyone the best possible service.
-The age criteria on this website are customers who are 18 and older. The emphasis was made on providing a good user experience for the customers by allowing them to find the products they are looking for, giving them all available options of these products, and offering the best possible service.
+#### Persona 3: Potential Customer
+- **Interest:** Impressed by the portfolio, considers future engagement.
+saving- **Behavior:** Desires an easy sign-up for future purchases, prefers saving favorite designs in a wishlist.
 
-### A persona summary of the store personnel
+#### Persona 4: Service Provider (Graphic Designer and Shop Owner)
+- **Interest:** Attracting and managing customers, overseeing order fulfillment.
+- **Behavior:** Needs efficient tracking and management tools for user interactions and purchases.
 
-The "Wowder" store is aimed at companies interested in selling products online. It may be a small company or a large one. Moreover, the company's potential growth is considered by implementing full personnel functionality with the ability to render all data in the store, starting from cotegories and tags and finishing product inventory and orders.
+### Marketing Strategies
 
-### Strategy Trade-Off
+#### Digital Presence and SEO
+- **SEO Implementations:** Utilizing META descriptions and targeted keywords such as "ArtisticEdge, graphic design Ireland, web design services" to improve search engine visibility and attract both local and global clients.
+- **Social Media Integration:** Encouraging visitors to follow on social platforms and subscribe to newsletters for continuous engagement and updates.
 
-"WoWder" is an online store app that is challenging to compete with due to its wide variety of product offerings and low-cost products.
+#### User Experience Design
+- **Website Navigation:** Streamlined user interface designed for ease of use, helping visitors explore services without hassles.
+- **Personalization:** Features like wishlists, reviews, and service suggestions to enhance user engagement and satisfaction.
 
-- a wide variety of product offerings;
-- product availability;
-- product quality;
-- product choice;
-- good user experience;
-- good service;
-- good sales;
-- good customer loyalty;
-- unique customer service (customer products' requests);
+#### Sales and Customer Retention
+- **Service Diversity:** Offering a range of services from logo design to complete branding solutions to cater to diverse customer needs.
+- **Customer Support:** Providing support before purchase, and after purchase to ensure customer satisfaction and loyalty.
+
+### Transaction Model
+
+#### Sign-Up Process
+- Simplified sign-up during checkout to encourage conversion, with optional account creation to save preferences and expedite future purchases.
+
+#### Checkout Experience
+- Transparent and secure checkout process. Real-time notifications for the store owner to manage orders effectively.
+
+### Performance Metrics
+- Utilization of service popularity via reviews to continuously refine and optimize service offerings.
+
+## Conclusion
+
+ArtisticEdge is committed to delivering exceptional graphic design services that meet the dynamic needs of a diverse client base. Through strategic SEO, user-centric design, and personalized customer interaction, we aim to build long-lasting relationships and a reputable brand in the graphic design industry.
 
 ---
 
