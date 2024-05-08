@@ -28,6 +28,7 @@ class PortfolioItemAdmin(admin.ModelAdmin):
     """
     Admin View for PortfolioItem
     """
-    list_display = ['title', 'image', 'date_added']
+    list_display = ['title', 'image_alt_text', 'category', 'date_added']
     search_fields = ['title', 'description']
     list_filter = ['date_added']
+    list_editable = ['title', 'image_alt_text']
