@@ -79,6 +79,7 @@ class PortfolioItem(models.Model):
     description = models.TextField()
     category = models.ForeignKey(Category, on_delete=models.CASCADE, related_name='portfolio_items')
     image = models.ImageField(upload_to='portfolio_images/')
+    image_alt_text = models.CharField(max_length=255, blank=True, help_text='Product Image Alternate Text')
     date_added = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
