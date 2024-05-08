@@ -1,6 +1,6 @@
 {% extends '../base.html' %}
 {% load static %}
-
+{% block extra_title %}Home Page{% endblock %}
 
 {% block content %}
 
@@ -9,7 +9,7 @@
     <div class="text-center container">
         <div class="row pb-2">
             <div class="col-lg-6 col-md-8 mx-auto">
-                <h1 class="fw-bold">Search Results</h1>
+                <p class="h2 fw-bold">Search Results</p>
                 <p class="lead text-muted">Showing results for "{{ search_term }}:"</p>
             </div>
         </div>
@@ -71,7 +71,7 @@
           </div>
           {% else %}
           <div class="col text-center">
-            <h2 class="h3">No services found.</h2>
+            <h3>No services found.</h3>
             <img class="service-image" alt="No Services Found" height="300" src="{% static 'images/no_search_results.png' %}">
           </div>
           {% endif %}
@@ -94,7 +94,7 @@
 <div id="contact-form-section" class="container mt-5">
   <div class="row">
       <div class="col-lg-6 col-md-8 mx-auto">
-          <h2 class="pb-3 text-center">Contact Us</h2>
+          <p class="h2 pb-3 text-center">Contact Us</p>
           <form action="{% url 'store:contact_form_submit' %}" method="POST">
               {% csrf_token %}
               <div class="mb-3">

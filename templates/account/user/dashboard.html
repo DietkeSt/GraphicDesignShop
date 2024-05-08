@@ -1,6 +1,6 @@
 {% extends "../../base.html" %} 
 {% load static %} 
-{% block title %}User Dashboard{%endblock %} 
+{% block extra_title %}User Dashboard{%endblock %} 
 {% block content %}
 
 <div class="container" style="max-width: 1000px">
@@ -119,7 +119,7 @@
               <div class="card mb-3 border-0">
                   <div class="row g-0">
                       <div class="col-md-2 col-md-2 d-flex justify-content-center align-items-center">
-                          <img class="img-fluid" style="width:90px" src="{{item.product.image.url}}" />
+                          <img class="img-fluid" alt="{{item.product|title}}" style="width:90px" src="{{item.product.image.url}}" />
                       </div>
                       <div class="col-12 col-md-5">
                           <div class="card-body p-1">

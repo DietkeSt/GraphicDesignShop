@@ -1,6 +1,6 @@
 {% extends '../base.html' %}
 {% load static %}
-
+{% block extra_title %}Service Categories{% endblock %}
 
 {% block content %}
 {% comment %} Album Section {% endcomment %}
@@ -20,11 +20,11 @@
                 <!-- Display the average rating as stars -->
                 <div data-tooltip="Average Rating: {{ product.average_rating }}" class="star-rating star-rating-detail">
                     {% for i in range %}
-                        {% if forloop.counter0 < product.average_rating %}
-                            <span>&#9733;</span> <!-- filled star -->
-                        {% else %}
-                            <span>&#9734;</span> <!-- empty star -->
-                        {% endif %}
+                      {% if forloop.counter0 < product.average_rating %}
+                        <span>&#9733;</span> <!-- filled star -->
+                      {% else %}
+                        <span>&#9734;</span> <!-- empty star -->
+                      {% endif %}
                     {% endfor %}
                 </div>
               </div>
@@ -42,9 +42,9 @@
 </div>
 <div class="text-center container">
   <div class="row pt-4">
-      <div class="col-lg-6 col-md-8 mx-auto">
-        <a href="{% url 'store:all_products' %}#services-section">Back to all services</a>
-      </div>
+    <div class="col-lg-6 col-md-8 mx-auto">
+      <a href="{% url 'store:all_products' %}#services-section">Back to all services</a>
+    </div>
   </div>
 </div>
 {% endblock %}

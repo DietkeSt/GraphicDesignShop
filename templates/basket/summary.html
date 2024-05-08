@@ -1,6 +1,6 @@
 {% extends "../base.html" %}
 {% load static %}
-{% block title %}Basket Summary{% endblock %}
+{% block extra_title %}Basket Summary{% endblock %}
 
 {% block content %}
 
@@ -22,7 +22,7 @@
   {% with product=item.product %}
   <div data-index="{{ product.id }}" class="row gx-0 product-item mb-2">
       <div class="col-lg-3 p-2 mb-lg-0 mb-2 order-md-first bg-dark align-content-center" style="border-radius: 2em 0;">
-          <img class="img-fluid mx-auto d-block align-self-stretch" width="125px" style="border-radius: 2em 0;" alt="Responsive image" src="{{ product.image.url }}">
+          <img class="img-fluid mx-auto d-block align-self-stretch" width="125px" style="border-radius: 2em 0;" alt="{{ product.title }} image" src="{{ product.image.url }}">
       </div>
       <div class="col-lg-9 d-flex flex-column">
           <div class="border rounded-2 flex-grow-1 d-flex flex-column ms-lg-3">

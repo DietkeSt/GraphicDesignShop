@@ -1,1 +1,26 @@
-error
+{% extends "../base.html" %}
+{% block extra_title %}Payment Error{% endblock %}
+{% block content %}
+
+
+<div class="container" style="max-width: 1000px">
+    <div class="row no-gutter">
+        <div class="col-md-12">
+            <div class="login d-flex align-items-center">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-lg-6  mx-auto">
+                            <div class="account-logout p-4 rounded">
+                                <h3 class="mb-4">Error</h3>
+                                <p><a href="/">Click here to go back home.</a></p>
+                            </div>
+                     
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
