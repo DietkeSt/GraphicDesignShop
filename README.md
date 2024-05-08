@@ -33,95 +33,49 @@ The website caters to a diverse audience ranging from casual browsers seeking de
 
 | Issue ID    | User Story |
 |-------------|-------------|
-| [#1](https://github.com/IuliiaKonovalova/e-commerce/issues/1) | As a First Time Visitor, I want to be able to register my account, so that I can learn the benefits of the app as a user. |
-| [#2](https://github.com/IuliiaKonovalova/e-commerce/issues/2) | As a First Time Visitor, I want to be able to easily understand the main purpose of the app, so that I can learn more about this app. |
-| [#3](https://github.com/IuliiaKonovalova/e-commerce/issues/3) | As a First Time Visitor, I want to be able to easily navigate through the app, so that I can find the content. |
-| [#4](https://github.com/IuliiaKonovalova/e-commerce/issues/4) | As a First Time Visitor, I want to be able to find the app useful, so that I can use it according to my needs. |
-| [#5](https://github.com/IuliiaKonovalova/e-commerce/issues/5) | As a First Time Visitor, I want to be informed clearly if I am making any errors when registering my account, so that I can be able to fix any errors quickly if I make some. |
-| [#16](https://github.com/IuliiaKonovalova/e-commerce/issues/16) | As a First Time Visitor, I want to be able to see the list of products, so that I can learn the benefits of the app as a user. |
-| [#78](https://github.com/IuliiaKonovalova/e-commerce/issues/78) | As a First Time Visitor, I want to be able to register with social media, so that I can easily register my account or login. *(Future feature)* |
+| [#1](https://github.com/DietkeSt/GraphicDesignShop/issues/1) | As a visitor I want to easily navigate the website, view the designer's portfolio, and get a feel for their style without signing up, allowing me to enjoy the content effortlessly. |
+| [#2](https://github.com/DietkeSt/GraphicDesignShop/issues/2) | As a visitor I wish to have the option to subscribe to a newsletter or follow the designer on social media to stay updated on new designs and trends without committing to creating an account. |
+| [#3](https://github.com/DietkeSt/GraphicDesignShop/issues/3) | I want to browse and search for graphic designs based on categories (icon, logo, poster). |
+| [#4](https://github.com/DietkeSt/GraphicDesignShop/issues/4) | I want the option to easily inquire about a design service without committing to a purchase, allowing me to seek more information or discuss customization options with the designer. |
+| [#5](https://github.com/DietkeSt/GraphicDesignShop/issues/5) | I want the option to easily save my preferred design services to a 'cart', allowing me to quickly proceed with the purchase when I decide to sign up. |
+| [#6](https://github.com/DietkeSt/GraphicDesignShop/issues/6) | I want the option to easily remove items from my cart or undo accidental additions, ensuring a stress-free experience even if I don't intend to make a purchase. |
+| [#7](https://github.com/DietkeSt/GraphicDesignShop/issues/7) | I'd appreciate a clear indication that my cart is empty and a seamless way to exit the checkout process without being prompted to create an account. |
 
 
-#### Persona 2: Customer Persona
-
-| Issue ID    | User Story |
-|-------------|-------------|
-| [#6](https://github.com/IuliiaKonovalova/e-commerce/issues/6) | As a Regular User, I want to be able to access my account without having to log in every time, so that I can quickly buy a product that I need. |
-| [#7](https://github.com/IuliiaKonovalova/e-commerce/issues/7) | As a Regular User, I want to be sure that my account details are protected, so that I can safely make purchases. |
-| [#8](https://github.com/IuliiaKonovalova/e-commerce/issues/8) | As a Regular User, I want to be able to view my data, so that I can easily check my account details and past orders. |
-| [#9](https://github.com/IuliiaKonovalova/e-commerce/issues/9) | As a Regular User, I want to be able to search for a product, so that I can get the most appropriate choices, so that I am likely to find what I am looking for.   *(Future development)*|
-| [#10](https://github.com/IuliiaKonovalova/e-commerce/issues/10) | As a Regular User, I want to be able to add, edit, and save my address data, so that I can make an order faster. |
-| [#11](https://github.com/IuliiaKonovalova/e-commerce/issues/11) | As a Regular User, I want to be able to search products by category, tag, or text search, so that I can find a product faster.  |
-| [#12](https://github.com/IuliiaKonovalova/e-commerce/issues/12) | As a Regular User, I want to be able to sort products by category, so that I can find the best option to buy.  |
-| [#13](https://github.com/IuliiaKonovalova/e-commerce/issues/13) | As a Regular User, I want to be able to leave a product review, so that I can share my feedback. |
-| [#14](https://github.com/IuliiaKonovalova/e-commerce/issues/14) | As a Regular Visitor, I want to be able to see ratings and reviews on a product, so that I can make a prudent decision before buying it.  |
-| [#15](https://github.com/IuliiaKonovalova/e-commerce/issues/15) | As a Regular User, I want to be able to see recommendations underneath the product that I am reviewing, so that I can have a choice to pick from. *(future development)* |
-| [#17](https://github.com/IuliiaKonovalova/e-commerce/issues/17) | As a Regular User, I want to be able to see the list of products, so that I can learn the benefits of the app as a user. |
-| [#18](https://github.com/IuliiaKonovalova/e-commerce/issues/18) | As a Regular Customer, I want to be able to see discount offers, so that I can buy products with a discount and save some money. |
-| [#19](https://github.com/IuliiaKonovalova/e-commerce/issues/19) | As a Customer, I want to be able to see if the product is about to go out of stock, so that I can plan my purchases. |
-| [#20](https://github.com/IuliiaKonovalova/e-commerce/issues/20) | As a Customer, I want to be able to see if the product is out of stock, so that I can be informed in advance that the item is not available and save my time. |
-| [#21](https://github.com/IuliiaKonovalova/e-commerce/issues/21) | As a Customer, I want to be able to See a full product description (image, name, description, options, price, discount), so that I can understand whether I want to buy this product. |
-| [#22](https://github.com/IuliiaKonovalova/e-commerce/issues/22) | As a Customer, I want to be able to see the product’s options (size, color, height), so that I can understand whether the option of the product suits me.  |
-| [#23](https://github.com/IuliiaKonovalova/e-commerce/issues/23) | As a Customer, I want to be able to choose, edit product’s options (size, color, height), so that I can choose an appropriate option of the product. |
-| [#24](https://github.com/IuliiaKonovalova/e-commerce/issues/24) | As a Customer, I want to be able to ask for the notification from the shop if I want to purchase a product that is out of stock or about to finish, so that I can buy a product that I really want. |
-| [#25](https://github.com/IuliiaKonovalova/e-commerce/issues/25) | As a Customer, I want to be able to get an email notification from the shop about special offers, promotions, discounts, so that I can make purchases cheaper. |
-| [#26](https://github.com/IuliiaKonovalova/e-commerce/issues/26) | As a Customer, I want to be able to get an email notification from the shop if the product that I wanted and was out of stock came back to the shop, so that I can buy a product that I really want when it is available.   |
-| [#27](https://github.com/IuliiaKonovalova/e-commerce/issues/27) | As a Customer, I want to be able to add product to my wish list, so that I can buy it later. |
-| [#28](https://github.com/IuliiaKonovalova/e-commerce/issues/28) | As a Customer, I want to be able to remove products to my wish list, so that I can keep my wish list up to date. |
-| [#29](https://github.com/IuliiaKonovalova/e-commerce/issues/29) | As a Customer, I want to be able to view products on my wish list, so that I can plan my purchases. |
-| [#30](https://github.com/IuliiaKonovalova/e-commerce/issues/30) | As a Customer, I want to be able to increase/reduce the number of product items in my bag that I want, so that I can buy a number of items that I want. |
-| [#31](https://github.com/IuliiaKonovalova/e-commerce/issues/31) | As a Customer, I want to be able to add products to my bag, so that I can easily save products in the bag. |
-| [#32](https://github.com/IuliiaKonovalova/e-commerce/issues/32) | As a Customer, I want to be able to see the counted total cost of the product, so that I can see how much I will spend. |
-| [#33](https://github.com/IuliiaKonovalova/e-commerce/issues/33) | As a Customer, I want to be able to see the total cost of the products in the bag, so that I can see how much I will spend. |
-| [#35](https://github.com/IuliiaKonovalova/e-commerce/issues/35) | As a Customer, I want to be able to remove the product from my bag, so that I can change my mind not to buy a particular product at the last moment. |
-| [#36](https://github.com/IuliiaKonovalova/e-commerce/issues/36) | As a Customer, I want to be able to see messages from the shop, so that I can understand whether an item is actually added to the bag or removed.   |
-| [#37](https://github.com/IuliiaKonovalova/e-commerce/issues/37) | As a Customer, I want to be able to contact shop staff immediately, so that I can get an answer to my questions quickly.    *(Future development)*|
-| [#38](https://github.com/IuliiaKonovalova/e-commerce/issues/38) | As a Visitor, I want to be able to send photos of a product, so that I can provide proof if there are any probable issues with the delivered product (wrong color, size, or damage). |
-| [#39](https://github.com/IuliiaKonovalova/e-commerce/issues/39) | As a Customer, I want to be able to living images report for review, so that I can share my real experience.  *(future development)* |
-| [#40](https://github.com/IuliiaKonovalova/e-commerce/issues/40) | As a Customer who made a purchase, I want to be able to review the order status, so that I can understand where my purchase is. |
-| [#41](https://github.com/IuliiaKonovalova/e-commerce/issues/41) | As a Customer who made a purchase, I want to be able to see order confirmation after checkout, so that I can see what I bought. |
-| [#42](https://github.com/IuliiaKonovalova/e-commerce/issues/42) | As a Customer who made a purchase, I want to be able to receive an email confirmation of my purchase, so that I can have email proof of purchase. |
-| [#51](https://github.com/IuliiaKonovalova/e-commerce/issues/51) | As a Customer, I want to be able to receive live messages including images from customers, so that I can provide answers to customers’ questions and assist them in resolving any probable problems with purchases.  *(Future development)*|
-| [#75](https://github.com/IuliiaKonovalova/e-commerce/issues/75) | As a Regular user, I want to be able to change my profile data, so that I can keep my profile up to date. |
-| [#76](https://github.com/IuliiaKonovalova/e-commerce/issues/76) | As a Regular User, I want to be able to add, edit, and delete addresses, so that I can be sure that I will receive my order at the correct address. |
-| [#77](https://github.com/IuliiaKonovalova/e-commerce/issues/77) | As a Regular User, I want to be able to change primary address, so that I can set the primary address without editing it. |
-
-
-#### Persona 3: Potential Customer
+#### Persona 2: Customer and Potential Customers Persona
 
 | Issue ID    | User Story |
 |-------------|-------------|
-| [#43](https://github.com/IuliiaKonovalova/e-commerce/issues/43) | As a Manager, I want to be able to add, edit, and delete category, so that I can keep products’ categories up to date. |
-| [#44](https://github.com/IuliiaKonovalova/e-commerce/issues/44) | As a Manager, I want to be able to add, edit, and delete products, so that I can keep shop products up to date.  |
-| [#45](https://github.com/IuliiaKonovalova/e-commerce/issues/45) | As a Manager, I want to be able to add, edit, delete tags, so that I can keep products’ sorting up to date and, as a result, increase sales.  |
-| [#46](https://github.com/IuliiaKonovalova/e-commerce/issues/46) | As a Manager, I want to be able to change tags for a product, so that I can increase sales for a particular product.  |
-| [#47](https://github.com/IuliiaKonovalova/e-commerce/issues/47) | As a Manager, I want to be able to Add, edit, and delete products’ options (attributes and values), so that I can keep products’ options up to date. |
-| [#49](https://github.com/IuliiaKonovalova/e-commerce/issues/49) | As a Manager, I want to be able to send emails to customers about future promotions, so that I can increase sales by notifying customers about promotions. |
-| [#50](https://github.com/IuliiaKonovalova/e-commerce/issues/50) | As a Manager, I want to be able to view customers' data, so that I can contact customers if needed and solve possible problems with purchases.  |
-| [#52](https://github.com/IuliiaKonovalova/e-commerce/issues/52) | As a Manager, I want to be able to answer to customers immediately, so that I can satisfy customers' needs.   *(Future development)* |
-| [#53](https://github.com/IuliiaKonovalova/e-commerce/issues/53) | As a Manager, I want to be able to sort and review live support chats, so that I can get access to the previous conversation between a customer and other tech support managers.    *(Future development)*|
-| [#184](https://github.com/IuliiaKonovalova/e-commerce/issues/184) | As a Manager, I want to be able to control product status (active/not active), so that I can keep shop stock up to date.  |
-| [#186](https://github.com/IuliiaKonovalova/e-commerce/issues/186) | As a Manager, I want to be able to Review user’s requests on a product that is out of stock, so that I can understand customers' urgent needs. |
-| [#187](https://github.com/IuliiaKonovalova/e-commerce/issues/187) | As a Manager, I want to be able to review user’s requests on a product that is about to go out of stock, so that I can understand customers' urgent needs and products’ popularity.  |
-| [#188](https://github.com/IuliiaKonovalova/e-commerce/issues/188) | As a Manager, I want to be able to send emails to customers who left notification letters about products coming back to the shop, so that I can enhance customer loyalty and increase sales.  |
-| [#189](https://github.com/IuliiaKonovalova/e-commerce/issues/189) | As a Manager, I want to be able to send emails to customers who left notification letters about products that are no longer in the shop, so that I can enhance customer loyalty and increase sales.  *(Future development)*|
-| [#190](https://github.com/IuliiaKonovalova/e-commerce/issues/190) | As a Manager, I want to be able to review and edit orders’ status, so that I can control customers’ orders and sales.  (Only admin can render) |
-| [#191](https://github.com/IuliiaKonovalova/e-commerce/issues/191) | As a Manager, I want to be able to sort products by rating, sales, and reviews, so that I can understand customers' preferences and increase sales.  *(Future development)*|
-| [#192](https://github.com/IuliiaKonovalova/e-commerce/issues/192) | As a Manager, I want to be able to sort products by stock number, so that I can control stock numbers.  |
-| [#193](https://github.com/IuliiaKonovalova/e-commerce/issues/193) | As a Manager, I want to be able to create sales statistics, so that I can implement new sales strategies if needed.    *(Future development)*|
-| [#194](https://github.com/IuliiaKonovalova/e-commerce/issues/194) | As a Manager, I want to be able to review customers’ orders, so that I can control orders.  |
-| [#195](https://github.com/IuliiaKonovalova/e-commerce/issues/195) | As a Manager, I want to be able to sort orders by date and status, so that I can prioritize orders.  |
-| [#196](https://github.com/IuliiaKonovalova/e-commerce/issues/196) | As a Manager, I want to be able to learn and sort customers’ reviews left by date, rating, and username, so that I can understand customers' feedback and needs. *(Future development)*|
-| [#197](https://github.com/IuliiaKonovalova/e-commerce/issues/197) | As a Manager, I want to be able to display new products label, so that I can be sure that customers will be aware of new products in the shop.  |
-| [#198](https://github.com/IuliiaKonovalova/e-commerce/issues/198) | As a Manager, I want to be able to add/render store purchases, so that I can keep the stock app to date.    *(Future development)*|
-| [#199](https://github.com/IuliiaKonovalova/e-commerce/issues/199) | As a Manager, I want to be able to control my suppliers' data, so that I can easily connect with them.    *(Future development)*|
-| [#200](https://github.com/IuliiaKonovalova/e-commerce/issues/200) | As a Manager, I want to be able to Allow customers to leave reviews only after they receive a product, so that I can control that reviews are relevant.  |
+| [#8](https://github.com/DietkeSt/GraphicDesignShop/issues/8) | I expect a clear and user-friendly interface that guides me through the available services, enabling me to easily find and purchase the design service that matches my requirements. |
+| [#9](https://github.com/DietkeSt/GraphicDesignShop/issues/9) | I want to view details of a graphic design, including its price and description. |
+| [#10](https://github.com/DietkeSt/GraphicDesignShop/issues/10) | I want to order a graphic design by filling out a form with my requirements. |
+| [#11](https://github.com/DietkeSt/GraphicDesignShop/issues/11) | I want to see a preview of the quote before making a payment.|
+| [#12](https://github.com/DietkeSt/GraphicDesignShop/issues/12) | I want a smooth and secure checkout process, allowing me to review the details of the selected service, customize options if available, and complete the purchase with various payment options. *Future development: to pay with various payment methods* |
+| [#13](https://github.com/DietkeSt/GraphicDesignShop/issues/13) | I want to track the status of my orders (pending, completed).  |
+| [#14](https://github.com/DietkeSt/GraphicDesignShop/issues/14) | I want to leave a testimonial and rating for the completed designs.  |
+| [#15](https://github.com/DietkeSt/GraphicDesignShop/issues/15) | I expect to receive a confirmation email with detailed information about the purchased service, including estimated delivery times and any additional steps required from my end. |
+| [#16](https://github.com/DietkeSt/GraphicDesignShop/issues/16) | I want a transparent and easy-to-follow checkout process, providing a summary of the selected service, allowing me to review and confirm my purchase before completing the transaction. |
+| [#17](https://github.com/DietkeSt/GraphicDesignShop/issues/17) | I want to easily find the 'Sign Up' option, where I can create an account with minimal information, allowing me to save favourite designs and preferences for future reference. |
+| [#18](https://github.com/DietkeSt/GraphicDesignShop/issues/18) | I'd appreciate a feature that allows me to bookmark or save specific designs or services, so I can seamlessly transition to purchasing when I'm ready. |
+| [#19](https://github.com/DietkeSt/GraphicDesignShop/issues/19) | I'd appreciate a clear pathway to add a service to a 'wishlist' for future reference, even if I'm not immediately ready to make a purchase. |
+| [#20](https://github.com/DietkeSt/GraphicDesignShop/issues/20) | I'd appreciate personalized recommendations based on my saved designs and preferences, enhancing my overall shopping experience and making it more tailored to my interests. *Future Development* |
+| [#21](https://github.com/DietkeSt/GraphicDesignShop/issues/21) | I want a straightforward option to create an account during the checkout process, with the ability to save my information securely for future purchases, minimizing the need for redundant data entry. |
+| [#22](https://github.com/DietkeSt/GraphicDesignShop/issues/22) | I'd appreciate a clear distinction between the steps required for checkout and optional account creation, ensuring a smooth experience for both one-time and returning customers. *Future Development: Guest Checkout*  |
 
 
-#### Persona 4: Service Provider (Graphic Designer and Shop Owner)
+#### Persona 3: Service Provider (Graphic Designer and Shop Owner)
 | Issue ID    | User Story |
 |-------------|-------------|
-| [#289](https://github.com/IuliiaKonovalova/e-commerce/issues/289) | As a Logistics Manager or Admin, I want to be able to render order status, so that I can track at which stage the order is in.  |
+| [#23](https://github.com/DietkeSt/GraphicDesignShop/issues/23) | As a Designer, I want to add new graphic designs to the platform.|
+| [#24](https://github.com/DietkeSt/GraphicDesignShop/issues/24) | I want to view and manage all orders. |
+| [#25](https://github.com/DietkeSt/GraphicDesignShop/issues/25) | I want to upload completed work for customers to download. |
+| [#26](https://github.com/DietkeSt/GraphicDesignShop/issues/26) | I want to view and manage user accounts and roles.   |
+| [#27](https://github.com/DietkeSt/GraphicDesignShop/issues/27) | I want to easily keep track of order, and user communication. |
+| [#28](https://github.com/DietkeSt/GraphicDesignShop/issues/28) | I wish to have the option to access billing information through user sign-ups for my bookkeeping and invoice creation. *Future Development: Invoice Creation* |
+| [#29](https://github.com/DietkeSt/GraphicDesignShop/issues/29) | I want to receive timely notifications and details when a customer purchases one of my design services, allowing me to prepare for the project and meet the client's expectations. |
+| [#30](https://github.com/DietkeSt/GraphicDesignShop/issues/30) | I wish to have a user-friendly dashboard that provides insights into sales performance, helping me understand which services are popular and allowing me to optimize my offerings. *Future Development: Analytics Dashboard* |
+| [#31](https://github.com/DietkeSt/GraphicDesignShop/issues/31) | I want to provide customer support through accessible channels during the checkout process, such as a contact form, ensuring that customers can get assistance if they encounter any issues. |
+| [#32](https://github.com/DietkeSt/GraphicDesignShop/issues/32) | I wish to receive real-time notifications for successful transactions and, if applicable, be notified of abandoned carts to follow up with potential customers and address any concerns they might have. *Future Development: Abandoned Carts Notification* |
 
 
 ## Business Model
