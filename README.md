@@ -756,10 +756,10 @@ Please refer to the [TESTING.md](TESTING.md) file for all test-related documenta
 
 ## Deployment and Payment setup
 
-- The app was deployed to [Render](https://render.com/).
-- The database was deployed to [ElephantSQL](https://www.elephantsql.com/).
+- The app was deployed to [Heroku](https://dashboard.heroku.com/apps).
+- The database was deployed to [Code Institute's PostgreSQL](https://dbs.ci-dbs.net/).
 
-- The app can be reached by the [link](https://wowder.onrender.com).
+- The app can be reached via [this link](https://artisticedge-f8cc7b427f4c.herokuapp.com/).
 
 
 Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment and payment-related documentation.
