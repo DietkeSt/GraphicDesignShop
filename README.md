@@ -356,8 +356,6 @@ ArtisticEdge employs system fonts for its typography, providing a familiar and e
 
 ### GitHub Project Management
 
-  ![GitHub Project Management](documentation/agile/github_project_management.png)
-
 GitHub Project Management was used to manage the project. If it hadn't been for the GitHub project management, I wouldn't have been able to manage the development of the application. It helped me to prioritize the tasks and to keep track of my progress.
 
 ![GitHub Project Management](documentation/agile/kanban.png)
@@ -768,50 +766,33 @@ Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment and p
 
 ## Credits
 
-- [GitHub](https://github.com/) for giving the idea of the project's design.
+- [WEBSITE INSPO](#) for giving the idea of the project's design.
 - [Django](https://www.djangoproject.com/) for the framework.
 - [Font awesome](https://fontawesome.com/): for the free access to icons.
-- [Render](https://render.com/): for providing a free hosting.
+- [Heroku](https://dashboard.heroku.com/apps): for providing a free hosting.
 - [jQuery](https://jquery.com/): for providing varieties of tools to make standard HTML code look appealing.
 - [jQuery UI](https://jqueryui.com/): for providing varieties of tools to make standard HTML code look appealing.
-- [Postgresql](https://www.postgresql.org/): for providing a free database.
-- [geonames](https://www.geonames.org/): for providing a free database on countries, regions, cities.
-- [Multiple Video & Image Upload Plugin - jQuery Miv.js](https://www.jqueryscript.net/form/multi-video-image-upload.html): for providing a free plugin to upload multiple videos and images.
-- [Stripe](https://stripe.com/): for providing a free payment gateway.
+- [CI PostgreSQL](https://dbs.ci-dbs.net/): for providing a free database.
+- [Stripe](https://stripe.com/): for providing a free payment gateway and documentation.
 - [htmlcolorcodes.com](https://htmlcolorcodes.com/): for providing a free database on colors.
 - [Very Academy Youtube Channel](https://www.youtube.com/c/veryacademy): for brilliant tutorials, which shed the light on the implementation of database with multi-values products, precise explanations of the stripe API, and many other things!
-- [birme](https://www.birme.net/): for providing free service to center and crop images.
-- [fontawesome](https://fontawesome.com/): for providing free icons.
-- [googlefonts](https://fonts.google.com/): for providing free fonts.
-- [BGJar](https://www.bgjar.com/): for the free access to the background images build tool.
 - [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en): for providing a free platform to test website responsiveness
 - [GoFullPage](https://gofullpage.com/): for allowing to create free full web page screenshots;
-- [Favicon Generator. For real.](https://realfavicongenerator.net/): for providing a free platform to generate favicons.
 - [Sitemap Generator](https://www.xml-sitemaps.com/): for providing a free platform to generate sitemaps.
 - [Coolors](https://coolors.co/): for providing a free platform to generate your own palette.
-- [Elon Musk](https://twitter.com/elonmusk?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor): for providing a template for the twitter mock-up page;
+- [Stack Overflow](https://stackoverflow.com/): for providing solutions when being stuck in the development process.
 
 ### Content and Images
 
-- [unsplash](https://unsplash.com/): for providing a free products' images.
-- [Icons8](https://icons8.com/): for providing free access to amazing icons and illustrations to fill out the store.
-- [unsplash](https://unsplash.com/): for providing free products' images to fill out the store.
-- [chrome developer tools](https://developer.chrome.com/extensions/devtools_inspector): for providing a free platform to test website.
-- [adidas](https://www.adidas.com/): for providing free products' data and images to fill out the store on clothes and shoes.
-- [fashionunited](https://www.fashionunited.com/): for providing content for the newsletter;
-- [dell](https://www.dell.com/): for providing free products' data and images to fill out the store on computers and laptops.
-- [nike](https://www.nike.com/): for providing free products' data and images to fill out the store on clothes and shoes.
-- [artsaber](https://www.artsabers.com/): for providing free products' images to fill out the store on lightsabers data and images.
-- [backwaterreptiles](https://www.backwaterreptiles.com/): for providing free products' images to fill out the store on tarantulas' data and images.
-- [Yum Of China](https://www.yumofchina.com/chinese-beer/): for providing free data on Chinese beer.
-- [lego](https://www.lego.com/): for providing free products' data and images to fill out the store with toys.
-- [maggie](https://www.maggie.com/): for providing free products' data and images to fill out the store with maggie products.
-- [barilla](https://www.barilla.com/): for providing free products' data and images to fill out the store with pasta.
-- [LG electronics](https://www.lg.com/): for providing free products' data and images to fill out the store with electronics.
+- [BG Remover](https://www.remove.bg/): for providing a free platform to remove background colors.
+- [Online illustrations by Storyset](https://storyset.com/online): for providing free images to fill out the store.
+- [Chrome developer tools](https://developer.chrome.com/extensions/devtools_inspector): for providing a free platform to test website.
+- [DesignEvo](https://www.designevo.com/): for providing a platform to create free logos quickly.
+
 ---
 
 ## Acknowledgments
 
-- [Tim Nelson](https://github.com/TravelTimN) was a great supporter of another bold idea of mine for this project. Tim guided me through the development of the project and helped me to learn a lot of new things by challenging me to do something new.
-- [Aleksei Konovalov](https://github.com/lexach91), my husband and coding partner, assisted me greatly in product values js selection control implementation and helped me to stay sane.
+- [uliia Konovalova](https://github.com/IuliiaKonovalova/) was a great supporter and kept me in check regarding prioritizing tasks. She helped with setting up the structure and idea of the project throughout the implementation.
+- [Kim Steindel](https://www.kimsteindel.com/) provided me with food during long coding sessions and assisted me greatly in reviewing UX aspects of the project.
 - [Very Academy Youtube Channel](https://www.youtube.com/c/veryacademy) provided great insight on the implementation of the database with multi-values products, precise explanations of the stripe API, and many other things! This Youtube channel has plenty of brilliant tutorials that shed light on Django's most curious and useful aspects.
