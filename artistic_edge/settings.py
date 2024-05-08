@@ -11,32 +11,36 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
-from dotenv import load_dotenv
 import os
+
 import dj_database_url
+import django_heroku
 
 import cloudinary
 import cloudinary.uploader
 import cloudinary.api
 
+print("DATABASE_URL:", os.environ.get('DATABASE_URL'))
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 # Load all variables from .env into the environment
-env_path = BASE_DIR / 'sendgrid.env'
-load_dotenv(dotenv_path=env_path)
+if os.path.isfile('env.py'):
+    import env
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.getenv("SECRET_KEY")
+SECRET_KEY = os.environ.get("SECRET_KEY")
 
 # Debug
-DEBUG = False
+DEBUG = os.environ.get("DEBUG") == "True"
 
 ALLOWED_HOSTS = [
     '',
     'localhost',
     '127.0.0.1',
     '0.0.0.0',
+    '8000-dietkest-graphicdesigns-5vtir318s3r.ws-eu111.gitpod.io'
 ]
 
 CORS_ALLOWED_ORIGINS = [
@@ -44,7 +48,7 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 # Retrieve the Heroku host
-HEROKU_HOSTNAME = os.getenv('HEROKU_APP_NAME')
+HEROKU_HOSTNAME = os.environ.get('HEROKU_APP_NAME')
 
 if HEROKU_HOSTNAME:
     ALLOWED_HOSTS.append(f'{HEROKU_HOSTNAME}.herokuapp.com')
@@ -117,7 +121,7 @@ WSGI_APPLICATION = 'artistic_edge.wsgi.application'
 #}
 
 DATABASES = {
-        'default': dj_database_url.parse(os.getenv('DATABASE_URL'))
+        'default': dj_database_url.parse(os.environ.get('DATABASE_URL'))
 }
 
 # Password validation
@@ -153,9 +157,9 @@ USE_TZ = True
 
 # Cloudinary settings
 cloudinary.config(
-    cloud_name=os.getenv('CLOUDINARY_CLOUD_NAME'),
-    api_key=os.getenv('CLOUDINARY_API_KEY'),
-    api_secret=os.getenv('CLOUDINARY_API_SECRET'),
+    cloud_name=os.environ.get('CLOUDINARY_CLOUD_NAME'),
+    api_key=os.environ.get('CLOUDINARY_API_KEY'),
+    api_secret=os.environ.get('CLOUDINARY_API_SECRET'),
 )
 
 
@@ -163,8 +167,8 @@ cloudinary.config(
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_ROOT = BASE_DIR / 'staticfiles'
-STATICFILES_DIR = [BASE_DIR / 'static']
+STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static')]
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
 STATICFILES_STORAGE = 'cloudinary_storage.storage.StaticHashedCloudinaryStorage'
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -174,9 +178,9 @@ DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 BASKET_SESSION_ID = 'basket'
 
 # Stripe Payment
-STRIPE_PUBLISHABLE_KEY = os.getenv('STRIPE_PUBLISHABLE_KEY')
-STRIPE_SECRET_KEY = os.getenv('STRIPE_SECRET_KEY')
-STRIPE_ENDPOINT_SECRET = os.getenv('STRIPE_ENDPOINT_SECRET')
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
+STRIPE_ENDPOINT_SECRET = os.environ.get('STRIPE_ENDPOINT_SECRET')
 
 
 # Default primary key field type
@@ -195,13 +199,13 @@ EMAIL_HOST = 'smtp.sendgrid.net'
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
 EMAIL_HOST_USER = 'apikey'
-EMAIL_HOST_PASSWORD = os.getenv('EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
 DEFAULT_FROM_EMAIL = 'artisticedge.noreply@gmail.com'
 
 # Mailchimp
-MAILCHIMP_API_KEY = os.getenv('MAILCHIMP_API_KEY')
-MAILCHIMP_SERVER_PREFIX = os.getenv('MAILCHIMP_SERVER_PREFIX', 'us18')
-MAILCHIMP_LIST_ID = os.getenv('MAILCHIMP_LIST_ID', 'bf5cc9409a')
+MAILCHIMP_API_KEY = os.environ.get('MAILCHIMP_API_KEY')
+MAILCHIMP_SERVER_PREFIX = os.environ.get('MAILCHIMP_SERVER_PREFIX', 'us18')
+MAILCHIMP_LIST_ID = os.environ.get('MAILCHIMP_LIST_ID', 'bf5cc9409a')
 
 # Password reset setting
 PASSWORD_RESET_TIMEOUT_DAYS = 3
