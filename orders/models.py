@@ -1,6 +1,7 @@
 from django.conf import settings
 from django.contrib.sites.models import Site
 from django.contrib.auth.models import User
+from django.contrib.auth import get_user_model
 from django.core.mail import send_mail
 from django.db import models
 from django.template.loader import render_to_string
@@ -74,17 +75,21 @@ class Order(models.Model):
             html_message=message_html,
         )
 
-        # Check if the order status is 'received' and send email to admins
+        # Check if the order status is 'received' and send email to staff
         if self.order_status == 'received':
-            admin_subject = f"New Order Received: Order #{self.id}"
-            admin_message = f"Please review the new order received with ID {self.id}. Check the admin panel for more details."
+            staff_members = get_user_model().objects.filter(is_staff=True)
+            staff_emails = [user.email for user in staff_members if user.email]
+            if staff_emails:
+                admin_subject = f"New Order Received: Order #{self.id}"
+                admin_message = f"Please review the new order received with ID {self.id}. Check the admin panel for more details."
 
-            send_mail(
-                admin_subject,
-                admin_message,
-                'artisticedge.noreply@gmail.com',
-                settings.ADMINS
-            )
+                send_mail(
+                    admin_subject,
+                    admin_message,
+                    'artisticedge.noreply@gmail.com',
+                    staff_emails,
+                    fail_silently=False,
+                )
 
     class Meta:
         ordering = ('-created',)
