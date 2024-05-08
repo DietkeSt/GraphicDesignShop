@@ -19,19 +19,25 @@
  {% comment %} Hero Section {% endcomment %}
   <section class="text-center container">
       <div class="row pb-4">
-          <div class="col-lg-6 col-md-8 mx-auto">
-              <h1 class="h1 fw-bold">Expert Graphic Design Services in Ireland and Beyond</h1>
-              <p class="lead text-muted">Welcome to ArtisticEdge, where imagination meets precision in every design. Dive into our portfolio full of innovative and smart solutions that truly reflect your vision. Our team is all about creating personalized design services that help elevate your brand and tell your story in a compelling way. Whether it’s eye-catching graphics or smooth, intuitive web designs, we’re here to bring your ideas to life in style.</p>
-              <p>
-                  <a href="{% url 'store:portfolio' %}" class="btn btn-primary my-2">View Portfolio</a>
-              </p>
-          </div>
+        <div class="col-2 mx-auto align-content-center mb-4 d-none d-md-block">
+          <img class="service-image" alt="Man holding a laptop" src="{% static 'images/hero_1_nobg.png' %}">
+        </div>
+        <div class="col-lg-6 col-md-8 mx-auto">
+          <h1 class="h1 fw-bold">Expert Graphic Design Services in Ireland and Beyond</h1>
+          <p class="lead text-muted">Welcome to ArtisticEdge, where imagination meets precision in every design. Dive into our portfolio full of innovative and smart solutions that truly reflect your vision. Our team is all about creating personalized design services that help elevate your brand and tell your story in a compelling way. Whether it’s eye-catching graphics or smooth, intuitive web designs, we’re here to bring your ideas to life in style.</p>
+          <p>
+              <a href="{% url 'store:portfolio' %}" class="btn btn-primary my-2">View Portfolio</a>
+          </p>
+        </div>
+        <div class="col-2 mx-auto align-content-center d-none d-md-block">
+          <img class="service-image" alt="Woman holding a pencil" src="{% static 'images/hero_2_nobg.png' %}">
+        </div>
       </div>
   </section>
 {% endif %}
 {% comment %} Album Section {% endcomment %}
 <div id="services-section" class="album py-5 bg-light bg-dark mr-md-3 pt-3 px-3 pt-md-5 px-md-5 text-center text-white">
-    <div class="container" style="max-width: 1000px">
+    <div class="container">
       {% if products|length or search_term %}
           {% if search_term %}
           {% else %}
@@ -93,6 +99,9 @@
 {% if not search_term %}
 <div id="contact-form-section" class="container mt-5">
   <div class="row">
+      <div class="col-2 mx-auto align-content-center">
+        <img class="service-image" alt="Mail flying from the right" src="{% static 'images/mail_1_nobg.png' %}">
+      </div>
       <div class="col-lg-6 col-md-8 mx-auto">
           <p class="h2 pb-3 text-center">Contact Us</p>
           <form action="{% url 'store:contact_form_submit' %}" method="POST">
@@ -111,6 +120,9 @@
               </div>
               <button type="submit" class="btn btn-primary my-2 w-100">Send</button>
           </form>
+      </div>
+      <div class="col-2 mx-auto align-content-center">
+        <img class="service-image" alt="Mail flying from the left" src="{% static 'images/mail_2_nobg.png' %}">
       </div>
   </div>
 </div>
