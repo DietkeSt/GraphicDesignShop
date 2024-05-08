@@ -2,6 +2,10 @@
 
 **Deployed website: [Link to website](https://artisticedge-f8cc7b427f4c.herokuapp.com/)**
 
+**Repository: [GitHub Repo](https://github.com/DietkeSt/GraphicDesignShop)**
+
+**The app was developed by: [Dietke Steindel](https://github.com/DietkeSt)**
+
 
 ![Main image](documentation/readme_header.png)
 
@@ -9,7 +13,7 @@
 ## About
 ArtisticEdge is more than just a graphic design service; it's a dynamic digital platform crafted specifically for creativity and client interaction. At ArtisticEdge, we merge imagination with precision to deliver custom design solutions that not only meet but exceed our clients' expectations. Whether you're browsing for inspiration or ready to commit to a project, our website is designed to support your journey from concept to completion.
 
-### Our Mission
+### Mission
 We are dedicated to transforming your ideas into visual realities. With a focus on customer satisfaction and efficient service, ArtisticEdge aims to provide an unmatched user experience. Our platform caters to a diverse range of design needs—from individual projects to comprehensive branding strategies. We ensure that every interaction is seamless, from the initial sign-up to the final delivery of your bespoke design.
 
 ---
@@ -227,6 +231,26 @@ At the moment, the customer would need to manually reach out to cancel an order.
 
 The notification emails sent out at the moment are plain text and in some cases not formatted. This is due to time constraints during this project and as a developer I made the decision to improve on the emails at a later stage as it is not a crucial feature for the website functionality.
 
+#### Personalized Recommendations
+
+The personalized recommendations should be based on items on the wishlist and previous purchases. This needs some more research time to implement.
+
+#### Guest Checkout
+
+This was not implemented yet due to time constraints, but is planned for future development.
+
+#### Invoice Creation
+
+At the moment, the store owner is able to see the billing details in the account, so would be able to manually create invoice. An automatic invoice creation option would require more research time.
+
+#### Analytics Dashboard
+
+It would be great to see a detailed analytics dashboard that provides insights in sales performance. This should help in understanding which services are popular and see when customers abandoned a cart.
+
+#### Abandoned Cart Notifications
+
+In addition to the dashboard a simple abandoned cart notification is planned for future development, allowing the store owner to follow up with the customer or potential customer.
+
 
 ---
 
@@ -248,7 +272,7 @@ The notification emails sent out at the moment are plain text and in some cases 
 - ### Databases:
 
     + [SQLite](https://www.sqlite.org/): was used as a development database.
-    + [PostgreSQL](https://www.postgresql.org/): the database used to store all the data.
+    + [Code Institute's PostgreSQL](https://dbs.ci-dbs.net/): the database used to store all the data.
 
 
 - ### Other tools:
@@ -262,22 +286,18 @@ The notification emails sent out at the moment are plain text and in some cases 
     + [Render](https://pypi.org/project/render/): was used to render the README file.
     + [GitHub](https://github.com/): used to host the website's source code.
     + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
+    + [GitPod](https://www.gitpod.io/): the IDE was additionally used to develop the website.
     + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
     + [Font Awesome](https://fontawesome.com/): was used to create the icons used in the website.
     + [Draw.io](https://www.lucidchart.com/) was used to make a flowchart for the README file.
     + [Coolors](https://coolors.co/202a3c-1c2431-181f2a-0b1523-65e2d9-925cef-6b28e0-ffffff-eeeeee) was used to make a color palette for the website.
-    + [BGJar](https://www.bgjar.com/): was used to make a background images for the website.
     + [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
     + [W3C CSS validator](https://jigsaw.w3.org/css-validator/): was used to validate CSS code for the website.
     + [JShint](https://jshint.com/): was used to validate JS code for the website.
     + [PEP8](https://pep8.org/): was used to validate Python code for the website.
-    + [geonames](https://www.geonames.org/) was used to get the country and city names.
-    + [Multiple Video & Image Upload Plugin - jQuery Miv.js](https://www.jqueryscript.net/form/multi-video-image-upload.html) was used to upload multiple videos and images. **Note:** the plugin  is using special characters in css and js files that I am aware about!
     + [stripe](https://stripe.com/): was used to create the payment system.
-    + [birme.net](https://www.birme.net/): was used to crop and center unsplash images.
     + [Sitemap Generator](https://www.xml-sitemaps.com/) was used to create the sitemap.xml file.
     + [Privacy Policy Generator](https://www.privacypolicygenerator.info/) was used to create the privacy policy.
-    + [Django-extensions](https://django-extensions.readthedocs.io/en/latest/) was used to create a Entity-Relationship Diagram.
 
 ---
 
@@ -290,41 +310,37 @@ Please refer to the [FEATURES.md](FEATURES.md) file for all test-related documen
 ---
 ## Design
 
-The design of the application is based on Material Design principles. The colors are chosen to be consistent with the [Material Design principles](https://www.creative-tim.com/blog/web-design/12-absolute-principles-material-design/)
-The minimalistic approach was used to create something meaningful without moving out of the customer's focus. As this application is a multifunctional (provides full customer experience and business management) application and consists of many components, the decision to implement white spaces was made as it helps to create a more pleasant user experience. It also helps users, whether customers or personnel, to focus on the main content of the application.
+The design of the website embraces the robust and intentional aesthetic of [Material Design principles](https://www.creative-tim.com/blog/web-design/12-absolute-principles-material-design/). In aligning with these guidelines, a minimalistic color palette has been selected that enhances usability while adhering to Material Design standards. The design approach is minimalistic, prioritizing clarity and utility, ensuring that every element serves a purpose without distracting from the user's core objectives.
+
+This multifunctional application is designed to enrich the customer experience and streamline business management processes. It incorporates numerous components, each crafted to operate cohesively within a larger system. The strategic use of white space throughout the application's interface plays a pivotal role in this design, fostering a calming and pleasant user environment. This thoughtful spacing allows users, whether they are customers or staff members, to focus more effectively on the essential content and tasks at hand.
+
+By emphasizing simplicity and functionality, the application not only meets the demands of modern business operations but also delivers a delightful and intuitive user experience.
 
 ### Color Scheme
 
-The application's color scheme is based on the combination of bold and neutral colors. The bold colors are used to create a more vibrant and attractive user experience. The neutral colors are used to create a more calm and relaxed user experience.
+The application's color scheme is based on the combination of bold and neutral colors. The bold colors are used to create a more vibrant and attractive user experience and get the attention of the user. The neutral colors are used to create a more calm and relaxed user experience that goes along with the highlight color.
 
   ![Color Scheme](documentation/design/colors_main.png)
 
-The navbar and footer are colored with a dark purple color (`#151422`) to emphasize the application's main content. The navbar for admin was colored with the purplish color (`#4f378b`) to separate is from the main navbar and put an accent on the admin functionality. It also helps personnel to distinguish that they enter as personnel.
+- Pink (`#E83D95`) - This is the primary color used extensively throughout the site for focus states, buttons, links, and other interactive elements. It is the brand color and is used to draw attention to important features and controls.
+- Lighter Pink (`#E56D90`) - This color appears in hover states for links and buttons, providing a subtle visual cue of interactivity. It is used to maintain a cohesive aesthetic while differentiating user interactions.
+- Black (`#000000`) - Used as a background color in various places such as the top banner and footer, providing a strong contrast against the pink tones.
+- White (`#FFFFFF`) - Commonly used for text and background in dropdown menus and other elements, providing contrast against the darker tones of the top banner and footer, and enhancing readability.
+- Gold (`#FFD700`) - This color is used for star ratings, adding a classic color often associated with quality and value, which helps to visually signify rating levels in a traditional, easily understandable way.
 
-The color scheme for the text is quite simple to create a more readable user experience.
+The color scheme for the text is quite simple to create a more readable user experience. It is using the bootsrap attributes to either use dark or light text.
 
-  ![Text Scheme](documentation/design/colors_text.png)
-
-As the application is highly complex and has lots of functionality, I have decided to implement accent colors to help users navigate the application. The accent colors are used to create a more vibrant and attractive user experience.
+Accent colors are implemented with the pink primary color `#E83D95` to help users navigate the application. The accent colors are used to create a more vibrant and attractive user experience.
 
   ![Accent Scheme](documentation/design/color_accent.png)
 
 ### Typography
-The main font used in the application is Lato. During my learning experience, I found that the Lato font is straightforward and has perfect readability, increasing user experience. This font is also consistent with the color scheme.
 
-  ![Typography](documentation/design/lato_400.png)
-
-  ![Typography](documentation/design/lato_700.png)
-
-  ![Typography](documentation/design/lato_900.png)
-
-To emphasize the importance of the text, the font-weight was set to 900. To make the accent on the buttons, the font-weight was set to 700. For the rest of the text, the font-weight was set to 400.
+ArtisticEdge employs system fonts for its typography, providing a familiar and efficient user experience. This approach ensures optimal readability and quick loading times, as it uses the default fonts already installed on users' devices. The use of system fonts not only enhances performance but also maintains a consistent look across various platforms, aligning seamlessly with the intuitive and user-friendly design of the website.
 
 ### Imagery
 
-- The main background image was generated with the user of the [BGJar](https://www.bgjar.com/) tool.
-
-  ![Background](documentation/design/background.svg)
+- The website uses the same style of illustration images throughout for a cohesive user experience. The images use the primary color as the focus color.
 
 - Images were downloaded from the websites listed in the **Credits section**. [Content and Images](#content-and-images)
 
@@ -332,7 +348,7 @@ To emphasize the importance of the text, the font-weight was set to 900. To make
 
 ### Wireframes
 
-  [WoWder Wireframes](documentation/design/wowder_wireframes.pdf)
+------>   [ArtisticEdge Wireframes](documentation/design/wowder_wireframes.pdf)
 
 ---
 
