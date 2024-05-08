@@ -172,7 +172,7 @@
                   <div class="d-flex justify-content-center">
                     <span class="text-dark">How did we do?</span> 
                   </div> 
-                  <img class="service-image" height="250" src="{% static 'images/review.png' %}" />
+                  <img class="service-image" height="250" alt="Review image showing people with thumbs up signs" src="{% static 'images/review.png' %}" />
                   <div class="d-flex justify-content-center py-3">
                     {% for star in "12345" %}
                     <label class="mx-1 mb-2 star-label">
@@ -201,25 +201,28 @@
 {% comment %} Contact Form Section {% endcomment %}
 <div id="order-contact-form" class="container my-5" style="display: none;">
   <div class="row">
-      <div class="col-md-6 col-12 mx-auto">
-          <h2>Contact Us</h2>
-          <form action="{% url 'store:contact_form_submit' %}" method="POST">
-              {% csrf_token %}
-              <div class="mb-3">
-                  <label for="name" class="form-label visually-hidden">Name</label>
-                  <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
-              </div>
-              <div class="mb-3">
-                  <label for="email" class="form-label visually-hidden">Email</label>
-                  <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
-              </div>
-              <div class="mb-3">
-                  <label for="message" class="form-label visually-hidden">Message</label>
-                  <textarea class="form-control" id="message" name="message" rows="3" maxlength="500" placeholder="Write your message here... " required></textarea>
-              </div>
-              <button type="submit" class="btn btn-primary w-100">Send</button>
-          </form>
-      </div>
+    <div class="col-md-6 order-md-2 col-12 mx-auto align-content-center">
+      <img class="service-image" height="300" src="{% static 'images/contact.png' %}"/>
+    </div>
+    <div class="col-md-6 col-12 mx-auto">
+      <h2>Contact Us</h2>
+      <form action="{% url 'store:contact_form_submit' %}" method="POST">
+          {% csrf_token %}
+          <div class="mb-3">
+              <label for="name" class="form-label visually-hidden">Name</label>
+              <input type="text" class="form-control" id="name" name="name" placeholder="Full Name" required>
+          </div>
+          <div class="mb-3">
+              <label for="email" class="form-label visually-hidden">Email</label>
+              <input type="email" class="form-control" id="email" name="email" placeholder="Email Address" required>
+          </div>
+          <div class="mb-3">
+              <label for="message" class="form-label visually-hidden">Message</label>
+              <textarea class="form-control" id="message" name="message" rows="3" maxlength="500" placeholder="Write your message here... " required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary w-100">Send</button>
+      </form>
+    </div>
   </div>
 </div>
 
