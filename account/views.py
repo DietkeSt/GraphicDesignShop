@@ -23,7 +23,11 @@ def wishlist(request):
     View to display user's wishlist.
     """
     products = Product.objects.filter(users_wishlist=request.user)
-    return render(request, "account/user/user_wish_list.html", {"wishlist": products})
+    return render(
+        request,
+        "account/user/user_wish_list.html",
+        {"wishlist": products}
+    )
 
 
 @login_required
@@ -34,9 +38,17 @@ def add_to_wishlist(request, id):
     product = get_object_or_404(Product, id=id)
     if not product.users_wishlist.filter(id=request.user.id).exists():
         product.users_wishlist.add(request.user)
-        messages.success(request, f"Added {product.title} to your ", extra_tags='wishlist addition')
+        messages.success(
+            request,
+            f"Added {product.title} to your ",
+            extra_tags='wishlist addition'
+        )
     else:
-        messages.info(request, f"{product.title} is already on your ", extra_tags='wishlist update')
+        messages.info(
+            request,
+            f"{product.title} is already on your ",
+            extra_tags='wishlist update'
+        )
     return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
 
@@ -48,7 +60,11 @@ def remove_from_wishlist(request, id):
     product = get_object_or_404(Product, id=id)
     if product.users_wishlist.filter(id=request.user.id).exists():
         product.users_wishlist.remove(request.user)
-        messages.info(request, f"{product.title} has been removed.", extra_tags='deletion')
+        messages.info(
+            request,
+            f"{product.title} has been removed.",
+            extra_tags='deletion'
+        )
     return HttpResponseRedirect(request.META["HTTP_REFERER"])
 
 
@@ -80,7 +96,11 @@ def edit_details(request):
     is_subscribed = check_subscription_status(request.user.email)
 
     if request.method == 'POST':
-        user_form = UserEditForm(request.POST, request.FILES, instance=request.user)
+        user_form = UserEditForm(
+            request.POST,
+            request.FILES,
+            instance=request.user
+        )
 
         if user_form.is_valid():
             user = user_form.save(commit=False)
@@ -89,12 +109,20 @@ def edit_details(request):
                 user.profile_image.delete()
                 user.profile_image = None
             user.save()
-            messages.success(request, 'Details successfully updated!', extra_tags='addition')
+            messages.success(
+                request,
+                'Details successfully updated!',
+                extra_tags='addition'
+            )
             return redirect('account:edit_details')
         else:
             for field, errors in user_form.errors.items():
-                    for error in errors:
-                        messages.error(request, f'Error in {field}: {error}', extra_tags='updated')
+                for error in errors:
+                    messages.error(
+                        request,
+                        f'Error in {field}: {error}',
+                        extra_tags='updated'
+                    )
     else:
         user_form = UserEditForm(instance=request.user)
 
@@ -107,7 +135,7 @@ def edit_details(request):
 @login_required
 def delete_user(request):
     try:
-        customer = Customer.objects.get(email=request.user.email)  # request.user.email should be correct now
+        customer = Customer.objects.get(email=request.user.email)
         customer.is_active = False
         customer.save()
         logout(request)
@@ -138,20 +166,30 @@ def account_register(request):
             user.save()
             current_site = get_current_site(request)
             subject = 'Activate your Account'
-            message = render_to_string('account/registration/account_activation_email.html', {
-                'user': user,
-                'domain': current_site.domain,
-                'uid': urlsafe_base64_encode(force_bytes(user.pk)),
-                'token': account_activation_token.make_token(user),
-            })
+            message = render_to_string(
+                'account/registration/account_activation_email.html', {
+                    'user': user,
+                    'domain': current_site.domain,
+                    'uid': urlsafe_base64_encode(force_bytes(user.pk)),
+                    'token': account_activation_token.make_token(user),
+                }
+            )
             user.email_user(subject=subject, message=message)
-            messages.success(request, 'Registered successfully! Please check your email to activate your account.', extra_tags='addition')
+            messages.success(
+                request,
+                'Registered successfully! Please check your email.',
+                extra_tags='addition'
+            )
             return redirect('store:all_products')
         else:
             messages.error(request, 'Please correct the error below.')
     else:
         registerForm = RegistrationForm()
-    return render(request, 'account/registration/register.html', {'form': registerForm})
+    return render(
+        request,
+        'account/registration/register.html',
+        {'form': registerForm}
+    )
 
 
 def account_activate(request, uidb64, token):
@@ -173,7 +211,7 @@ def account_activate(request, uidb64, token):
         return redirect('account:dashboard')
     else:
         return render(request, 'account/registration/activation_invalid.html')
-    
+
 
 # Addresses
 @login_required
@@ -182,7 +220,11 @@ def view_address(request):
     View to display user's addresses.
     """
     addresses = Address.objects.filter(customer=request.user)
-    return render(request, "account/user/addresses.html", {"addresses": addresses})
+    return render(
+        request,
+        "account/user/addresses.html",
+        {"addresses": addresses}
+    )
 
 
 @login_required
@@ -196,15 +238,27 @@ def add_address(request):
             address_form = address_form.save(commit=False)
             address_form.customer = request.user
             address_form.save()
-            messages.success(request, 'Address successfully added!', extra_tags='addition')
+            messages.success(
+                request,
+                'Address successfully added!',
+                extra_tags='addition'
+            )
             return HttpResponseRedirect(reverse("account:addresses"))
         else:
             for field, errors in address_form.errors.items():
-                    for error in errors:
-                        messages.error(request, f'Error in {field}: {error}', extra_tags='updated')
+                for error in errors:
+                    messages.error(
+                        request,
+                        f'Error in {field}: {error}',
+                        extra_tags='updated'
+                    )
     else:
         address_form = UserAddressForm()
-    return render(request, "account/user/edit_addresses.html", {"form": address_form})
+    return render(
+        request,
+        "account/user/edit_addresses.html",
+        {"form": address_form}
+    )
 
 
 @login_required
@@ -217,16 +271,28 @@ def edit_address(request, id):
         address_form = UserAddressForm(instance=address, data=request.POST)
         if address_form.is_valid():
             address_form.save()
-            messages.success(request, 'Address successfully updated!', extra_tags='addition')
+            messages.success(
+                request,
+                'Address successfully updated!',
+                extra_tags='addition'
+            )
             return HttpResponseRedirect(reverse("account:addresses"))
         else:
             for field, errors in address_form.errors.items():
-                    for error in errors:
-                        messages.error(request, f'Error in {field}: {error}', extra_tags='updated')
+                for error in errors:
+                    messages.error(
+                        request,
+                        f'Error in {field}: {error}',
+                        extra_tags='updated'
+                    )
     else:
         address = Address.objects.get(pk=id, customer=request.user)
         address_form = UserAddressForm(instance=address)
-    return render(request, "account/user/edit_addresses.html", {"form": address_form})
+    return render(
+        request,
+        "account/user/edit_addresses.html",
+        {"form": address_form}
+    )
 
 
 @login_required
@@ -237,9 +303,17 @@ def delete_address(request, id):
     try:
         address = Address.objects.get(pk=id, customer=request.user)
         address.delete()
-        messages.success(request, 'Address successfully deleted!', extra_tags='deletion')
+        messages.success(
+            request,
+            'Address successfully deleted!',
+            extra_tags='deletion'
+        )
     except Address.DoesNotExist:
-        messages.error(request, 'Address does not exist or you do not have permission to delete it.', extra_tags='updated')
+        messages.error(
+            request,
+            'Address does not exist or no permission to delete it.',
+            extra_tags='updated'
+        )
     return redirect("account:addresses")
 
 
@@ -249,13 +323,26 @@ def set_default(request, id):
     View to set default address for user.
     """
     try:
-        address_to_set_default = Address.objects.get(pk=id, customer=request.user)
-        Address.objects.filter(customer=request.user, default=True).update(default=False)
+        address_to_set_default = Address.objects.get(
+            pk=id, customer=request.user
+        )
+        Address.objects.filter(
+            customer=request.user,
+            default=True
+        ).update(default=False)
         address_to_set_default.default = True
         address_to_set_default.save()
-        messages.success(request, 'Default address successfully updated!', extra_tags='addition')
+        messages.success(
+            request,
+            'Default address successfully updated!',
+            extra_tags='addition'
+        )
     except Address.DoesNotExist:
-        messages.error(request, 'Address does not exist or you do not have permission to set it as default.', extra_tags='updated')
+        messages.error(
+            request,
+            'Address does not exist or no permission to set it as default.',
+            extra_tags='updated'
+        )
     return redirect("account:addresses")
 
 

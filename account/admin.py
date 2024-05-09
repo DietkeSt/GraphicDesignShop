@@ -1,5 +1,4 @@
 from django.contrib import admin
-
 from .models import Customer
 
 
@@ -14,10 +13,11 @@ class UserBaseAdmin(admin.ModelAdmin):
         Renders a thumbnail of the user's profile image.
         """
         if obj.profile_image:
-            return '<img src="%s" width="50" height="50" />' % obj.profile_image.url
+            return ('<img src="%s" width="50" height="50" />' %
+                    obj.profile_image.url)
         else:
             return 'No image'
     profile_image_thumbnail.allow_tags = True
-    
+
 
 admin.site.register(Customer)
