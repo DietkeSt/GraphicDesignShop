@@ -106,13 +106,18 @@ def edit_details(request):
 
 @login_required
 def delete_user(request):
-    """
-    View to delete user account.
-    """
-    user = Customer.objects.get(email=request.user.email)
-    user.is_active = False
-    user.save()
-    logout(request)
+    try:
+        customer = Customer.objects.get(email=request.user.email)  # request.user.email should be correct now
+        customer.is_active = False
+        customer.save()
+        logout(request)
+    except Customer.DoesNotExist:
+        messages.error(request, 'User not found.')
+        return redirect('some_error_page')
+    except Exception as e:
+        messages.error(request, f'An error occurred: {str(e)}')
+        return redirect('some_error_page')
+
     return redirect('account:delete_confirmation')
 
 
