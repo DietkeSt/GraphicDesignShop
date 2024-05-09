@@ -364,24 +364,6 @@ GitHub Project Management was used to manage the project. If it hadn't been for 
 
 ---
 
-## Flowcharts
-
-To understand some concepts, I created several flowchart diagrams.
-
-1. Sending stock email notifications to users who have left a request for a particular product inventory.
-
-[Flowchart](documentation/flowcharts/stock_email_notifications_flowchart.pdf)
-
-2. Get discount after applying the coupon code for loyalty program.
-
-[Flowchart](documentation/flowcharts/get_promo_price_flowchart.pdf)
-
-3. Payment system.
-
-[Flowchart](documentation/flowcharts/payment_flowchart.pdf)
-
----
-
 ## Information Architecture
 
 ### Database
