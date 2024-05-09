@@ -140,7 +140,7 @@ def account_register(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject=subject, message=message)
-            messages.success(request, 'Registered successfully! Please check your email to activate your account.')
+            messages.success(request, 'Registered successfully! Please check your email to activate your account.', extra_tags='addition')
             return redirect('store:all_products')
         else:
             messages.error(request, 'Please correct the error below.')
