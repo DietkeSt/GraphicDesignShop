@@ -140,7 +140,10 @@ def account_register(request):
                 'token': account_activation_token.make_token(user),
             })
             user.email_user(subject=subject, message=message)
-            return HttpResponse('registered succesfully and activation sent')
+            messages.success(request, 'Registered successfully! Please check your email to activate your account.')
+            return redirect('store:all_products')
+        else:
+            messages.error(request, 'Please correct the error below.')
     else:
         registerForm = RegistrationForm()
     return render(request, 'account/registration/register.html', {'form': registerForm})
