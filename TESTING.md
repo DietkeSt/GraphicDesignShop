@@ -307,7 +307,7 @@ As it took me too long to figure out how to change this to messages, I left it a
 
 - [Full CSS Validation Report](documentation/validation/css_validation.pdf)
 
-- No errors or warnings were found when passing through the official [W3C (Jigsaw)](https://jigsaw.w3.org/css-validator/#validate_by_uri) validator except for the warnings about the use of css root variables and webkits for the box-shadow. However, css code works perfectly on various devices.
+- No errors or warnings were found when passing through the official [W3C (Jigsaw)](https://jigsaw.w3.org/css-validator/#validate_by_uri) validator except for the warnings about the use of bootstrap and jquery. However, css code works perfectly on various devices.
 
 ### JS Validation:
 
