@@ -342,13 +342,13 @@ ArtisticEdge employs system fonts for its typography, providing a familiar and e
 
 - The website uses the same style of illustration images throughout for a cohesive user experience. The images use the primary color as the focus color.
 
-- Images were downloaded from the websites listed in the **Credits section**. [Content and Images](#content-and-images)
+- Images were downloaded from [Storyset](https://storyset.com/online).
 
 - The main part is allocated to using icons from the [font awesome](https://fontawesome.com/) website. Icons are essential for the user experience when it comes to multifunctional websites.
 
 ### Wireframes
 
------->   [ArtisticEdge Wireframes](documentation/design/wowder_wireframes.pdf)
+[ArtisticEdge Wireframes](documentation/design/wireframes.pdf)
 
 ---
 
@@ -554,7 +554,6 @@ Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment and p
 
 ## Credits
 
-- [WEBSITE INSPO](#) for giving the idea of the project's design.
 - [Django](https://www.djangoproject.com/) for the framework.
 - [Font awesome](https://fontawesome.com/): for the free access to icons.
 - [Heroku](https://dashboard.heroku.com/apps): for providing a free hosting.
@@ -576,11 +575,13 @@ Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment and p
 - [Online illustrations by Storyset](https://storyset.com/online): for providing free images to fill out the store.
 - [Chrome developer tools](https://developer.chrome.com/extensions/devtools_inspector): for providing a free platform to test website.
 - [DesignEvo](https://www.designevo.com/): for providing a platform to create free logos quickly.
+- [Dribbble](https://dribbble.com) for giving many ideas of the project's design.
+- [Ram Kumar](https://dribbble.com/shots/6362569-Ecommerce-website-design): for giving me the design idea for login and navigation.
 
 ---
 
 ## Acknowledgments
 
-- [uliia Konovalova](https://github.com/IuliiaKonovalova/) was a great supporter and kept me in check regarding prioritizing tasks. She helped with setting up the structure and idea of the project throughout the implementation.
+- [Iuliia Konovalova](https://github.com/IuliiaKonovalova/) was a great supporter and kept me in check regarding prioritizing tasks. She helped with setting up the structure and idea of the project throughout the implementation.
 - [Kim Steindel](https://www.kimsteindel.com/) provided me with food during long coding sessions and assisted me greatly in reviewing UX aspects of the project.
 - [Very Academy Youtube Channel](https://www.youtube.com/c/veryacademy) provided great insight on the implementation of the database with multi-values products, precise explanations of the stripe API, and many other things! This Youtube channel has plenty of brilliant tutorials that shed light on Django's most curious and useful aspects.
