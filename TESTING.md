@@ -280,27 +280,41 @@ As it took me too long to figure out how to change this to messages, I left it a
 ### HTML Validation:
 - No errors or warnings were found when passing through the official [W3C](https://validator.w3.org/) validator. This checking was done manually by copying the view page source code (Ctrl+U) and pasting it into the validator.
 
-- [Bag app HTML validation report](documentation/validation/bag_html_validation.pdf)
+- Home:
+    ![Home HTML validation report](documentation/validation/home_html_validation.png)
 
-- [EmailNotification app HTML validation report](documentation/validation/email_notification_html_validation.pdf)
+- Category:
+    ![Category HTML validation report](documentation/validation/category_html_validation.png)
 
-- [Home app HTML validation report](documentation/validation/home_html_validation.pdf)
+- Portfolio:
+    ![Portfolio HTML validation report](documentation/validation/portfolio_html_validation.png)
 
-- [Inventory app HTML validation report](documentation/validation/inventory_html_validation.pdf)
+- Portfolio Detail:
+    ![Portfolio Detail HTML validation report](documentation/validation/portfolio_detail_html_validator.png)
 
-- [Orders app HTML validation report](documentation/validation/orders_html_validation.pdf)
+- Service Detail:
+    ![Service Detail HTML validation report](documentation/validation/service_detail_html_validation.png)
 
-- [Payment app HTML validation report](documentation/validation/payment_html_validation.pdf)
+- Basket:
+    ![Basket HTML validation report](documentation/validation/basket_html_validation.png)
 
-- [Profiles app HTML validation report](documentation/validation/profiles_html_validation.pdf)
+- Checkout:
+    ![Checkout HTML validation report](documentation/validation/payment_html_validation.png)
 
-- [Promotions app HTML validation report](documentation/validation/promotions_html_validation.pdf)
+- Orders Dashboard:
+    ![Orders Dashboard HTML validation report](documentation/validation/orders_html_validation.png)
 
-- [Reviews app HTML validation report](documentation/validation/reviews_html_validation.pdf)
+- Profile Dashboard:
+    ![Profile Dashboard HTML validation report](documentation/validation/profile_html_validation.png)
 
-- [Wishlist app HTML validation report](documentation/validation/wishlist_html_validation.pdf)
+- Address Dashboard:
+    ![Address Dashboard HTML validation report](documentation/validation/addresses_html_validation.png)
 
-- [Allauth app HTML validation report](documentation/validation/allauth_html_validation.pdf)
+- Add Address:
+    ![Address HTML validation report](documentation/validation/add_address_html_validation.png)
+
+- Wishlist:
+    ![Wishlist HTML validation report](documentation/validation/wishlist_html_validation.png)
 
 
 ### CSS Validation:
@@ -323,7 +337,7 @@ As it took me too long to figure out how to change this to messages, I left it a
 
 ### Python Validation:
 
-- No errors were found when the code was passed through Valentin Bryukhanov's [online validation tool](http://pep8online.com/). According to the reports, the code is [Pep 8-compliant](https://legacy.python.org/dev/peps/pep-0008/). This checking was done manually by copying python code and pasting it into the validator.
+- No errors were found when the code was passed through the [CI Python Linter](https://pep8ci.herokuapp.com/#). According to the reports, the code is [Pep 8-compliant](https://legacy.python.org/dev/peps/pep-0008/). This checking was done manually by copying python code and pasting it into the validator.
 
 - [Bag. Validation Report](documentation/validation/pep8_validation_bag.pdf)
 
