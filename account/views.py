@@ -109,7 +109,7 @@ def delete_user(request):
     """
     View to delete user account.
     """
-    user = Customer.objects.get(user_name=request.user)
+    user = Customer.objects.get(email=request.user.email)
     user.is_active = False
     user.save()
     logout(request)
