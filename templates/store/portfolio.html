@@ -14,8 +14,8 @@
                 <div class="card h-100 shadow-sm" style="border-radius: 2em 0;">
                     <img src="{{ item.image.url }}" class="card-img-top img-fluid portfolio-image" alt="{{ item.title }}">
                     <div class="card-body d-flex flex-column text-center align-items-center justify-content-center my-3">
-                        <h5 class="card-title">{{ item.title }}</h5>
-                        <p class="card-text">{{ item.description|truncatechars:50 }}</p>
+                        <h3 class="card-title">{{ item.title }}</h3>
+                        <p class="card-text">{{ item.description|truncatechars:100 }}</p>
                         <div class="mt-auto"></div>
                         <a href="{% url 'store:portfolio_detail' item.id %}" class="btn btn-sm btn-secondary col-10">View Details</a>
                     </div>

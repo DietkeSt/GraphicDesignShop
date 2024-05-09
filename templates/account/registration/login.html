@@ -11,7 +11,7 @@
                     <div class="row">
                         <form class="account-form card p-3 rounded" action="{% url 'account:login' %}" method="post">
                             {% csrf_token %}
-                            <h3 class="mb-4">Sign In</h3>
+                            <h2 class="mb-4">Sign In</h2>
 
                             {% if form.errors %}
                                 <div class="alert alert-danger" role="alert">
