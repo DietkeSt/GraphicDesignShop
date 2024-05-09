@@ -311,9 +311,15 @@ As it took me too long to figure out how to change this to messages, I left it a
 
 ### JS Validation:
 
-- [Full JS Validation Report](documentation/validation/js_validation.pdf)
+- [Full JS Validation Report](documentation/validation/js_validation.png)
 
-- No errors or warning messages were found when passing through the official [JSHint](https://www.jshint.com/) validator. However, to validate js full `/* jshint esversion: 8, jquery: true, scripturl: true */` was added to the top of the file.
+- No errors or warning messages were found when passing through the official [JSHint](https://www.jshint.com/) validator. However, to validate js full the following was added to the top of the file:
+
+    ```
+    /* jshint esversion: 6 */
+    /* exported getCookie, displayFileName, submitForm */
+    /* globals $: true, Stripe: true, STRIPE_PUBLISHABLE_KEY: true, CSRF_TOKEN: true */
+    ``` 
 
 ### Python Validation:
 
