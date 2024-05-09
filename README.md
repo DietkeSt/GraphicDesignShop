@@ -283,21 +283,21 @@ In addition to the dashboard a simple abandoned cart notification is planned for
     + [Psycopg2](https://www.psycopg.org/): the database driver used to connect to the database.
     + [Django-allauth](https://django-allauth.readthedocs.io/en/latest/): the authentication library used to create the user accounts.
     + [Django-crispy-forms](https://django-cryptography.readthedocs.io/en/latest/): was used to control the rendering behavior of Django forms.
-    + [Render](https://pypi.org/project/render/): was used to render the README file.
     + [GitHub](https://github.com/): used to host the website's source code.
+    + [Cloudinary](https://cloudinary.com/): used to host image files.
     + [VSCode](https://code.visualstudio.com/): the IDE used to develop the website.
     + [GitPod](https://www.gitpod.io/): the IDE was additionally used to develop the website.
     + [Chrome DevTools](https://developer.chrome.com/docs/devtools/open/): was used to debug the website.
     + [Font Awesome](https://fontawesome.com/): was used to create the icons used in the website.
-    + [Draw.io](https://www.lucidchart.com/) was used to make a flowchart for the README file.
-    + [Coolors](https://coolors.co/202a3c-1c2431-181f2a-0b1523-65e2d9-925cef-6b28e0-ffffff-eeeeee) was used to make a color palette for the website.
+    + [Canva](https://www.canva.com/) was used to edit color palette for the website.
     + [W3C Validator](https://validator.w3.org/): was used to validate HTML5 code for the website.
     + [W3C CSS validator](https://jigsaw.w3.org/css-validator/): was used to validate CSS code for the website.
     + [JShint](https://jshint.com/): was used to validate JS code for the website.
     + [PEP8](https://pep8.org/): was used to validate Python code for the website.
-    + [stripe](https://stripe.com/): was used to create the payment system.
+    + [Stripe](https://stripe.com/): was used to create the payment system.
     + [Sitemap Generator](https://www.xml-sitemaps.com/) was used to create the sitemap.xml file.
     + [Privacy Policy Generator](https://www.privacypolicygenerator.info/) was used to create the privacy policy.
+    + [Django-extensions](https://django-extensions.readthedocs.io/en/latest/) was used to create a Entity-Relationship Diagram.
 
 ---
 
@@ -374,8 +374,6 @@ GitHub Project Management was used to manage the project. If it hadn't been for 
 ### Entity-Relationship Diagram
 
 ![ERD](documentation/my_project_visualized.png)
-
-
 
 
 ### Data Modeling
@@ -541,6 +539,7 @@ Please refer to the [DEPLOYMENT.md](DEPLOYMENT.md) file for all deployment and p
 - [Heroku](https://dashboard.heroku.com/apps): for providing a free hosting.
 - [jQuery](https://jquery.com/): for providing varieties of tools to make standard HTML code look appealing.
 - [jQuery UI](https://jqueryui.com/): for providing varieties of tools to make standard HTML code look appealing.
+- [Cloudinary](https://cloudinary.com/): for hosting media and static files.
 - [CI PostgreSQL](https://dbs.ci-dbs.net/): for providing a free database.
 - [Stripe](https://stripe.com/): for providing a free payment gateway and documentation.
 - [htmlcolorcodes.com](https://htmlcolorcodes.com/): for providing a free database on colors.
