@@ -38,10 +38,10 @@ def BasketView(request):
         'STRIPE_PUBLISHABLE_KEY': os.environ.get('STRIPE_PUBLISHABLE_KEY'),
         'countries': country_list,
         'user_addresses': user_addresses,
-        'user_email': request.user.email 
+        'user_email': request.user.email
     })
 
-      
+
 @csrf_exempt
 def stripe_webhook(request):
     """
