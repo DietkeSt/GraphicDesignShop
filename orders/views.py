@@ -51,7 +51,9 @@ def add(request):
             quantity=item['qty']
         )
 
-    return JsonResponse({'success': 'Order successfully placed!', 'order_id': order.id})
+    return JsonResponse(
+        {'success': 'Order successfully placed!', 'order_id': order.id}
+    )
 
 
 def payment_confirmation(data):
@@ -98,7 +100,9 @@ def submit_review(request, product_id):
             product.ratings_count = count
             product.save()
 
-            return JsonResponse({'message': 'Review added successfully!'}, status=200)
+            return JsonResponse(
+                {'message': 'Review added successfully!'}, status=200
+            )
         except Exception as e:
             return JsonResponse({'error': str(e)}, status=400)
     else:

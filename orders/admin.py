@@ -9,19 +9,26 @@ class OrderItemInline(admin.TabularInline):
     """
     model = OrderItem
     raw_id_fields = ['product']
-    extra = 1 
+    extra = 1
 
 
 class OrderAdmin(admin.ModelAdmin):
     """
     Customizes the administration interface for the Order model.
     """
-    list_display = ['order_date', 'user', 'order_status', 'billing_status', 'total_paid', 'order_items_list']
+    list_display = [
+        'order_date',
+        'user',
+        'order_status',
+        'billing_status',
+        'total_paid',
+        'order_items_list'
+    ]
     list_filter = ['order_status', 'billing_status', 'created']
     date_hierarchy = 'created'
     search_fields = ['user__username', 'status']
     actions = ['make_received', 'make_in_progress', 'make_finalized']
-    inlines = [OrderItemInline] 
+    inlines = [OrderItemInline]
 
     def order_date(self, obj):
         """
@@ -44,7 +51,9 @@ class OrderAdmin(admin.ModelAdmin):
         Displays the order items.
         """
         items = obj.items.all()
-        return ", ".join([f"{item.product.title} x {item.quantity}" for item in items])
+        return ", ".join(
+            [f"{item.product.title} x {item.quantity}" for item in items]
+        )
     order_items_list.short_description = 'Ordered Items'
 
     def make_received(self, request, queryset):
@@ -68,5 +77,5 @@ class OrderAdmin(admin.ModelAdmin):
         queryset.update(status='finalized')
     make_finalized.short_description = "Mark selected orders as finalized"
 
-    
+
 admin.site.register(Order, OrderAdmin)

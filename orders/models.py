@@ -16,14 +16,44 @@ class Order(models.Model):
     """
     Model representing an order placed by a user.
     """
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE, related_name='order_user')
-    full_name = models.CharField(_("Full Name"), max_length=150, default='No name provided')
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name='order_user'
+    )
+    full_name = models.CharField(
+        _("Full Name"),
+        max_length=150,
+        default='No name provided'
+    )
     phone = models.CharField(_("Phone Number"), max_length=50, default='')
-    address_line = models.CharField(_("Address Line 1"), max_length=255, default='No address provided')
-    address_line2 = models.CharField(_("Address Line 2"), max_length=255, default='')
-    town_city = models.CharField(_("City, State"), max_length=150, default='No city provided')
-    country = models.CharField(_("Country"), max_length=200, null=True, blank=True, choices=[('', 'Select Country')] + list(CountryField().choices))
-    postcode = models.CharField(_("Postcode"), max_length=50, default='No post code provided')
+    address_line = models.CharField(
+        _("Address Line 1"),
+        max_length=255,
+        default='No address provided'
+    )
+    address_line2 = models.CharField(
+        _("Address Line 2"),
+        max_length=255,
+        default=''
+    )
+    town_city = models.CharField(
+        _("City, State"),
+        max_length=150,
+        default='No city provided'
+    )
+    country = models.CharField(
+        _("Country"),
+        max_length=200,
+        null=True,
+        blank=True,
+        choices=[('', 'Select Country')] + list(CountryField().choices)
+    )
+    postcode = models.CharField(
+        _("Postcode"),
+        max_length=50,
+        default='No post code provided'
+    )
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     total_paid = models.DecimalField(max_digits=5, decimal_places=2)
@@ -35,12 +65,20 @@ class Order(models.Model):
         ('in_progress', 'In Progress'),
         ('finalized', 'Finalized'),
     )
-    order_status = models.CharField(max_length=20, choices=STATUS_CHOICES, default='received')
-    digital_product = models.FileField(upload_to='orders/products/', blank=True, null=True)
+    order_status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default='received'
+    )
+    digital_product = models.FileField(
+        upload_to='orders/products/',
+        blank=True,
+        null=True
+    )
 
     def save(self, *args, **kwargs):
         """
-        Override save method to send email notification when order status changes.
+        Override save method to send email when order status changes.
         """
         if not self.pk:
             is_new = True
@@ -61,7 +99,7 @@ class Order(models.Model):
         domain = Site.objects.get_current().domain
         subject = f"Update on Your Order #{self.id}"
         template_name = f'orders/order_{self.order_status}_email.html'
-        
+
         message_html = render_to_string(template_name, {
             'order': self,
             'domain': domain
@@ -81,7 +119,7 @@ class Order(models.Model):
             staff_emails = [user.email for user in staff_members if user.email]
             if staff_emails:
                 admin_subject = f"New Order Received: Order #{self.id}"
-                admin_message = f"Please review the new order received with ID {self.id}. Check the admin panel for more details."
+                admin_message = f"Please review the new order received."
 
                 send_mail(
                     admin_subject,
@@ -93,7 +131,7 @@ class Order(models.Model):
 
     class Meta:
         ordering = ('-created',)
-    
+
     def __str__(self):
         return str(self.created)
 
@@ -113,18 +151,27 @@ class OrderItem(models.Model):
 
     def __str__(self):
         return f"{self.product.title} ({self.quantity})"
-    
+
 
 class Review(models.Model):
     """
     Model representing a product review rating by a user.
     """
-    product = models.ForeignKey('store.Product', on_delete=models.CASCADE, related_name='reviews')
-    user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    rating = models.IntegerField(default=1, choices=[(i, str(i)) for i in range(1, 6)])
+    product = models.ForeignKey(
+        'store.Product',
+        on_delete=models.CASCADE,
+        related_name='reviews'
+    )
+    user = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE
+    )
+    rating = models.IntegerField(
+        default=1,
+        choices=[(i, str(i)) for i in range(1, 6)]
+    )
     comment = models.TextField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return f"{self.rating} stars by {self.user.username} for {self.product.title}"
-
+        return f"{self.rating} stars by {self.user.username}"
