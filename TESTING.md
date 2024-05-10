@@ -337,30 +337,25 @@ As it took me too long to figure out how to change this to messages, I left it a
 
 ### Python Validation:
 
-- No errors were found when the code was passed through the [CI Python Linter](https://pep8ci.herokuapp.com/#). According to the reports, the code is [Pep 8-compliant](https://legacy.python.org/dev/peps/pep-0008/). This checking was done manually by copying python code and pasting it into the validator.
+- No errors were found when the code was passed through the [CI Python Linter](https://pep8ci.herokuapp.com/#), except for the URLs in Newsletter. Did not fix the URL length due to time constraints.
 
-- [Bag. Validation Report](documentation/validation/pep8_validation_bag.pdf)
+    Otherwise, the code is [Pep 8-compliant](https://legacy.python.org/dev/peps/pep-0008/). 
+    
+    This checking was done manually by copying python code and pasting it into the validator.
 
-- [Email_notifications. Validation Report](documentation/validation/pep8_validation_email_notifications.pdf)
+- [Account. Validation Report](documentation/validation/pep8_account.pdf)
 
-- [Home. Validation Report](documentation/validation/pep8_validation_home.pdf)
+- [artistic_edge. Validation Report](documentation/validation/pep8_artistic_edge.pdf)
 
-- [Inventory. Validation Report](documentation/validation/pep8_validation_inventory.pdf)
+- [Newsletter. Validation Report](documentation/validation/pep8_newsletter.pdf)
 
-- [Orders. Validation Report](documentation/validation/pep8_validation_orders.pdf)
+- [Orders. Validation Report](documentation/validation/pep8_orders.pdf)
 
-- [Payment. Validation Report](documentation/validation/pep8_validation_payment.pdf)
+- [Payment. Validation Report](documentation/validation/pep8_payment.pdf)
 
-- [Personnel. Validation Report](documentation/validation/pep8_validation_personnel.pdf)
+- [Store. Validation Report](documentation/validation/pep8_store.pdf)
 
-- [Profiles. Validation Report](documentation/validation/pep8_validation_profiles.pdf)
-
-- [Promotions. Validation Report](documentation/validation/pep8_validation_promotions.pdf)
-
-- [Reviews. Validation Report](documentation/validation/pep8_validation_reviews.pdf)
-
-- [Wishlist. Validation report](documentation/validation/pep8_validation_wishlist.pdf)
-
+- [Basket. Validation Report](documentation/validation/pep8_basket.pdf)
 
 
 ---
