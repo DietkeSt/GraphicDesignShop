@@ -371,11 +371,15 @@ LightHouse is a web performance testing tool that can be used to evaluate the pe
 
 Testing was conducted on the following browsers;
 
-- Safari;
-- Chrome;
-- Firefox;
+- Safari:
+    - [Compatibility Test Safari Browser](https://youtu.be/JZDv-2ORr9k)
 
-[Compatibility Report](documentation/validation/compatibility.pdf)
+- Chrome:
+    - [Compatibility Test Chrome Browser](https://youtu.be/L3Z7XuqGIdU)
+
+- Firefox:
+    - [Compatibility Test Firefox Browser](https://youtu.be/ksjIInl_2vE)
+
 
 ---
 ## Responsiveness
