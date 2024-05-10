@@ -371,7 +371,7 @@ LightHouse is a web performance testing tool that can be used to evaluate the pe
 
 Testing was conducted on the following browsers;
 
-- Brave;
+- Safari;
 - Chrome;
 - Firefox;
 
@@ -383,43 +383,6 @@ Testing was conducted on the following browsers;
 The responsiveness was checked manually by using devtools (Chrome) throughout the whole development. It was also checked with [Responsive Viewer](https://chrome.google.com/webstore/detail/responsive-viewer/inmopeiepgfljkpkidclfgbgbmfcennb/related?hl=en) Chrome extension.
 
 [Responsiveness Report](documentation/testing/responsiveness.pdf)
-
----
-## Errors in commit messages:
-
-The errors were made in the following commits:
-
-1. 3cb0b4f275e0650749c9f5cee59072d3889e4a97
-
-Aff wishlist app and url path - > Add instead of Aff
-
-2. da08e5f77a1f886ba7e492d0f2c4aaf20782f5cb
-
-Add url path for viewing product - > Add test for url path
-
-3. a13d44771be873e84c8f60750efe12b5b4ff5d89
-
-Add ProductInventoriesTable View - > Add product_inventory_table url path
-
-4. 55748cb415b51a625a38d04a68b3e2db7d6caab0
-
-Ad categories data to template - > Add categories data to template
-
-5. ec5a9ae366c8cd077c2d3d45e9e308b912b49c5d
-
-Add view for adding brand functionality -> Add testing to test adding brand functionality
-
-6. 64d3e92baacd3f271da0a36bcaebcac2cf5be6e5
-
-Add edit_order_item_url -> Add tests for edit order item functionality
-
-7. bd39e0881a6734c017728011b0020f32ba46ce60
-
-Add custom stylings for search buttons -> Change if condition to show all categories products
-
-8. 9091743069373eefd32a46b1365389860fce14e6
-
-Add functions handlers for 400 and 505 errors - > Add functions handlers for 404 and 500 errors
 
 ---
 
