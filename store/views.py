@@ -23,7 +23,11 @@ def all_products(request):
             Q(category__description__icontains=query)
         )
     elif 'q' in request.GET:
-        messages.error(request, "You didn't enter any search criteria!", extra_tags='update')
+        messages.error(
+            request,
+            "You didn't enter any search criteria!",
+            extra_tags='update'
+        )
         return redirect(reverse('store:all_products'))
 
     for product in products:
@@ -51,7 +55,7 @@ def category_list(request, category_slug=None):
         product.average_rating = round(product.average_rating)
 
     return render(request, 'products/category.html', {
-        'category': category, 
+        'category': category,
         'products': products,
         'range': range(5)
     })
@@ -87,8 +91,12 @@ def contact_form_submit(request):
         email_to = email
         send_mail(subject, message, email_from, [email_to])
         # Set success message
-        messages.success(request, 'Thank you for your message!', extra_tags='addition')
-        
+        messages.success(
+            request,
+            'Thank you for your message!',
+            extra_tags='addition'
+        )
+
         # Redirect to the current page
         return HttpResponseRedirect(request.META.get('HTTP_REFERER'))
     return render(request, 'contact.html')
@@ -101,10 +109,17 @@ def portfolio(request):
     items = PortfolioItem.objects.all()
     return render(request, 'store/portfolio.html', {'items': items})
 
+
 def portfolio_detail(request, item_id):
     """
     Displays details of a specific portfolio item.
     """
     portfolio_item = get_object_or_404(PortfolioItem, id=item_id)
-    category_products = Product.objects.filter(category=portfolio_item.category)
-    return render(request, 'store/portfolio_detail.html', {'portfolio_item': portfolio_item, 'products': category_products})
+    category_products = Product.objects.filter(
+        category=portfolio_item.category
+    )
+    return render(
+        request,
+        'store/portfolio_detail.html',
+        {'portfolio_item': portfolio_item, 'products': category_products}
+    )
