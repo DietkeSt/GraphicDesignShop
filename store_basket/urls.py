@@ -16,4 +16,3 @@ urlpatterns = [
     path('update/', views.basket_update, name='basket_update'),
     path('clear/', views.clear_basket, name='clear_basket'),
 ]
-    

@@ -16,8 +16,9 @@ def basket_summary(request):
     context = {
         'number_range': number_range,
         'basket': basket,
-    }    
+    }
     return render(request, 'basket/summary.html', context)
+
 
 def add_to_basket(request):
     """
@@ -31,11 +32,15 @@ def add_to_basket(request):
         basket.add(product=product, qty=product_qty)
 
         basketqty = basket.__len__()
-        response = JsonResponse({'qty':basketqty})
-        messages.success(request, product.title + " has been added to your ", extra_tags='basket addition')
+        response = JsonResponse({'qty': basketqty})
+        messages.success(
+            request,
+            product.title + " has been added to your ",
+            extra_tags='basket addition'
+        )
 
         return response
-    
+
 
 def basket_delete(request):
     """
@@ -50,7 +55,11 @@ def basket_delete(request):
         basketqty = basket.__len__()
         baskettotal = basket.get_total_price()
         response = JsonResponse({'qty': basketqty, 'subtotal': baskettotal})
-        messages.success(request, product.title + " has been deleted.", extra_tags='deletion')
+        messages.success(
+            request,
+            product.title + " has been deleted.",
+            extra_tags='deletion'
+        )
 
         return response
 
@@ -69,10 +78,14 @@ def basket_update(request):
         basketqty = basket.__len__()
         baskettotal = basket.get_total_price()
         response = JsonResponse({'qty': basketqty, 'subtotal': baskettotal})
-        messages.success(request, product.title + " quantity has been updated.", extra_tags='update')
+        messages.success(
+            request,
+            product.title + " quantity has been updated.",
+            extra_tags='update'
+        )
 
         return response
-    
+
 
 def clear_basket(request):
     """

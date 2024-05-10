@@ -3,6 +3,6 @@ from .models import Basket
 
 def basket(request):
     """
-    Context processor to provide the current user's shopping basket to all templates.
+    Context processor for current user's shopping basket.
     """
     return {'basket': Basket(request)}

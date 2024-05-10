@@ -31,8 +31,8 @@ class Basket():
         else:
             self.basket[product_id] = {'price': str(product.price), 'qty': qty}
 
-        self.session.modified = True     
-    
+        self.session.modified = True
+
     def __len__(self):
         """
         Return total quantity of items in the basket.
@@ -68,7 +68,11 @@ class Basket():
         """
         Calculates the total price of all items in the basket.
         """
-        return sum(Decimal(item['price']) * item['qty'] for item in self.basket.values())
+        return sum(
+            Decimal(
+                item['price']
+            ) * item['qty'] for item in self.basket.values()
+        )
 
     def delete(self, product):
         """
